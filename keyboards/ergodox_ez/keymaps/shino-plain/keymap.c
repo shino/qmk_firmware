@@ -45,9 +45,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_TAB,         CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
         LT(SYMB,KC_GRV),KC_QUOT,      KC_EQL, KC_GRV, KC_QUOT,
-                                                     KC_ESC,  KC_DELT,
-                                                              KC_HOME,
-                                               KC_CTL,KC_LGUI,KC_END,
+                                                        KC_ESC,  KC_DELT,
+                                                                 KC_HOME,
+                                               KC_LCTL, KC_LGUI, KC_END,
         // right hand
              RESET,       KC_6,   KC_7,  KC_8,     KC_9,   KC_0,             KC_MINS,
              TG(SYMB),    KC_Y,   KC_U,  KC_I,     KC_O,   KC_P,             KC_BSLS,
