@@ -39,24 +39,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
-        // left hand
-        KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
-        KC_LCTL,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
-        KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
-        LT(SYMB,KC_GRV),KC_QUOT,      KC_EQL, KC_GRV, KC_QUOT,
-                                                        KC_ESC,  KC_BSPC,
-                                                                 KC_HOME,
-                                               KC_LGUI, ALT_T(KC_APP), KC_END,
-        // right hand
-             RESET,       KC_6,   KC_7,  KC_8,     KC_9,   KC_0,             KC_MINS,
-             TG(SYMB),    KC_Y,   KC_U,  KC_I,     KC_O,   KC_P,             KC_BSLS,
-                          KC_H,   KC_J,  KC_K,     KC_L,   LT(MDIA, KC_SCLN),GUI_T(KC_MINS),
-             KC_B,        KC_N,   KC_M,  KC_COMM,  KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
-                                  KC_LBRC,KC_RBRC, KC_LBRC,KC_RBRC,          KC_FN1,
-             KC_LEFT, KC_RIGHT,
-             KC_UP,
-             KC_DOWN, KC_ENT, KC_SPC
+                  // MY RIGHT (Normally left)
+                  RESET,       KC_6,   KC_7,   KC_8,     KC_9,    KC_0,      KC_ESC,
+                  KC_DEL,      KC_Y,   KC_U,   KC_I,     KC_O,    KC_P,      KC_LBRC,
+                  KC_BSPC,     KC_H,   KC_J,   KC_K,     KC_L,    KC_SCLN,
+                  KC_BSLS,     KC_N,   KC_M,   KC_COMM,  KC_DOT,  KC_SLSH,   KC_RBRC,
+                  KC_RSFT,     KC_SP,  KC_ENT, KC_QUOT,  KC_BSLS,
+                                                                                      KC_LEFT, KC_RIGHT,
+                                                                                               KC_UP,
+                                                                              KC_ENT, KC_RGUI, KC_DOWN,
+
+          // MY LEFT (Normally right)
+          KC_TAB,         KC_1,         KC_2,   KC_3,    KC_4,    KC_5,    KC_ESC,
+          KC_EQL,         KC_Q,         KC_W,   KC_E,    KC_R,    KC_T,    KC_INT1,
+                          KC_A,         KC_S,   KC_D,    KC_F,    KC_G,    KC_INT2,
+          KC_MINS,        KC_Z,         KC_X,   KC_C,    KC_V,    KC_B,    KC_GRV,
+                                        KC_GRV, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT,
+     KC_MUTE,  KC_TAB,
+     KC_VOLU,
+     KC_VOLD,  KC_MPLY, KC_SP,
     ),
 
 /* Keymap 1: Symbol Layer
