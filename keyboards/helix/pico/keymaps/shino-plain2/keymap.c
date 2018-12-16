@@ -20,8 +20,10 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-#define LS_F LSFT_T(KC_F)
-#define RS_J LSFT_T(KC_J)
+#define LC_SPC LCTL_T(KC_SPC)
+#define RC_SPC RCTL_T(KC_SPC)
+#define LS_F   LSFT_T(KC_F)
+#define RS_J   LSFT_T(KC_J)
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -75,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
       KC_LCTL, KC_A,    KC_S,    KC_D,    LS_F,    KC_G,                      KC_H,    RS_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_SLSH,                   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_ENT , \
-      ADJUST,  KC_UP,   KC_DOWN, LOWER,   LOWER,  KC_SPC,  KC_LGUI, KC_RALT, KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_LEFT, KC_RGHT \
+      ADJUST,  KC_UP,   KC_DOWN, LOWER,   LC_SPC,  LC_SPC,  KC_LGUI, KC_RALT, RC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_LEFT, KC_RGHT \
       ),
 
   /* Lower
