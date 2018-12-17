@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Disable this. I want to key repeat.
 // #define TAPPING_FORCE_HOLD
 // Make this somewhat longer.
-#define TAPPING_TERM 150
+#define TAPPING_TERM 500
 
 /* Use I2C or Serial */
 #define USE_I2C
