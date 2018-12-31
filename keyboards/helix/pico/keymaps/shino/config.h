@@ -23,6 +23,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // place overrides here
 
+// Slow key tapper
+#undef TAPPING_TERM
+#define TAPPING_TERM 500
+
+// Use key repeat for keys with long tap
+#undef TAPPING_FORCE_HOLD
+
+
 #ifdef AUDIO_ENABLE
   #define STARTUP_SONG SONG(STARTUP_SOUND)
   #define AUDIO_CLICKY
