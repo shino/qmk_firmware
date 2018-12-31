@@ -30,6 +30,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Use key repeat for keys with long tap
 #undef TAPPING_FORCE_HOLD
 
+// https://docs.qmk.fm/#/feature_advanced_keycodes?id=permissive-hold
+#define IGNORE_MOD_TAP_INTERRUPT
+
+
 
 #ifdef AUDIO_ENABLE
   #define STARTUP_SONG SONG(STARTUP_SOUND)
