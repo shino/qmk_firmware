@@ -74,8 +74,8 @@ enum macro_keycodes {
 #define UNDS_RS RSFT_T(KC_UNDS)
 
 // Spaces
-#define SP_LCTL LCTL_T(KS_SPC)
-#define SP_RCTL RCTL_T(KS_SPC)
+#define SP_LCTL LCTL_T(KC_SPC)
+#define SP_RCTL RCTL_T(KC_SPC)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, KC_7,    KC_8,    KC_9,    _______,                   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_DEL, \
       _______, KC_0,    KC_1,    KC_2,    KC_3,    _______,                   KC_UNDS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______, \
       _______, _______, KC_4,    KC_5,    KC_6,    _______,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRC, _______, KC_MUTE, _______ \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, _______, KC_MUTE, _______ \
       ),
 
   /* Lower
@@ -167,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, KC_UP,   _______, _______,                   KC_QUES, KC_TILD, KC_GRV,  KC_PIPE, KC_BSLS, KC_DEL, \
       _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,                   KC_LT,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, _______, \
       _______, _______, _______, _______, _______, _______,                   KC_GT,   KC_QUOT, KC_DQUO, KC_COLN, KC_SCLN, _______, \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRC, _______, KC_MUTE, _______ \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, _______, KC_MUTE, _______ \
       ),
 
   /* COMBO Left
