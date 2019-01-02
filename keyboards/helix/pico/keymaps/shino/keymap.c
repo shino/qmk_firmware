@@ -59,7 +59,7 @@ enum macro_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
-//Macros
+// Home position keys
 #define F_CL LT(_COMBOL, KC_F)
 #define F_LS LSFT_T(KC_F)
 
@@ -73,26 +73,29 @@ enum macro_keycodes {
 #define L_LO LT(_LOWER, KC_L)
 #define UNDS_RS RSFT_T(KC_UNDS)
 
+// Spaces
+#define SP_LCTL LCTL_T(KS_SPC)
+#define SP_RCTL RCTL_T(KS_SPC)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Qwerty
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Tab  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  | Bksp |
+   * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Ctrl |   A  |   S  |   D  |   F  |   G  |             |   H  |   J  |   K  |   L  |   ;  |  '   |
+   * | Tab  | A/Sh | S/Lo | D/Ra | F/Cl |   G  |             |   H  | J/Cr | K/Ra | L/Lo | _/Sh | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |             |   N  |   M  |   ,  |   .  |   /  |Enter |
+   * | Shift|   Z  |   X  |   C  |   V  | , <  |             | . >  |   B  |   N  |   M  | / ?  |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |Adjust| Esc  | Alt  | GUI  | EISU |Lower |Space |Space |Raise | KANA | Left | Down |  Up  |Right |
+   * |Adjust| LCtl | Left |Right | LGui |Spc/C |Space |Space |Spc/C | RAlt | Next | Play | Vol- | Vol+ |
    * `-------------------------------------------------------------------------------------------------'
    */
-
-[_QWERTY] = LAYOUT( \
-      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-      KC_LCTL, A_LS,    S_LO,    D_RA,    F_CL,    KC_G,                      KC_H,    J_CR,    K_RA,    L_LO,    UNDS_RS, KC_QUOT, \
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-      ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+  [_QWERTY] = LAYOUT( \
+      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
+      KC_TAB,  A_LS,    S_LO,    D_RA,    F_CL,    KC_G,                    KC_H,    J_CR,    K_RA,    L_LO,    UNDS_RS, KC_DOWN, \
+      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    KC_SLSH, KC_ENT , \
+      ADJUST,  KC_LCTL, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
   /* Colemak
    * ,-----------------------------------------.             ,-----------------------------------------.
