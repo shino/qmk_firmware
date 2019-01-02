@@ -60,12 +60,18 @@ enum macro_keycodes {
 #define XXXXXXX KC_NO
 
 //Macros
+#define F_CL LT(_COMBOL, KC_F)
 #define F_LS LSFT_T(KC_F)
+
+#define J_CR LT(_COMBOR, KC_J)
 #define J_RS RSFT_T(KC_J)
 
-#define F_CO LT(_COMBOL, KC_F)
-
 #define D_RA LT(_RAISE, KC_D)
+#define S_LO LT(_LOWER, KC_S)
+#define A_LS LSFT_T(KC_A)
+#define K_RA LT(_RAISE, KC_K)
+#define L_LO LT(_LOWER, KC_L)
+#define UNDS_RS RSFT_T(KC_UNDS)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -84,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT( \
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-      KC_LCTL, KC_A,    KC_S,    D_RA,    F_CO,    KC_G,                      KC_H,    J_RS,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+      KC_LCTL, A_LS,    S_LO,    D_RA,    F_CL,    KC_G,                      KC_H,    J_CR,    K_RA,    L_LO,    UNDS_RS, KC_QUOT, \
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
       ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
       ),
