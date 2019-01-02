@@ -30,8 +30,8 @@ enum layer_number {
     _DVORAK,
     _RAISE,
     _LOWER,
-    _COMBOL,
-    _COMBOR,
+    _SHOTL,
+    _SHOTR,
     _ADJUST
 };
 
@@ -41,8 +41,8 @@ enum custom_keycodes {
   DVORAK,
   RAISE,
   LOWER,
-  COMBOL,
-  COMBOR,
+  SHOTL,
+  SHOTR,
   ADJUST,
   BACKLIT,
   EISU,
@@ -60,10 +60,10 @@ enum macro_keycodes {
 #define XXXXXXX KC_NO
 
 // Home position keys
-#define F_CL LT(_COMBOL, KC_F)
+#define F_SL LT(_SHOTL, KC_F)
 #define F_LS LSFT_T(KC_F)
 
-#define J_CR LT(_COMBOR, KC_J)
+#define J_SR LT(_SHOTR, KC_J)
 #define J_RS RSFT_T(KC_J)
 
 #define D_RA LT(_RAISE, KC_D)
@@ -76,6 +76,36 @@ enum macro_keycodes {
 // Spaces
 #define SP_LCTL LCTL_T(KC_SPC)
 #define SP_RCTL RCTL_T(KC_SPC)
+
+// shots: macOS
+#define GUI_ENT  LGUI(KC_ENT)
+#define G_C_S_4  LGUI(LCTL(LSFT(KC_4))) // Screen capture
+#define SH_LEFT  LSFT(KC_LEFT)          // Google IME
+#define SH_RGHT  LSFT(KC_RGHT)          // Google IME
+#define CTL_3    LCTL(KC_3)             // QuickSilver
+#define CTL_RBRC LCTL(KC_LBRC)          // QuickSilver
+
+// shots: Slack
+#define GUI_1    LGUI(KC_1)             // Workspace 1
+#define GUI_2    LGUI(KC_2)
+#define GUI_3    LGUI(KC_3)
+#define GUI_4    LGUI(KC_4)
+#define GUI_5    LGUI(KC_5)
+#define C_S_ENT  LCTL(LSFT(KC_ENT))     // New snippet
+
+// shots: Emacs
+#define CT_SPC   LCTL(KC_SPC)
+#define CT_C     LCTL(KC_C)
+#define CT_Z     LCTL(KC_Z)
+#define CT_SCLN  LCTL(KC_SCLN)
+#define CT_COMM  LCTL(KC_COMM)
+#define CT_DOT   LCTL(KC_DOT)
+#define CT_SLSH  LCTL(KC_SLSH)
+#define ME_X     RALT(KC_X)
+#define ME_ENT   RALT(KC_ENT)
+
+// shots: GNU Screen
+#define CT_LBRC LCTL(KC_LBRC)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -93,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_LO,    D_RA,    F_CL,    KC_G,                    KC_H,    J_CR,    K_RA,    L_LO,    UNDS_RS, KC_DOWN, \
+      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    UNDS_RS, KC_DOWN, \
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    KC_SLSH, KC_ENT , \
       ADJUST,  KC_LCTL, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
@@ -170,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, _______, KC_MUTE, _______ \
       ),
 
-  /* COMBO Left
+  /* Shots Left
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |   `  |   1  |   2  |   3  |   4  |   5  |             |   6  |   7  |   8  |   9  |   0  | Del  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -181,14 +211,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_COMBOL] = LAYOUT( \
+
+
+  [_SHOTL] = LAYOUT( \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
       _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
       _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,                    KC_F12,  _______, KC_PSCR, KC_PGDN, KC_PGUP, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
       ),
 
-  /* COMBO Right
+  /* Shots Right
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |   `  |   1  |   2  |   3  |   4  |   5  |             |   6  |   7  |   8  |   9  |   0  | Del  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -199,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_COMBOR] = LAYOUT( \
+  [_SHOTR] = LAYOUT( \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
       _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
       _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,                    KC_F12,  _______, KC_PSCR, KC_PGDN, KC_PGUP, _______, \
