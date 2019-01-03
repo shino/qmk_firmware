@@ -68,9 +68,12 @@ enum custom_keycodes {
 #define D_RA LT(_RAISE, KC_D)
 #define S_LO LT(_LOWER, KC_S)
 #define A_LS LSFT_T(KC_A)
+#define Z_LS LSFT_T(KC_Z)
 #define K_RA LT(_RAISE, KC_K)
 #define L_LO LT(_LOWER, KC_L)
-#define UNDS_RS RSFT_T(KC_UNDS)
+// This does not work 2019-01-03, mod-tap MT is only for basic keys
+// #define UNDS_RS SFT_T(KC_UNDS)
+#define SLSH_RS SFT_T(KC_SLSH)
 
 // Spaces
 #define SP_LCTL LCTL_T(KC_SPC)
@@ -116,17 +119,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | S/Lo | D/Ra | F/Cl |   G  |             |   H  | J/Cr | K/Ra | L/Lo | _/Sh | Down |
+   * | Tab  |   A  | S/Lo | D/Ra | F/Sl |   G  |             |   H  | J/Sr | K/Ra | L/Lo |   _  | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  | , <  |             | . >  |   B  |   N  |   M  | / ?  |Enter |
+   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             | . >  |   B  |   N  |   M  |/?/Sh |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * |Adjust| LCtl | Left |Right | LGui |Spc/C |Space |Space |Spc/C | RAlt | Next | Play | Vol- | Vol+ |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    UNDS_RS, KC_DOWN, \
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    KC_SLSH, KC_ENT , \
+      KC_TAB,  KC_A,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    KC_UNDS, KC_DOWN, \
+      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    SLSH_RS, KC_ENT , \
       ADJUST,  KC_LCTL, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
@@ -213,8 +216,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |       |      |       |      | C-3  |      |      |      |      |      |      |      |      |
    * `---------------------------------------------------------------------------------------------------'
    */
-  [_SHOTL] = LAYOUT( \
-      _______, SH_LEFT, SH_RGHT, G_S_ENT, _______, _______,                   _______, _______, _______, _______, _______, _______, \
+  [_SHOTL] = LAYOUT(                                                    \
+      _______, SH_LEFT, SH_RGHT, G_S_ENT, _______, _______,                   _______, CT_Z,    CT_LBRC, _______, _______, _______, \
       _______, GUI_1,   GUI_2,   GUI_3,   XXXXXXX, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, G_C_S_4, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, CTL_3,   _______, _______, _______, _______, _______, _______, _______, _______, _______ \
@@ -256,7 +259,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, L_DEACT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
       ),
 
-  /* Adjust (Lower + Raise)
+  /* Adjust
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      | Reset|      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
