@@ -89,7 +89,7 @@ enum custom_keycodes {
 #define GUI_3    LGUI(KC_3)
 #define GUI_4    LGUI(KC_4)
 #define GUI_5    LGUI(KC_5)
-#define C_S_ENT  LCTL(LSFT(KC_ENT))     // New snippet
+#define G_S_ENT  LGUI(LSFT(KC_ENT))     // Create snippet
 
 // shots: Emacs
 #define CT_SPC   LCTL(KC_SPC)
