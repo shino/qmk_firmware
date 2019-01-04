@@ -56,7 +56,7 @@ enum custom_keycodes {
 // Fillers to make layering more clear
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
-#define L_DEACT KC_TRNS
+
 
 // Home position keys
 #define F_SL LT(_SHOTL, KC_F)
@@ -117,6 +117,8 @@ enum custom_keycodes {
 // shots: GNU Screen
 #define CT_LBRC LCTL(KC_LBRC)
 
+// Toggle layers
+#define MOUSE_T TG(_MOUSE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -135,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
       KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_UNDS, H_SR,    J_RA,    K_LO,    L_RS,    KC_DOWN, \
       KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    SLSH_RS, KC_ENT , \
-      ADJUST,  KC_LCTL, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
+      ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
   /* Colemak
@@ -258,10 +260,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------------------------------------------'
    */
   [_MOUSE] = LAYOUT( \
-      _______, _______, _______, KC_MS_U, _______, _______,                   _______, _______, KC_WH_U, _______, KC_ACL0, _______, \
-      _______, _______, KC_MS_L, KC_BTN1, KC_MS_R, _______,                   _______, KC_WH_L, KC_BTN2, KC_WH_R, KC_ACL1, _______, \
-      _______, _______, _______, KC_MS_D, _______, _______,                   _______, _______, KC_WH_D, _______, KC_ACL2, _______, \
-      _______, L_DEACT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
+      _______, _______,  _______, KC_MS_U, _______, _______,                   _______, _______, KC_WH_U, _______, KC_ACL0, _______, \
+      _______, _______,  KC_MS_L, KC_BTN1, KC_MS_R, _______,                   _______, KC_WH_L, KC_BTN2, KC_WH_R, KC_ACL1, _______, \
+      _______, _______,  _______, KC_MS_D, _______, _______,                   _______, _______, KC_WH_D, _______, KC_ACL2, _______, \
+      _______, MOUSE_T,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
       ),
 
   /* Adjust
@@ -279,7 +281,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, RESET,      _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, AU_ON,      AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
       _______, CK_TOGG,    CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
-      _______, TG(_MOUSE), _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD \
+      _______, MOUSE_T, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD \
       )
 };
 
