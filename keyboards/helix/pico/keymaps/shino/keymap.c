@@ -64,6 +64,7 @@ enum custom_keycodes {
 
 #define J_SR LT(_SHOTR, KC_J)
 #define J_RS RSFT_T(KC_J)
+#define H_SR LT(_SHOTR, KC_H)
 
 #define D_RA LT(_RAISE, KC_D)
 #define S_LO LT(_LOWER, KC_S)
@@ -71,6 +72,10 @@ enum custom_keycodes {
 #define Z_LS LSFT_T(KC_Z)
 #define K_RA LT(_RAISE, KC_K)
 #define L_LO LT(_LOWER, KC_L)
+#define J_RA LT(_RAISE, KC_J)
+#define K_LO LT(_LOWER, KC_K)
+ 
+#define L_RS RSFT_T(KC_L)
 // This does not work 2019-01-03, mod-tap MT is only for basic keys
 // #define UNDS_RS SFT_T(KC_UNDS)
 #define SLSH_RS SFT_T(KC_SLSH)
@@ -128,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  KC_A,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    KC_UNDS, KC_DOWN, \
+      KC_TAB,  KC_A,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_UNDS, H_SR,    J_RA,    K_LO,    L_RS,    KC_DOWN, \
       KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_B,    KC_N,    KC_M,    SLSH_RS, KC_ENT , \
       ADJUST,  KC_LCTL, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RCTL, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
