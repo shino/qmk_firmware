@@ -33,9 +33,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // https://docs.qmk.fm/#/feature_advanced_keycodes?id=permissive-hold
 #define IGNORE_MOD_TAP_INTERRUPT
 
-// Use Mouse keys
-#define MOUSE_KEY_ENABLE yes
-
 
 #ifdef AUDIO_ENABLE
   #define STARTUP_SONG SONG(STARTUP_SOUND)
