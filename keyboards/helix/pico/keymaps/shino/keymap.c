@@ -59,26 +59,27 @@ enum custom_keycodes {
 
 
 // Home position keys
+
+#define A_LS LSFT_T(KC_A)
+#define S_LO LT(_LOWER, KC_S)
+#define D_RA LT(_RAISE, KC_D)
 #define F_SL LT(_SHOTL, KC_F)
+#define Z_LS LSFT_T(KC_Z)
 #define F_LS LSFT_T(KC_F)
 
 #define J_SR LT(_SHOTR, KC_J)
-#define J_RS RSFT_T(KC_J)
-#define H_SR LT(_SHOTR, KC_H)
-
-#define D_RA LT(_RAISE, KC_D)
-#define S_LO LT(_LOWER, KC_S)
-#define A_LS LSFT_T(KC_A)
-#define Z_LS LSFT_T(KC_Z)
 #define K_RA LT(_RAISE, KC_K)
 #define L_LO LT(_LOWER, KC_L)
-#define J_RA LT(_RAISE, KC_J)
-#define K_LO LT(_LOWER, KC_K)
- 
-#define L_RS RSFT_T(KC_L)
 // This does not work 2019-01-03, mod-tap MT is only for basic keys
 // #define UNDS_RS SFT_T(KC_UNDS)
+#define MINS_RS RSFT_T(KC_MINS)
 #define SLSH_RS SFT_T(KC_SLSH)
+#define J_RS RSFT_T(KC_J)
+
+#define H_SR LT(_SHOTR, KC_H)
+#define J_RA LT(_RAISE, KC_J)
+#define K_LO LT(_LOWER, KC_K)
+#define L_RS RSFT_T(KC_L)
 
 // Spaces
 #define SP_LCTL LCTL_T(KC_SPC)
@@ -134,17 +135,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | S/Lo | D/Ra | F/Sl |   G  |             |   _  | H/Sr | J/Ra | K/Lo | L/Sh | Down |
+   * | Tab  | A/Sh | S/Lo | D/Ra | F/Sl |   G  |             |   H  | J/Sr | K/Ra | L/Lo | -/Sh | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             | . >  |   M  |   N  |   B  |/?/Sh |Enter |
+   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             |   B  |   N  |   M  | . >  |/?/Sh |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * |Adjust| LCtl | Left |Right | LGui |Spc/Ct|Space |Space |Spc/Al| RAlt | Next | Play | Vol- | Vol+ |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_UNDS, H_SR,    J_RA,    K_LO,    L_RS,    KC_DOWN, \
-      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_DOT,  KC_M,    KC_N,    KC_B,    SLSH_RS, KC_ENT , \
+      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    MINS_RS, KC_DOWN, \
+      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  SLSH_RS, KC_ENT , \
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
