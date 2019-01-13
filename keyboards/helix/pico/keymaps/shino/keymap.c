@@ -58,14 +58,36 @@ enum custom_keycodes {
 #define XXXXXXX KC_NO
 
 
-// Home position keys
+// EUCALX : Home position keys
 
 #define A_LS LSFT_T(KC_A)
+#define O_LO LT(_LOWER, KC_O)
+#define E_RA LT(_RAISE, KC_E)
+#define I_SL LT(_SHOTL, KC_I)
+
+#define N_SR LT(_SHOTR, KC_N)
+#define M_RA LT(_RAISE, KC_M)
+#define S_LO LT(_LOWER, KC_S)
+#define T_RS RSFT_T(KC_T)
+#define SLSH_RS SFT_T(KC_SLSH)
+#define J_RS RSFT_T(KC_J)
+
+#define H_SR LT(_SHOTR, KC_H)
+#define J_RA LT(_RAISE, KC_J)
+#define K_LO LT(_LOWER, KC_K)
+#define L_RS RSFT_T(KC_L)
+
+// EUCALX: other keys
+// TODO(shino): Want to input UNDS without shift, and input MINS with shift
+
+
+// Home position keys for QWERTY
+
+// #define A_LS LSFT_T(KC_A)
 #define S_LO LT(_LOWER, KC_S)
 #define D_RA LT(_RAISE, KC_D)
 #define F_SL LT(_SHOTL, KC_F)
-#define Z_LS LSFT_T(KC_Z)
-#define F_LS LSFT_T(KC_F)
+// #define Z_LS LSFT_T(KC_Z)
 
 #define J_SR LT(_SHOTR, KC_J)
 #define K_RA LT(_RAISE, KC_K)
@@ -131,21 +153,21 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* Qwerty
+  /* EucalynX
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
+   * | Esc  |  X   |  W   |  Y   |  F   |  Q   |             |  /   |  J   |  K   |  R   |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | S/Lo | D/Ra | F/Sl |   G  |             |   H  | J/Sr | K/Ra | L/Lo | -/Sh | Down |
+   * | Tab  | A/Sh | O/Lo | E/Ra | I/Sl |  L   |             |  B   | N/Sr | M/Ra | S/Lo | T/Sh | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             |   B  |   N  |   M  | . >  |/?/Sh |Enter |
+   * | Shift|  Z   |  C   |  V   |  U   | . >  |             | , <  |  G   |  D   |  H   | _ -  |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * |Adjust| LCtl | Left |Right | LGui |Spc/Ct|Space |Space |Spc/Al| RAlt | Next | Play | Vol- | Vol+ |
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_QWERTY] = LAYOUT( \
-      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    MINS_RS, KC_DOWN, \
-      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  SLSH_RS, KC_ENT , \
+  [_EUCALX] = LAYOUT( \
+      KC_ESC,  KC_X,    KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_SLSH, KC_J,    KC_K,    KC_R,    KC_P,    KC_UP, \
+      KC_TAB,  A_LS,    O_LO,    E_RA,    I_SL,    KC_L,                    KC_B,    N_SR,    M_RA,    S_LO,    T_RS,    KC_DOWN, \
+      KC_LSFT, KC_Z,    KC_C,    KC_V,    KC_U,    KC_DOT,                  KC_COMM, KC_G,    KC_D,    KC_H,    KC_MINS, KC_ENT , \
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
@@ -163,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
       KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    MINS_RS, KC_DOWN, \
-      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  SLSH_RS, KC_ENT , \
+      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  KC_SLSH, KC_ENT , \
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
