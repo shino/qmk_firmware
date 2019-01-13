@@ -25,9 +25,9 @@ extern uint8_t is_master;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 enum layer_number {
-    _QWERTY = 0,
+    _EUCALX = 0,
+    _QWERTY,
     _COLEMAK,
-    _DVORAK,
     _RAISE,
     _LOWER,
     _SHOTL,
@@ -37,9 +37,9 @@ enum layer_number {
 };
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
+  EUCALX = SAFE_RANGE,
+  QWERTY,
   COLEMAK,
-  DVORAK,
   RAISE,
   LOWER,
   SHOTL,
@@ -149,6 +149,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
+  /* Qwerty
+   * ,-----------------------------------------.             ,-----------------------------------------.
+   * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
+   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+   * | Tab  | A/Sh | S/Lo | D/Ra | F/Sl |   G  |             |   H  | J/Sr | K/Ra | L/Lo | -/Sh | Down |
+   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             |   B  |   N  |   M  | . >  |/?/Sh |Enter |
+   * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
+   * |Adjust| LCtl | Left |Right | LGui |Spc/Ct|Space |Space |Spc/Al| RAlt | Next | Play | Vol- | Vol+ |
+   * `-------------------------------------------------------------------------------------------------'
+   */
+  [_QWERTY] = LAYOUT( \
+      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
+      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    MINS_RS, KC_DOWN, \
+      KC_LSFT, Z_LS,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  SLSH_RS, KC_ENT , \
+      ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
+      ),
+
   /* Colemak
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Tab  |   Q  |   W  |   F  |   P  |   G  |             |   J  |   L  |   U  |   Y  |   ;  | Bksp |
@@ -164,24 +182,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
       KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                      KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-      ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-      ),
-
-  /* Dvorak
-   * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Tab  |   '  |   ,  |   .  |   P  |   Y  |             |   F  |   G  |   C  |   R  |   L  | Bksp |
-   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Ctrl |   A  |   O  |   E  |   U  |   I  |             |   D  |   H  |   T  |   N  |   S  |  /   |
-   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift|   ;  |   Q  |   J  |   K  |   X  |             |   B  |   M  |   W  |   V  |   Z  |Enter |
-   * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |Adjust| Esc  | Alt  | GUI  | EISU |Lower |Space |Space |Raise | KANA | Left | Down |  Up  |Right |
-   * `-------------------------------------------------------------------------------------------------'
-   */
-  [_DVORAK] = LAYOUT( \
-      KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC, \
-      KC_LCTL, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH, \
-      KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT , \
       ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
       ),
 
@@ -281,7 +281,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      | Reset|      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |             | Win  |Qwerty|Colemk|Dvorak|      |      |
+   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |             | Win  |Qwerty|Colemk|EucalX|      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      |CK TOG|CK RST| CK UP|CK DWN|      |             |      |      |RGB ON| HUE+ | SAT+ | VAL+ |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -290,7 +290,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_ADJUST] =  LAYOUT( \
       _______, RESET,   _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______, \
+      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  COLEMAK, EUCALX,  _______, _______, \
       _______, CK_TOGG, CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD \
       )
@@ -301,7 +301,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef AUDIO_ENABLE
 
 float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
-float tone_dvorak[][2]     = SONG(DVORAK_SOUND);
+float tone_eucalx[][2]     = SONG(DVORAK_SOUND);
 float tone_colemak[][2]    = SONG(COLEMAK_SOUND);
 float tone_plover[][2]     = SONG(PLOVER_SOUND);
 float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
@@ -349,12 +349,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case DVORAK:
+    case EUCALX:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
+          PLAY_SONG(tone_eucalx);
         #endif
-        persistent_default_layer_set(1UL<<_DVORAK);
+        persistent_default_layer_set(1UL<<_EUCALX);
       }
       return false;
       break;
