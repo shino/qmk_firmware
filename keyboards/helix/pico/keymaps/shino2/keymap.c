@@ -27,9 +27,8 @@ extern uint8_t is_master;
 enum layer_number {
     _EUCALX = 0,
     _QWERTY,
-    _COLEMAK,
-    _RAISE,
-    _LOWER,
+    _CURNUM,
+    _SYMBOL,
     _SHOTL,
     _SHOTR,
     _MOUSE,
@@ -39,9 +38,8 @@ enum layer_number {
 enum custom_keycodes {
   EUCALX = SAFE_RANGE,
   QWERTY,
-  COLEMAK,
-  RAISE,
-  LOWER,
+  CURNUM,
+  SYMBOL,
   SHOTL,
   SHOTR,
   MOUSE,
@@ -61,20 +59,20 @@ enum custom_keycodes {
 // EUCALX : Home position keys
 
 #define A_LS LSFT_T(KC_A)
-#define O_LO LT(_LOWER, KC_O)
-#define E_RA LT(_RAISE, KC_E)
+#define O_SY LT(_SYMBOL, KC_O)
+#define E_CN LT(_CURNUM, KC_E)
 #define I_SL LT(_SHOTL, KC_I)
 
 #define N_SR LT(_SHOTR, KC_N)
-#define M_RA LT(_RAISE, KC_M)
-#define S_LO LT(_LOWER, KC_S)
+#define M_CN LT(_CURNUM, KC_M)
+#define S_SY LT(_SYMBOL, KC_S)
 #define T_RS RSFT_T(KC_T)
 #define SLSH_RS SFT_T(KC_SLSH)
 #define J_RS RSFT_T(KC_J)
 
 #define H_SR LT(_SHOTR, KC_H)
-#define J_RA LT(_RAISE, KC_J)
-#define K_LO LT(_LOWER, KC_K)
+#define J_CN LT(_CURNUM, KC_J)
+#define K_SY LT(_SYMBOL, KC_K)
 #define L_RS RSFT_T(KC_L)
 
 // EUCALX: other keys
@@ -84,14 +82,14 @@ enum custom_keycodes {
 // Home position keys for QWERTY
 
 // #define A_LS LSFT_T(KC_A)
-#define S_LO LT(_LOWER, KC_S)
-#define D_RA LT(_RAISE, KC_D)
+#define S_SY LT(_SYMBOL, KC_S)
+#define D_CN LT(_CURNUM, KC_D)
 #define F_SL LT(_SHOTL, KC_F)
 // #define Z_LS LSFT_T(KC_Z)
 
 #define J_SR LT(_SHOTR, KC_J)
-#define K_RA LT(_RAISE, KC_K)
-#define L_LO LT(_LOWER, KC_L)
+#define K_CN LT(_CURNUM, KC_K)
+#define L_SY LT(_SYMBOL, KC_L)
 // This does not work 2019-01-03, mod-tap MT is only for basic keys
 // #define UNDS_RS SFT_T(KC_UNDS)
 #define MINS_RS RSFT_T(KC_MINS)
@@ -99,8 +97,8 @@ enum custom_keycodes {
 #define J_RS RSFT_T(KC_J)
 
 #define H_SR LT(_SHOTR, KC_H)
-#define J_RA LT(_RAISE, KC_J)
-#define K_LO LT(_LOWER, KC_K)
+#define J_CN LT(_CURNUM, KC_J)
+#define K_SY LT(_SYMBOL, KC_K)
 #define L_RS RSFT_T(KC_L)
 
 // Spaces
@@ -157,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Esc  |  X   |  W   |  Y   |  F   |  Q   |             |  /   |  J   |  K   |  R   |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | O/Lo | E/Ra | I/Sl |  L   |             |  B   | N/Sr | M/Ra | S/Lo | T/Sh | Down |
+   * | Tab  | A/Sh | O/Sy | E/CN | I/SL |  L   |             |  B   | N/SR | M/Ra | S/Lo | T/Sh | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Shift|  Z   |  C   |  V   |  U   | . >  |             | , <  |  G   |  D   |  H   | _ -  |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -166,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_EUCALX] = LAYOUT( \
       KC_ESC,  KC_X,    KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_SLSH, KC_J,    KC_K,    KC_R,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    O_LO,    E_RA,    I_SL,    KC_L,                    KC_B,    N_SR,    M_RA,    S_LO,    T_RS,    KC_DOWN, \
+      KC_TAB,  A_LS,    O_SY,    E_CN,    I_SL,    KC_L,                    KC_B,    N_SR,    M_CN,    S_SY,    T_RS,    KC_DOWN, \
       KC_LSFT, KC_Z,    KC_C,    KC_V,    KC_U,    KC_DOT,                  KC_COMM, KC_G,    KC_D,    KC_H,    KC_MINS, KC_ENT , \
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
@@ -175,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | S/Lo | D/Ra | F/Sl |   G  |             |   H  | J/Sr | K/Ra | L/Lo | -/Sh | Down |
+   * | Tab  | A/Sh | S/Sy | D/CN | F/SL |   G  |             |   H  | J/SR | K/CN | L/Sy | -/Sh | Down |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             |   B  |   N  |   M  | . >  |/?/Sh |Enter |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -184,30 +182,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = LAYOUT( \
       KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_LO,    D_RA,    F_SL,    KC_G,                    KC_H,    J_SR,    K_RA,    L_LO,    MINS_RS, KC_DOWN, \
+      KC_TAB,  A_LS,    S_SY,    D_CN,    F_SL,    KC_G,                    KC_H,    J_SR,    K_CN,    L_SY,    MINS_RS, KC_DOWN, \
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  KC_SLSH, KC_ENT , \
       ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
       ),
 
-  /* Colemak
-   * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Tab  |   Q  |   W  |   F  |   P  |   G  |             |   J  |   L  |   U  |   Y  |   ;  | Bksp |
-   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Ctrl |   A  |   R  |   S  |   T  |   D  |             |   H  |   N  |   E  |   I  |   O  |  '   |
-   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |             |   K  |   M  |   ,  |   .  |   /  |Enter |
-   * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |Adjust| Esc  | Alt  | GUI  | EISU |Lower |Space |Space |Raise | KANA | Left | Down |  Up  |Right |
-   * `-------------------------------------------------------------------------------------------------'
-   */
-  [_COLEMAK] = LAYOUT( \
-      KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                      KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC, \
-      KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                      KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, \
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-      ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-      ),
-
-  /* Raise
+  /* CurNum
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |  7   |  8   |  9   |      |             |  !   |  @   |  #   |  $   |  %   | Del  |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -218,14 +198,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |      |      |      |      | Prev |      | Mute |      |
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_RAISE] = LAYOUT( \
+  [_CURNUM] = LAYOUT( \
       _______, _______, KC_7,    KC_8,    KC_9,    _______,                   KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______, \
       _______, KC_0,    KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, KC_EQL,  KC_DQUO, KC_QUOT, _______, \
       _______, _______, KC_4,    KC_5,    KC_6,    _______,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_QUES, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, _______, KC_MUTE, _______ \
       ),
 
-  /* Lower
+  /* Symbol
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      | Del  |      |  \   |  |   |      |             |  ~   |  )   |  ]   |  }   |  >   |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -236,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |      |      |      |      | Prev |      | Mute |      |
    * `-------------------------------------------------------------------------------------------------'
    */
-  [_LOWER] = LAYOUT( \
+  [_SYMBOL] = LAYOUT( \
       _______, KC_DEL,  _______, KC_BSLS, KC_PIPE, _______,                   KC_TILD, KC_RPRN, KC_RBRC, KC_RCBR, KC_GT,   _______, \
       _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______,                   _______, KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   _______, \
       _______, _______, _______, _______, _______, _______,                   KC_GRV,  KC_COLN, KC_COMM, KC_DOT,  KC_SCLN, _______, \
@@ -303,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      | Reset|      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |             | Win  |Qwerty|Colemk|EucalX|      |      |
+   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |             | Win  |Qwerty|      |EucalX|      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      |CK TOG|CK RST| CK UP|CK DWN|      |             |      |      |RGB ON| HUE+ | SAT+ | VAL+ |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -312,7 +292,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_ADJUST] =  LAYOUT( \
       _______, RESET,   _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  COLEMAK, EUCALX,  _______, _______, \
+      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  _______, EUCALX,  _______, _______, \
       _______, CK_TOGG, CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD \
       )
@@ -324,7 +304,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
 float tone_eucalx[][2]     = SONG(DVORAK_SOUND);
-float tone_colemak[][2]    = SONG(COLEMAK_SOUND);
 float tone_plover[][2]     = SONG(PLOVER_SOUND);
 float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
 float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
@@ -362,15 +341,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
-        persistent_default_layer_set(1UL<<_COLEMAK);
-      }
-      return false;
-      break;
     case EUCALX:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
@@ -380,7 +350,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER:
+    case SYMBOL:
       if (record->event.pressed) {
           //not sure how to have keyboard check mode and set it to a variable, so my work around
           //uses another variable that would be set to true after the first time a reactive key is pressed.
@@ -391,19 +361,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             //rgblight_mode(RGBLIGHT_MODE_SNAKE + 1);
           #endif
         }
-        layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_on(_SYMBOL);
+        update_tri_layer_RGB(_SYMBOL, _CURNUM, _ADJUST);
       } else {
         #ifdef RGBLIGHT_ENABLE
           //rgblight_mode(RGB_current_mode);   // revert RGB to initial mode prior to RGB mode change
         #endif
         TOG_STATUS = false;
-        layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_off(_SYMBOL);
+        update_tri_layer_RGB(_SYMBOL, _CURNUM, _ADJUST);
       }
       return false;
       break;
-    case RAISE:
+    case CURNUM:
       if (record->event.pressed) {
         //not sure how to have keyboard check mode and set it to a variable, so my work around
         //uses another variable that would be set to true after the first time a reactive key is pressed.
@@ -414,15 +384,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             //rgblight_mode(RGBLIGHT_MODE_SNAKE);
           #endif
         }
-        layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        layer_on(_CURNUM);
+        update_tri_layer_RGB(_SYMBOL, _CURNUM, _ADJUST);
       } else {
         #ifdef RGBLIGHT_ENABLE
           //rgblight_mode(RGB_current_mode);  // revert RGB to initial mode prior to RGB mode change
         #endif
-        layer_off(_RAISE);
+        layer_off(_CURNUM);
         TOG_STATUS = false;
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
+        update_tri_layer_RGB(_SYMBOL, _CURNUM, _ADJUST);
       }
       return false;
       break;
@@ -539,10 +509,10 @@ void matrix_update(struct CharacterMatrix *dest,
 
 //assign the right code to your layers for OLED display
 #define L_BASE 0
-#define L_LOWER (1<<_LOWER)
-#define L_RAISE (1<<_RAISE)
+#define L_SYMBOL (1<<_SYMBOL)
+#define L_CURNUM (1<<_CURNUM)
 #define L_ADJUST (1<<_ADJUST)
-#define L_ADJUST_TRI (L_ADJUST|L_RAISE|L_LOWER)
+#define L_ADJUST_TRI (L_ADJUST|L_CURNUM|L_SYMBOL)
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -579,11 +549,11 @@ void render_status(struct CharacterMatrix *matrix) {
         case L_BASE:
            matrix_write_P(matrix, PSTR("Default"));
            break;
-        case L_RAISE:
-           matrix_write_P(matrix, PSTR("Raise"));
+        case L_CURNUM:
+           matrix_write_P(matrix, PSTR("CurNum"));
            break;
-        case L_LOWER:
-           matrix_write_P(matrix, PSTR("Lower"));
+        case L_SYMBOL:
+           matrix_write_P(matrix, PSTR("Symbol"));
            break;
         case L_ADJUST:
         case L_ADJUST_TRI:
