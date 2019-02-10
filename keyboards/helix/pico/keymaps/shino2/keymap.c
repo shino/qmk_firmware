@@ -95,6 +95,8 @@ enum custom_keycodes {
 
 // shots: macOS
 #define GUI_ENT  LGUI(KC_ENT)
+#define G_LBRC   LGUI(KC_LBRC)
+#define G_RBRC   LGUI(KC_RBRC)
 #define GCS_4    LGUI(LCTL(LSFT(KC_4))) // Screen capture
 #define SH_LEFT  LSFT(KC_LEFT)          // IME
 #define SH_RGHT  LSFT(KC_RGHT)          // IME
@@ -223,7 +225,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SHOTL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, M_RET,   _______, _______, \
-
       _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______, _______, _______  \
       ),
