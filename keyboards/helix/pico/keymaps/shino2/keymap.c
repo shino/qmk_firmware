@@ -48,6 +48,9 @@ enum custom_keycodes {
   EISU,
   KANA,
   RGBRST,
+  // C-x -> C-s
+  CXCS,
+  // Gui-L -> % -> Spc
   GLPS
 };
 
@@ -125,6 +128,8 @@ enum custom_keycodes {
 #define C_SCLN   LCTL(KC_SCLN)
 #define M_X      RALT(KC_X)
 #define M_RET    RALT(KC_ENT)
+#define M_LT     RALT(KC_LT)
+#define M_GT     RALT(KC_GT)
 
 // Toggle layers
 #define MOUSE_T TG(_MOUSE)
@@ -144,10 +149,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST, \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST,  \
       _______, KC_TAB,  KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    _CURNUM, MOUSE_T, \
       KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_L,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,    KC_ENT \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,    KC_ENT   \
       ),
 
   /* Qwerty
@@ -162,10 +167,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST, \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST,  \
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    _CURNUM, MOUSE_T, \
       KC_SLSH, A_SY,    KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SY,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN, KC_ENT \
+      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN, KC_ENT   \
       ),
 
   /* CurNum
@@ -183,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______, \
       _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   _______, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
       KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS,                   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
-      KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,  _______ \
+      KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,  _______  \
       ),
 
   /* Symbol
@@ -200,26 +205,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SYMBOL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, KC_AT,   KC_PERC, KC_HASH, KC_DLR,                    KC_PIPE, KC_RPRN, KC_RBRC, KC_RCBR, _______, _______, \
-      KC_TILD, KC_EXLM, KC_ASTR, KC_PLUS, KC_EQL,  KC_BSLS,                   KC_GRV,  KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   KC_GT, \
-      _______, KC_CIRC, KC_AMPR, KC_DQUO, KC_QUOT, _______, _______, _______, _______, KC_COLN, KC_COMM, KC_COLN, KC_SCLN, _______ \
+      KC_TILD, KC_EXLM, KC_ASTR, KC_PLUS, KC_EQL,  KC_BSLS,                   KC_GRV,  KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   KC_GT,   \
+      _______, KC_CIRC, KC_AMPR, KC_DQUO, KC_QUOT, _______, _______, _______, _______, KC_COLN, KC_COMM, KC_COLN, KC_SCLN, _______  \
       ),
 
-  /* Shots Left:          macOS                                              Emacs, GNU Screen
-   * ,--------------------------------------------.             ,-----------------------------------------.
-   * |      |G-C-S-4|C-S-TAB| C-TAB |      |      |             |      |C-SPC | C-[  | M-RET|      |      |
-   * |------+-------+-------+-------+------+------|             |------+------+------+------+------+------|
-   * |      | ESC   |  JA   |  EN   | XXXX |      |             | C-g  | C-h  | C-z  | C-m  | M-x  |      |
-   * |------+-------+-------+-------+------+------|             |------+------+------+------+------+------|
-   * |      |       |S-Left |S-Rght |      |      |             |      | C-c  | C-,  | C-.  | C-/  |      |
-   * |------+-------+-------+-------+------+------+-------------+------+------+------+------+------+------|
-   * |      |       |       |       |      | C-3  |      |      |      |      |      |      |      |      |
-   * `----------------------------------------------------------------------------------------------------'
+  /* Shots Left:        macOS                                            Emacs, GNU Screen
+   * ,-----------------------------------------.             ,-----------------------------------------.
+   * |      |      |      |      |      |      |             |      |      |      |      |      |      |
+   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+   * |      |      |      |      |      |      |             |      |      |      | M-RET|      |      |
+   * |------+------+------+------+------+------|             |------+------+------+------+------+------|
+   * |      |      |S-Left|S-Rght| XXXX |      |             |      | C-z  | C-c  | M-x  | M-<  | M->  |
+   * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
+   * |      |      |      |      |      |      |      |      |      | C-,  | C-.  |      |C-xC-s|      |
+   * `-------------------------------------------------------------------------------------------------'
    */
   [_SHOTL] = LAYOUT( \
-      _______, G_C_S_4, CS_TAB, C_TAB,    _______, _______,                   _______, C_SPC,   _______,  M_RET,   _______, _______, \
-      _______, KC_ESC,  JA,      EN,      XXXXXXX, _______,                   C_G,     C_H,     C_Z,     C_M,     M_X,     _______, \
-      _______, _______, SH_LEFT, SH_RGHT, _______, _______,                   _______, C_C,     C_COMM,  C_DOT,   C_SLSH,  _______, \
-      _______, _______, _______, _______, _______, C_3,     _______, _______, _______, _______, _______, _______, _______, _______ \
+      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
+      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, M_RET,   _______, _______, \
+
+      _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______, CXCS,    _______  \
       ),
 
 
@@ -239,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______,                   _______, _______, G_S_ENT, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______,                   _______, XXXXXXX, C_3,     GUI_K,   _______, _______, \
       _______, _______, _______, _______, _______, _______,                   _______, _______, GUI_1,   GUI_2  , GUI_3,   _______, \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
       ),
 
   /* Mouse keys
