@@ -80,25 +80,15 @@ enum custom_keycodes {
 #define G_GUI LGUI_T(KC_G)
 #define X_CN   LT(_CURNUM, KC_X)
 
-// Home position keys for QWERTY
+// QWERTY : LT mods
 
-#define S_SY LT(_SYMBOL, KC_S)
-#define D_CN LT(_CURNUM, KC_D)
-#define F_SL LT(_SHOTL, KC_F)
+#define F_SL   LT(_SHOTL,  KC_F)
+#define V_GUI  LGUI_T(KC_V)
 
-#define J_SR LT(_SHOTR, KC_J)
-#define K_CN LT(_CURNUM, KC_K)
-#define L_SY LT(_SYMBOL, KC_L)
-// This does not work 2019-01-03, mod-tap MT is only for basic keys
-// #define UNDS_RS SFT_T(KC_UNDS)
-#define MINS_RS RSFT_T(KC_MINS)
-#define SLSH_RS SFT_T(KC_SLSH)
-#define J_RS RSFT_T(KC_J)
-
-#define H_SR LT(_SHOTR, KC_H)
-#define J_CN LT(_CURNUM, KC_J)
-#define K_SY LT(_SYMBOL, KC_K)
-#define L_RS RSFT_T(KC_L)
+#define J_SR    LT(_SHOTR, KC_J)
+#define P_SY    LT(_SYMBOL, KC_P)
+#define B_GUI   LGUI_T(KC_B)
+#define SLSH_CN LT(_CURNUM, KC_SLSH)
 
 // shots: macOS
 #define GUI_ENT  LGUI(KC_ENT)
@@ -161,20 +151,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Qwerty
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Esc  |   Q  |   W  |   E  |   R  |   T  |             |   Y  |   U  |   I  |   O  |   P  |  Up  |
+   * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | S/Sy | D/CN | F/SL |   G  |             |   H  | J/SR | K/CN | L/Sy | -/Sh | Down |
+   * | Tab  |  Q   |  W   |  E   |  R   |  T   |             |  Y   |  U   |  I   |  O   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift| Z/Sh |   X  |   C  |   V  | , <  |             |   B  |   N  |   M  | . >  |/?/Sh |Enter |
+   * |  /   | A/Sy |  S   |  D   | F/SL |  G   |             |  H   | J/SR |  K   |  L   | P/Sy |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |Adjust| LCtl | Left |Right | LGui |Spc/Ct|Space |Space |Spc/Al| RAlt | Next | Play | Vol- | Vol+ |
+   * | Esc  | Z/CN |  X   |  C   | V/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| B/Gui|  N   |  M   | //CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    S_SY,    D_CN,    F_SL,    KC_G,                    KC_H,    J_SR,    K_CN,    L_SY,    MINS_RS, KC_DOWN, \
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_COMM,                 KC_B,    KC_N,    KC_M,    KC_DOT,  KC_SLSH, KC_ENT , \
-      ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST, \
+      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    _CURNUM, MOUSE_T, \
+      KC_SLSH, A_SY,    KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SY,    KC_MINS, \
+      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN, KC_ENT \
       ),
 
   /* CurNum
@@ -208,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_SYMBOL] = LAYOUT( \
       _______, KC_DEL,  _______, KC_BSLS, KC_PIPE, _______,                   KC_TILD, KC_RPRN, KC_RBRC, KC_RCBR, KC_GT,   _______, \
-      _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______,                   _______, KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   _______, \
+      _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, _______,                   _______, KC_LPRN, _______, KC_LCBR, KC_LT,   _______, \
       _______, _______, _______, _______, _______, _______,                   KC_GRV,  KC_COLN, KC_COMM, KC_DOT,  KC_SCLN, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MPRV, _______, KC_MUTE, _______ \
       ),
@@ -225,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------------------------------------------'
    */
   [_SHOTL] = LAYOUT( \
-      _______, G_C_S_4, C_S_TAB, C_TAB,   _______, _______,                   _______, C_SPC,   C_LBRC,  M_RET,   _______, _______, \
+      _______, G_C_S_4, C_S_TAB, C_TAB,   _______, _______,                   _______, C_SPC,   _______,  M_RET,   _______, _______, \
       _______, KC_ESC,  JA,      EN,      XXXXXXX, _______,                   C_G,     C_H,     C_Z,     C_M,     M_X,     _______, \
       _______, _______, SH_LEFT, SH_RGHT, _______, _______,                   _______, C_C,     C_COMM,  C_DOT,   C_SLSH,  _______, \
       _______, _______, _______, _______, _______, C_3,     _______, _______, _______, _______, _______, _______, _______, _______ \
