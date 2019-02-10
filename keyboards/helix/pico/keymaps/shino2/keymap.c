@@ -47,7 +47,8 @@ enum custom_keycodes {
   BACKLIT,
   EISU,
   KANA,
-  RGBRST
+  RGBRST,
+  GLPS
 };
 
 
@@ -56,36 +57,34 @@ enum custom_keycodes {
 #define XXXXXXX KC_NO
 
 
-// EUCALX : Home position keys
+// Spaces
+#define SP_LCTL LCTL_T(KC_SPC)
+#define SP_RCTL RCTL_T(KC_SPC)
+#define SP_RALT RALT_T(KC_SPC)
 
-#define A_LS LSFT_T(KC_A)
-#define O_SY LT(_SYMBOL, KC_O)
-#define E_CN LT(_CURNUM, KC_E)
-#define I_SL LT(_SHOTL, KC_I)
+// En/Ja
+#define EN       LCTL(LSFT(KC_SCLN))    // IME: En
+#define JA       LCTL(LSFT(KC_J))       // IME: Ja
+
+// EUCALX : LT mods
+
+#define A_SY   LT(_SYMBOL, KC_A)
+#define I_SL   LT(_SHOTL,  KC_I)
+#define Z_CN   LT(_CURNUM, KC_Z)
+#define U_GUI  LGUI_T(KC_U)
+#define EN_SFT LSFT_T(EN)
 
 #define N_SR LT(_SHOTR, KC_N)
-#define M_CN LT(_CURNUM, KC_M)
-#define S_SY LT(_SYMBOL, KC_S)
-#define T_RS RSFT_T(KC_T)
-#define SLSH_RS SFT_T(KC_SLSH)
-#define J_RS RSFT_T(KC_J)
-
-#define H_SR LT(_SHOTR, KC_H)
-#define J_CN LT(_CURNUM, KC_J)
-#define K_SY LT(_SYMBOL, KC_K)
-#define L_RS RSFT_T(KC_L)
-
-// EUCALX: other keys
-// TODO(shino): Want to input UNDS without shift, and input MINS with shift
-
+#define T_SY LT(_SYMBOL, KC_T)
+#define JA_SFT LSFT_T(JA)
+#define G_GUI LGUI_T(KC_G)
+#define X_CN   LT(_CURNUM, KC_X)
 
 // Home position keys for QWERTY
 
-// #define A_LS LSFT_T(KC_A)
 #define S_SY LT(_SYMBOL, KC_S)
 #define D_CN LT(_CURNUM, KC_D)
 #define F_SL LT(_SHOTL, KC_F)
-// #define Z_LS LSFT_T(KC_Z)
 
 #define J_SR LT(_SHOTR, KC_J)
 #define K_CN LT(_CURNUM, KC_K)
@@ -101,16 +100,9 @@ enum custom_keycodes {
 #define K_SY LT(_SYMBOL, KC_K)
 #define L_RS RSFT_T(KC_L)
 
-// Spaces
-#define SP_LCTL LCTL_T(KC_SPC)
-#define SP_RCTL RCTL_T(KC_SPC)
-#define SP_RALT RALT_T(KC_SPC)
-
 // shots: macOS
 #define GUI_ENT  LGUI(KC_ENT)
 #define G_C_S_4  LGUI(LCTL(LSFT(KC_4))) // Screen capture
-#define EN       LCTL(LSFT(KC_SCLN))    // IME: En
-#define JA       LCTL(LSFT(KC_J))       // IME: Ja
 #define SH_LEFT  LSFT(KC_LEFT)          // IME
 #define SH_RGHT  LSFT(KC_RGHT)          // IME
 #define C_TAB    LCTL(KC_TAB)           // App Switch
@@ -126,6 +118,7 @@ enum custom_keycodes {
 #define GUI_3    LGUI(KC_3)
 #define GUI_4    LGUI(KC_4)
 #define GUI_5    LGUI(KC_5)
+#define GUI_6    LGUI(KC_6)
 #define G_S_ENT  LGUI(LSFT(KC_ENT))     // Create snippet
 
 // shots: Emacs
@@ -143,9 +136,6 @@ enum custom_keycodes {
 #define M_X      RALT(KC_X)
 #define M_RET    RALT(KC_ENT)
 
-// shots: GNU Screen
-#define C_LBRC   LCTL(KC_LBRC)
-
 // Toggle layers
 #define MOUSE_T TG(_MOUSE)
 
@@ -153,20 +143,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* EucalynX
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Esc  |  X   |  W   |  Y   |  F   |  Q   |             |  /   |  J   |  K   |  R   |   P  |  Up  |
+   * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Tab  | A/Sh | O/Sy | E/CN | I/SL |  L   |             |  B   | N/SR | M/Ra | S/Lo | T/Sh | Down |
+   * |      | Tab  |  W   |  Y   |  F   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Shift|  Z   |  C   |  V   |  U   | . >  |             | , <  |  G   |  D   |  H   | _ -  |Enter |
+   * |  /   | A/Sy |  O   |  E   | I/SL |  L   |             |  H   | N/SR |  M   |  S   | T/Sy |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |Adjust| LCtl | Left |Right | LGui |Spc/Ct|Space |Space |Spc/Al| RAlt | Next | Play | Vol- | Vol+ |
+   * | Esc  | Z/CN |  C   |  V   | U/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  D   |  R   | X/CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      KC_ESC,  KC_X,    KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_SLSH, KC_J,    KC_K,    KC_R,    KC_P,    KC_UP, \
-      KC_TAB,  A_LS,    O_SY,    E_CN,    I_SL,    KC_L,                    KC_B,    N_SR,    M_CN,    S_SY,    T_RS,    KC_DOWN, \
-      KC_LSFT, KC_Z,    KC_C,    KC_V,    KC_U,    KC_DOT,                  KC_COMM, KC_G,    KC_D,    KC_H,    KC_MINS, KC_ENT , \
-      ADJUST,  MOUSE_T, KC_LEFT, KC_RGHT, KC_LGUI, SP_LCTL, KC_SPC, KC_SPC, SP_RALT, KC_RALT, KC_MNXT, KC_MPLY, KC_VOLD, KC_VOLU \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST, \
+      _______, KC_TAB,  KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    _CURNUM, MOUSE_T, \
+      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_L,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,    KC_MINS, \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,    KC_ENT \
       ),
 
   /* Qwerty
