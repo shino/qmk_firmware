@@ -85,7 +85,7 @@ enum custom_keycodes {
 
 // QWERTY : LT mods
 
-#define F_SL   LT(_SHOTL,  KC_F)
+#define F_SL   LT(_SHOTL, KC_F)
 #define V_GUI  LGUI_T(KC_V)
 
 #define J_SR    LT(_SHOTR, KC_J)
@@ -151,10 +151,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST,  \
-      _______, KC_TAB,  KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    _CURNUM, MOUSE_T, \
-      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_L,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,    KC_ENT   \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
+      _______, KC_TAB,  KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_L,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,     KC_MINS, \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,     KC_ENT   \
       ),
 
   /* Qwerty
@@ -169,10 +169,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, ADJUST,  \
-      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    _CURNUM, MOUSE_T, \
-      KC_SLSH, A_SY,    KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SY,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN, KC_ENT   \
+      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
+      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SY,    KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SY,     KC_MINS, \
+      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
       ),
 
   /* CurNum
@@ -228,8 +228,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______, _______, _______  \
       ),
-
-
 
   /* Shots Right:        Slack                                              QuickSilver, Browser
    * ,-----------------------------------------.             ,-----------------------------------------.
