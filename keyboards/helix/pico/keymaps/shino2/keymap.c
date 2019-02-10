@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |  *   |  7   |  8   |  9   |  +   |             |      |CS-Tab|C-Tab |GL%Sp |[back]|      |
+   * |      |  *   |  7   |  8   |  9   |  +   |             |      |CS-Tab|C-Tab |GLPS  |[back]|      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  /   |  0   |  1   |  2   |  3   |  -   |             |      | Left | Down |  Up  |Right |      |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -188,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_CURNUM] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______, \
-      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   _______, CS_TAB,  C_TAB,   _______, CURNUM_T, _______, \
+      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   _______, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
       KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS,                   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
       KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,  _______  \
       ),
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_SHOTR] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, GCS_4,   GS_ENT,  _______,                   _______, _______, G_LBRC,  G_RBRC,  _______, _______, \
-      _______, _______, GUI_1,   GUI_2  , GUI_3,   _______,                   _______, XXXXXXX, C_3,     GUI_K,   _______, _______, \
+      _______, _______, GUI_1,   GUI_2  , GUI_3,   _______,                   _______, XXXXXXX, C_3,     GUI_K,   GLPS,    _______, \
       _______, _______, GUI_4,   GUI_5  , GUI_6,   _______, _______, _______, _______, _______, _______, _______, _______, _______  \
       ),
 
@@ -433,6 +433,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           RGB_current_mode = rgblight_config.mode;
         }
       #endif
+      break;
+    case GLPS:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        tap_code(KC_L);
+        unregister_code(KC_LGUI);
+        register_code(KC_LSFT);
+        tap_code(KC_5);
+        unregister_code(KC_LSFT);
+        tap_code(KC_SPC);
+      }
       break;
   }
   return true;
