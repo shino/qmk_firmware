@@ -51,7 +51,12 @@ enum custom_keycodes {
   // C-x -> C-s
   CXCS,
   // Gui-L -> % -> Spc
-  GLPS
+  GLPS,
+  // MOUSE diagonal move
+  MS_UR,
+  MS_UL,
+  MS_DR,
+  MS_DL
 };
 
 
@@ -66,8 +71,10 @@ enum custom_keycodes {
 #define SP_RALT RALT_T(KC_SPC)
 
 // En/Ja
-#define EN       LCTL(LSFT(KC_SCLN))    // IME: En
-#define JA       LCTL(LSFT(KC_J))       // IME: Ja
+/* #define EN       LCTL(LSFT(KC_SCLN))    // IME: En */
+/* #define JA       LCTL(LSFT(KC_J))       // IME: Ja */
+#define EN       KC_LANG2    // IME: En
+#define JA       KC_LANG1    // IME: Ja
 
 // EUCALX : LT mods
 
@@ -75,6 +82,7 @@ enum custom_keycodes {
 #define I_SL   LT(_SHOTL,  KC_I)
 #define Z_CN   LT(_CURNUM, KC_Z)
 #define U_GUI  LGUI_T(KC_U)
+#define Y_GUI  LGUI_T(KC_Y)
 #define EN_SFT LSFT_T(EN)
 
 #define N_SR LT(_SHOTR, KC_N)
@@ -143,18 +151,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  W   |  Y   |  F   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
+   * |      | Tab  |  F   |  U   |  L   |  Q   |             |  P   |  J   |  K   |  D   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   | A/Sy |  O   |  E   | I/SL |  L   |             |  H   | N/SR |  M   |  S   | T/Sy |  -   |
+   * |  /   | A/Sy |  O   |  E   | I/SL |  W   |             |  H   | N/SR |  M   |  S   | T/Sy |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  C   |  V   | U/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  D   |  R   | X/CN | Ent  |
+   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  B   |  R   | X/CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      _______, KC_TAB,  KC_W,    KC_Y,    KC_F,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_L,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,     KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    U_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_D,    KC_R,    X_CN,     KC_ENT   \
+      _______, KC_TAB,  KC_F,    KC_U,    KC_L,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_D,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_W,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,     KC_MINS, \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_B,    KC_R,    X_CN,     KC_ENT   \
       ),
 
   /* Qwerty
@@ -260,9 +268,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_MOUSE] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, _______, _______, KC_WH_U, _______, _______,                   _______, _______, KC_MS_U, _______, _______, _______, \
+      _______, _______, _______, KC_WH_U, _______, _______,                   _______, MS_UL,   KC_MS_U, MS_UR,   _______, _______, \
       _______, _______, KC_WH_L, KC_BTN1, KC_WH_R, _______,                   _______, KC_MS_L, KC_BTN2, KC_MS_R, KC_BTN1, MOUSE_T, \
-      _______, _______, _______, KC_WH_D, _______, _______, _______, _______, _______, _______, KC_MS_D, _______, _______, _______  \
+      _______, _______, _______, KC_WH_D, _______, _______, _______, _______, _______, MS_DL,   KC_MS_D, MS_DR,   _______, _______  \
       ),
 
   /* Adjust
@@ -444,6 +452,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LSFT);
         tap_code(KC_SPC);
       }
+      return false;
+      break;
+    case MS_UR:
+      if (record->event.pressed) {
+        register_code(KC_MS_R);
+        register_code(KC_MS_U);
+      }
+      if (!record->event.pressed) {
+        unregister_code(KC_MS_U);
+        unregister_code(KC_MS_R);
+      }
+      return false;
+      break;
+    case MS_UL:
+      if (record->event.pressed) {
+        register_code(KC_MS_L);
+        register_code(KC_MS_U);
+      }
+      if (!record->event.pressed) {
+        register_code(KC_MS_U);
+        unregister_code(KC_MS_L);
+      }
+      return false;
+      break;
+    case MS_DR:
+      if (record->event.pressed) {
+        register_code(KC_MS_R);
+        register_code(KC_MS_D);
+      }
+      if (!record->event.pressed) {
+        unregister_code(KC_MS_D);
+        unregister_code(KC_MS_R);
+      }
+      return false;
+      break;
+    case MS_DL:
+      if (record->event.pressed) {
+        register_code(KC_MS_L);
+        register_code(KC_MS_D);
+      }
+      if (!record->event.pressed) {
+        unregister_code(KC_MS_D);
+        unregister_code(KC_MS_L);
+      }
+      return false;
       break;
   }
   return true;
