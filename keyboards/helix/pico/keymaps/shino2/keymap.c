@@ -151,18 +151,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  F   |  U   |  L   |  Q   |             |  P   |  J   |  K   |  D   |CurNum|Mouse |
+   * |      | Tab  |  F   |  U   |  L   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  /   | A/Sy |  O   |  E   | I/SL |  W   |             |  H   | N/SR |  M   |  S   | T/Sy |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  B   |  R   | X/CN | Ent  |
+   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  B   |  D   | X/CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      _______, KC_TAB,  KC_F,    KC_U,    KC_L,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_D,    CURNUM_T, MOUSE_T, \
+      _______, KC_TAB,  KC_F,    KC_U,    KC_L,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
       KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_W,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,     KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_B,    KC_R,    X_CN,     KC_ENT   \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_B,    KC_D,    X_CN,     KC_ENT   \
       ),
 
   /* Qwerty
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, KC_AT,   KC_PERC, KC_HASH, KC_DLR,                    KC_PIPE, KC_RPRN, KC_RBRC, KC_RCBR, _______, _______, \
       KC_TILD, KC_EXLM, KC_ASTR, KC_PLUS, KC_EQL,  KC_BSLS,                   KC_GRV,  KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   KC_GT,   \
-      _______, KC_CIRC, KC_AMPR, KC_DQUO, KC_QUOT, _______, _______, _______, _______, KC_COLN, KC_COMM, KC_COLN, KC_SCLN, _______  \
+      _______, KC_CIRC, KC_AMPR, KC_DQUO, KC_QUOT, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_COLN, KC_SCLN, _______  \
       ),
 
   /* Shots Left:        macOS                                            Emacs, GNU Screen
