@@ -78,18 +78,24 @@ enum custom_keycodes {
 
 // EUCALX : LT mods
 
+#define A_SFT  LSFT_T(KC_A)
 #define A_SY   LT(_SYMBOL, KC_A)
 #define I_SL   LT(_SHOTL,  KC_I)
 #define Z_CN   LT(_CURNUM, KC_Z)
+#define Z_SFT  LSFT_T(KC_Z)
 #define U_GUI  LGUI_T(KC_U)
 #define Y_GUI  LGUI_T(KC_Y)
 #define EN_SFT LSFT_T(EN)
+#define EN_SY  LT(_SYMBOL, EN)
 
-#define N_SR LT(_SHOTR, KC_N)
-#define T_SY LT(_SYMBOL, KC_T)
+#define N_SR   LT(_SHOTR, KC_N)
+#define T_SY   LT(_SYMBOL, KC_T)
+#define T_SFT  LSFT_T(KC_T)
 #define JA_SFT LSFT_T(JA)
-#define G_GUI LGUI_T(KC_G)
+#define JA_SY  LT(_SYMBOL, JA)
+#define G_GUI  LGUI_T(KC_G)
 #define X_CN   LT(_CURNUM, KC_X)
+#define X_SFT  LSFT_T(KC_X)
 
 // QWERTY : LT mods
 
@@ -98,6 +104,7 @@ enum custom_keycodes {
 
 #define J_SR    LT(_SHOTR, KC_J)
 #define P_SY    LT(_SYMBOL, KC_P)
+#define P_SFT   LSFT_T(KC_P)
 #define B_GUI   LGUI_T(KC_B)
 #define SLSH_CN LT(_CURNUM, KC_SLSH)
 
@@ -153,16 +160,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      | Tab  |  F   |  U   |  L   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   | A/Sy |  O   |  E   | I/SL |  W   |             |  H   | N/SR |  M   |  S   | T/Sy |  -   |
+   * |  /   |A/Sft |  O   |  E   | I/SL |  W   |             |  H   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| G/Gui|  B   |  D   | X/CN | Ent  |
+   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sy |JA/Sy |Spc/Al| G/Gui|  B   |  D   | X/CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
       _______, KC_TAB,  KC_F,    KC_U,    KC_L,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SY,    KC_O,    KC_E,    I_SL,    KC_W,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SY,     KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, G_GUI,   KC_B,    KC_D,    X_CN,     KC_ENT   \
+      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_W,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
+      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, G_GUI,   KC_B,    KC_D,    X_CN,     KC_ENT   \
       ),
 
   /* Qwerty
@@ -171,33 +178,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Tab  |  Q   |  W   |  E   |  R   |  T   |             |  Y   |  U   |  I   |  O   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   | A/Sy |  S   |  D   | F/SL |  G   |             |  H   | J/SR |  K   |  L   | P/Sy |  -   |
+   * |  /   |A/Sft |  S   |  D   | F/SL |  G   |             |  H   | J/SR |  K   |  L   |P/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  X   |  C   | V/Gui|Spc/Ct|EN/Sft|JA/Sft|Spc/Al| B/Gui|  N   |  M   | //CN | Ent  |
+   * | Esc  | Z/CN |  X   |  C   | V/Gui|Spc/Ct|EN/Sy |JA/Sy |Spc/Al| B/Gui|  N   |  M   | //CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
       KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SY,    KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SY,     KC_MINS, \
-      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SFT, JA_SFT, SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
+      KC_SLSH, A_SFT,   KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SFT,    KC_MINS, \
+      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
       ),
 
   /* CurNum
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |  *   |  7   |  8   |  9   |  +   |             |      |CS-Tab|C-Tab |GLPS  |[back]|      |
+   * |      |  *   |  7   |  8   |  9   |  +   |             |  :   |CS-Tab|C-Tab |GLPS  |[back]|      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |  0   |  1   |  2   |  3   |  -   |             |      | Left | Down |  Up  |Right |      |
+   * |  /   |  0   |  1   |  2   |  3   |  -   |             |  X   | Left | Down |  Up  |Right |      |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * |  =   |  .   |  4   |  5   |  6   |      |      |      |      |      |      |      |      |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_CURNUM] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______, \
-      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   _______, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
-      KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS,                   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
+      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   KC_COLN, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
+      KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS,                   KC_X,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
       KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,  _______  \
       ),
 
