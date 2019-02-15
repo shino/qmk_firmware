@@ -158,17 +158,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  F   |  U   |  L   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
+   * |      | Tab  |  L   |  U   |  W   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |A/Sft |  O   |  E   | I/SL |  W   |             |  H   | N/SR |  M   |  S   |T/Sft |  -   |
+   * |  /   |A/Sft |  O   |  E   | I/SL |  F   |             |  H   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sy |JA/Sy |Spc/Al| G/Gui|  B   |  D   | X/CN | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      _______, KC_TAB,  KC_F,    KC_U,    KC_L,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_W,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
+      _______, KC_TAB,  KC_L,    KC_U,    KC_W,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_F,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
       KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, G_GUI,   KC_B,    KC_D,    X_CN,     KC_ENT   \
       ),
 
