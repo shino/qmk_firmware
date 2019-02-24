@@ -169,18 +169,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Mute | Vol- | Vol+ | Prev | Play | Next |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Esc  | Tab  |  F   |  U   |  Y   |  W   |             |  D   |  H   |  K   |  R   |CurNum|Mouse |
+   * | Esc  | Tab  |  F   |  U   |  Y   |  Q   |             |  P   |  H   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  B   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | C/Sy |  V   |  Q   | L/Gui|Spc/Ct|EN/Gui|JA/Gui|Spc/CN| X/Alt|  P   |  J   | G/Sy | Ent  |
+   * | Esc  | C/Sy |  V   |  W   | L/Gui|Spc/Ct|EN/Gui|JA/Gui|Spc/CN| X/Alt|  D   |  J   | G/Sy | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
-      KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_W,                    KC_D,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
+      KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
       KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_B,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
-      KC_ESC,  C_SY,    KC_V,    KC_Q,    L_GUI,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   X_ALT,   KC_P,    KC_J,    G_SY,     KC_ENT   \
+      KC_ESC,  C_SY,    KC_V,    KC_W,    L_GUI,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   X_ALT,   KC_D,    KC_J,    G_SY,     KC_ENT   \
       ),
 
   /* Qwerty
