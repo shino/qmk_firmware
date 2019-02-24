@@ -145,7 +145,9 @@ enum custom_keycodes {
 #define C_C      LCTL(KC_C)
 #define C_G      LCTL(KC_G)
 #define C_H      LCTL(KC_H)
+#define C_L      LCTL(KC_L)
 #define C_M      LCTL(KC_M)
+#define C_X      LCTL(KC_X)
 #define C_Z      LCTL(KC_Z)
 
 #define C_COMM   LCTL(KC_COMM)
@@ -167,17 +169,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Mute | Vol- | Vol+ | Prev | Play | Next |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Esc  | Tab  |  F   |  U   |  Y   |  W   |             |  B   |  H   |  K   |  R   |CurNum|Mouse |
+   * | Esc  | Tab  |  F   |  U   |  Y   |  W   |             |  D   |  H   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  D   | N/SR |  M   |  S   |T/Sft |  -   |
+   * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  B   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
    * | Esc  | C/Sy |  V   |  Q   | L/Gui|Spc/Ct|EN/Gui|JA/Gui|Spc/CN| X/Alt|  P   |  J   | G/Sy | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
-      KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_W,                    KC_B,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_D,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
+      KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_W,                    KC_D,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_B,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
       KC_ESC,  C_SY,    KC_V,    KC_Q,    L_GUI,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   X_ALT,   KC_P,    KC_J,    G_SY,     KC_ENT   \
       ),
 
@@ -239,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |      |      |      |      |      |             |      |      |      | M-RET|      |      |
+   * |      |      |      |      |      |      |             |      | C-l  | C-x  | M-RET|      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      |      |S-Left|S-Rght| XXXX |      |             |      | C-z  | C-c  | M-x  | M-<  | M->  |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -248,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_SHOTL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, M_RET,   _______, _______, \
+      _______, _______, _______, _______, _______, _______,                   _______, C_L,     C_X,     M_RET,   _______, _______, \
       _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______  \
       ),
