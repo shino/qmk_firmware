@@ -67,6 +67,7 @@ enum custom_keycodes {
 
 // Spaces
 #define SP_LCTL LCTL_T(KC_SPC)
+#define SP_CN   LT(_CURNUM, KC_SPC)
 #define SP_RCTL RCTL_T(KC_SPC)
 #define SP_RALT RALT_T(KC_SPC)
 
@@ -81,21 +82,29 @@ enum custom_keycodes {
 #define A_SFT  LSFT_T(KC_A)
 #define A_SY   LT(_SYMBOL, KC_A)
 #define I_SL   LT(_SHOTL,  KC_I)
+#define C_SY   LT(_SYMBOL, KC_C)
 #define Z_CN   LT(_CURNUM, KC_Z)
 #define Z_SFT  LSFT_T(KC_Z)
+#define Z_GUI  LGUI_T(KC_Z)
+#define L_GUI  LGUI_T(KC_L)
 #define U_GUI  LGUI_T(KC_U)
 #define Y_GUI  LGUI_T(KC_Y)
+#define EN_GUI LGUI_T(EN)
 #define EN_SFT LSFT_T(EN)
 #define EN_SY  LT(_SYMBOL, EN)
 
 #define N_SR   LT(_SHOTR, KC_N)
 #define T_SY   LT(_SYMBOL, KC_T)
 #define T_SFT  LSFT_T(KC_T)
+#define JA_GUI LGUI_T(JA)
+#define JA_ALT LALT_T(JA)
 #define JA_SFT LSFT_T(JA)
 #define JA_SY  LT(_SYMBOL, JA)
 #define G_GUI  LGUI_T(KC_G)
+#define G_SY   LT(_SYMBOL, KC_G)
 #define X_CN   LT(_CURNUM, KC_X)
 #define X_SFT  LSFT_T(KC_X)
+#define X_ALT  LALT_T(KC_X)
 
 // QWERTY : LT mods
 
@@ -156,25 +165,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* EucalynX
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
+   * | Mute | Vol- | Vol+ | Prev | Play | Next |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  L   |  U   |  W   |  Q   |             |  P   |  J   |  K   |  R   |CurNum|Mouse |
+   * | Esc  | Tab  |  F   |  U   |  Y   |  W   |             |  B   |  H   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |A/Sft |  O   |  E   | I/SL |  F   |             |  H   | N/SR |  M   |  S   |T/Sft |  -   |
+   * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  D   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  C   |  V   | Y/Gui|Spc/Ct|EN/Sy |JA/Sy |Spc/Al| G/Gui|  B   |  D   | X/CN | Ent  |
+   * | Esc  | C/Sy |  V   |  Q   | L/Gui|Spc/Ct|EN/Gui|JA/Gui|Spc/CN| X/Alt|  P   |  J   | G/Sy | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      _______, KC_TAB,  KC_L,    KC_U,    KC_W,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_F,                    KC_H,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_C,    KC_V,    Y_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, G_GUI,   KC_B,    KC_D,    X_CN,     KC_ENT   \
+      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
+      KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_W,                    KC_B,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
+      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_D,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
+      KC_ESC,  C_SY,    KC_V,    KC_Q,    L_GUI,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   X_ALT,   KC_P,    KC_J,    G_SY,     KC_ENT   \
       ),
 
   /* Qwerty
    * ,-----------------------------------------.             ,-----------------------------------------.
-   * | Play | Prev | Next | Mute | Vol- | Vol+ |             | Del  | Left | Down |  Up  |Right |Adjust|
+   * | Mute | Vol- | Vol+ | Prev | Play | Next |             | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Tab  |  Q   |  W   |  E   |  R   |  T   |             |  Y   |  U   |  I   |  O   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -184,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_MPLY, KC_MPRV, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
+      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    CURNUM_T, MOUSE_T, \
       KC_SLSH, A_SFT,   KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SFT,    KC_MINS, \
       KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
@@ -216,14 +225,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  ~   |  !   |  *   |  +   |  =   |  \   |             |  `   |  (   |  [   |  }   |  <   |  >   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |      |  ^   |  &   |  "   |  '   |      |      |      |      |  ,   |  .   |  :   |  ;   |      |
+   * |      |  "   |  '   |  ^   |  &   |      |      |      |      |  :   |  ;   |  ,   |  .   |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_SYMBOL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, KC_AT,   KC_PERC, KC_HASH, KC_DLR,                    KC_PIPE, KC_RPRN, KC_RBRC, KC_RCBR, _______, _______, \
       KC_TILD, KC_EXLM, KC_ASTR, KC_PLUS, KC_EQL,  KC_BSLS,                   KC_GRV,  KC_LPRN, KC_LBRC, KC_LCBR, KC_LT,   KC_GT,   \
-      _______, KC_CIRC, KC_AMPR, KC_DQUO, KC_QUOT, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_COLN, KC_SCLN, _______  \
+      _______, KC_DQUO, KC_QUOT, KC_CIRC, KC_AMPR, _______, _______, _______, _______, KC_COLN, KC_SCLN, KC_COMM, KC_DOT,  _______  \
       ),
 
   /* Shots Left:        macOS                                            Emacs, GNU Screen
@@ -234,14 +243,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |      |      |S-Left|S-Rght| XXXX |      |             |      | C-z  | C-c  | M-x  | M-<  | M->  |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      |      |      |      | C-,  | C-.  |      |C-xC-s|      |
+   * |      |      |      |      |      |      |      |      |      |      |      | C-,  | C-.  |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_SHOTL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, M_RET,   _______, _______, \
       _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______, _______, _______  \
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______  \
       ),
 
   /* Shots Right:        Slack                                              QuickSilver, Browser
