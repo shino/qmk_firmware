@@ -117,29 +117,40 @@ enum custom_keycodes {
 #define B_GUI   LGUI_T(KC_B)
 #define SLSH_CN LT(_CURNUM, KC_SLSH)
 
-// shots: macOS
+// macOS
 #define GUI_ENT  LGUI(KC_ENT)
-#define G_LBRC   LGUI(KC_LBRC)
-#define G_RBRC   LGUI(KC_RBRC)
 #define G_MINS   LGUI(KC_MINS)
 #define G_PLUS   LGUI(KC_PLUS)
-#define GCS_4    LGUI(LCTL(LSFT(KC_4))) // Screen capture
-#define SH_LEFT  LSFT(KC_LEFT)          // IME
-#define SH_RGHT  LSFT(KC_RGHT)          // IME
-#define C_TAB    LCTL(KC_TAB)           // App Switch
-#define CS_TAB   LCTL(LSFT(KC_TAB))     // App Switch
-#define C_3      LCTL(KC_3)             // QuickSilver
-#define C_RBRC   LCTL(KC_RBRC)          // QuickSilver
+#define GCS4     LGUI(LCTL(LSFT(KC_4))) // Screen capture
 
-
-// shots: Slack
-#define GUI_K    LGUI(KC_K)             // Jump
-#define GUI_1    LGUI(KC_1)             // Workspace 1
+// Workspaces
+#define GUI_0    LGUI(KC_0)
+#define GUI_1    LGUI(KC_1)
 #define GUI_2    LGUI(KC_2)
 #define GUI_3    LGUI(KC_3)
 #define GUI_4    LGUI(KC_4)
 #define GUI_5    LGUI(KC_5)
 #define GUI_6    LGUI(KC_6)
+#define GUI_7    LGUI(KC_7)
+#define GUI_8    LGUI(KC_8)
+#define GUI_9    LGUI(KC_9)
+
+// IME
+#define SH_LEFT  LSFT(KC_LEFT)
+#define SH_RGHT  LSFT(KC_RGHT)
+
+// Quicksilver
+#define C_3      LCTL(KC_3)
+#define C_RBRC   LCTL(KC_RBRC)
+
+// Browsers
+#define G_LBRC   LGUI(KC_LBRC)
+#define G_RBRC   LGUI(KC_RBRC)
+#define C_TAB    LCTL(KC_TAB)
+#define CS_TAB   LCTL(LSFT(KC_TAB))
+
+// Slack
+#define GUI_K    LGUI(KC_K)             // Jump
 #define GS_ENT   LGUI(LSFT(KC_ENT))     // Create snippet
 
 // shots: Emacs
@@ -203,22 +214,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
       ),
 
-  /* CurNum
+  /* CurNum         Numbers                                              Cursor, Browsers
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |  *   |  7   |  8   |  9   |  +   |             |  :   |CS-Tab|C-Tab |GLPS  |[back]|      |
+   * |      |  *   |  7   |  8   |  9   |  X   |             |  +   |CS-Tab|C-Tab |GLPS  |[back]|      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |  0   |  1   |  2   |  3   |  -   |             |  X   | Left | Down |  Up  |Right |      |
+   * |  /   |  0   |  1   |  2   |  3   |  :   |             |  -   | Left | Down |  Up  |Right |      |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |  =   |  .   |  4   |  5   |  6   |      |      |      |      |      |      |      |      |      |
+   * |  =   |  .   |  4   |  5   |  6   |      |      |      |      |      |      |GUI-[ |GUI-] |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_CURNUM] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______, \
-      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_PLUS,                   KC_COLN, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
-      KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_MINS,                   KC_X,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
-      KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, _______, _______,  _______  \
+      _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_X,                      KC_PLUS, CS_TAB,  C_TAB,   GLPS,    CURNUM_T, _______, \
+      KC_SLSH, KC_0,    KC_1,    KC_2,    KC_3,    KC_COLN,                   KC_MINS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  _______, \
+      KC_EQL,  KC_DOT,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, _______, G_LBRC,  G_RBRC,   _______  \
       ),
 
   /* Symbol
@@ -239,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, KC_DQUO, KC_QUOT, KC_CIRC, KC_AMPR, _______, _______, _______, _______, KC_COLN, KC_SCLN, KC_COMM, KC_DOT,  _______  \
       ),
 
-  /* Shots Left:        macOS                                            Emacs, GNU Screen
+  /* Shots Left:        IME                                             Emacs, GNU Screen
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
@@ -257,22 +268,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______  \
       ),
 
-  /* Shots Right:        Slack                                              QuickSilver, Browser
+  /* Shots Right:    Workspaces                                      macOS, Quicksilver, Slack
    * ,-----------------------------------------.             ,-----------------------------------------.
    * |      |      |      |      |      |      |             |      |      |      |      |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |      |      | GCS4 |GS-Ent|      |             |      |      |GUI-- |GUI-+ |      |      |
+   * |      |      |GUI-7 |GUI-8 |GUI-9 |      |             |      |      |GUI-- |GUI-+ |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      |      |GUI-1 |GUI-2 |GUI-3 |      |             |      | XXXX | C-3  |GUI-K | GLPS |      |
+   * |      |GUI-0 |GUI-1 |GUI-2 |GUI-3 |      |             |      | XXXX | C-3  |GUI-K |GS_ENT|      |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * |      |      |GUI-4 |GUI-5 |GUI-6 |      |      |      |      |      |      |GUI-[ |GUI-] |      |
+   * |      |      |GUI-4 |GUI-5 |GUI-6 |      |      |      |      |      |      |      | GCS4 |      |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_SHOTR] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, _______, _______, GCS_4,   GS_ENT,  _______,                   _______, _______, G_MINS,  G_PLUS,  _______, _______, \
-      _______, _______, GUI_1,   GUI_2  , GUI_3,   _______,                   _______, XXXXXXX, C_3,     GUI_K,   GLPS,    _______, \
-      _______, _______, GUI_4,   GUI_5  , GUI_6,   _______, _______, _______, _______, _______, _______, G_LBRC,  G_RBRC, _______  \
+      _______, _______, GUI_7,   GUI_8,   GUI_9,   _______,                   _______, _______, G_MINS,  G_PLUS,  _______, _______, \
+      _______, GUI_0,   GUI_1,   GUI_2  , GUI_3,   _______,                   _______, XXXXXXX, C_3,     GUI_K,   GS_ENT,  _______, \
+      _______, _______, GUI_4,   GUI_5  , GUI_6,   _______, _______, _______, _______, _______, _______, _______, GCS4,    _______ \
       ),
 
   /* Mouse keys
@@ -464,9 +475,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case GLPS:
       if (record->event.pressed) {
+        // Change to EISUU mode first
+        tap_code(KC_LANG2);
+        // GUI-L
         register_code(KC_LGUI);
         tap_code(KC_L);
         unregister_code(KC_LGUI);
+        // % and SPACE
         register_code(KC_LSFT);
         tap_code(KC_5);
         unregister_code(KC_LSFT);
