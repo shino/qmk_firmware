@@ -87,6 +87,7 @@ enum custom_keycodes {
 #define Z_SFT  LSFT_T(KC_Z)
 #define Z_GUI  LGUI_T(KC_Z)
 #define L_GUI  LGUI_T(KC_L)
+#define L_ALT  LALT_T(KC_L)
 #define U_GUI  LGUI_T(KC_U)
 #define Y_GUI  LGUI_T(KC_Y)
 #define EN_GUI LGUI_T(EN)
@@ -105,6 +106,7 @@ enum custom_keycodes {
 #define X_CN   LT(_CURNUM, KC_X)
 #define X_SFT  LSFT_T(KC_X)
 #define X_ALT  LALT_T(KC_X)
+#define D_ALT  LALT_T(KC_D)
 
 // QWERTY : LT mods
 
@@ -184,16 +186,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Esc  | Tab  |  F   |  U   |  Y   |  Q   |             |  P   |  H   |  K   |  R   |CurNum|Mouse |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  B   | N/SR |  M   |  S   |T/Sft |  -   |
+   * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  J   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | C/Sy |  V   |  W   | L/Gui|Spc/Ct|EN/Gui|JA/Gui|Spc/CN| X/Alt|  D   |  J   | G/Sy | Ent  |
+   * | Esc  | C/Sy |  V   |  W   |L/Alt |Spc/Ct|EN/Gui|JA/Gui|Spc/CN| D/Alt|  X   |  B   | G/Sy | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
       KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
-      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_B,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
-      KC_ESC,  C_SY,    KC_V,    KC_W,    L_GUI,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   X_ALT,   KC_D,    KC_J,    G_SY,     KC_ENT   \
+      KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_J,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
+      KC_ESC,  C_SY,    KC_V,    KC_W,    L_ALT,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   D_ALT,   KC_X,    KC_B,    G_SY,     KC_ENT   \
       ),
 
   /* Qwerty
