@@ -88,6 +88,7 @@ enum custom_keycodes {
 #define Z_GUI  LGUI_T(KC_Z)
 #define L_GUI  LGUI_T(KC_L)
 #define L_ALT  LALT_T(KC_L)
+#define W_ALT  LALT_T(KC_W)
 #define U_GUI  LGUI_T(KC_U)
 #define Y_GUI  LGUI_T(KC_Y)
 #define EN_GUI LGUI_T(EN)
@@ -188,14 +189,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * |  /   |A/Sft |  O   |  E   | I/SL |  Z   |             |  J   | N/SR |  M   |  S   |T/Sft |  -   |
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  | C/Sy |  V   |  W   |L/Alt |Spc/Ct|EN/Gui|JA/Gui|Spc/CN| D/Alt|  X   |  B   | G/Sy | Ent  |
+   * | Esc  | C/Sy |  L   |  V   |W/Alt |Spc/Ct|EN/Gui|JA/Gui|Spc/CN| D/Alt|  X   |  B   | G/Sy | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
       KC_ESC,  KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    CURNUM_T, MOUSE_T, \
       KC_SLSH, A_SFT,   KC_O,    KC_E,    I_SL,    KC_Z,                    KC_J,    N_SR,    KC_M,    KC_S,    T_SFT,    KC_MINS, \
-      KC_ESC,  C_SY,    KC_V,    KC_W,    L_ALT,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   D_ALT,   KC_X,    KC_B,    G_SY,     KC_ENT   \
+      KC_ESC,  C_SY,    KC_L,    KC_V,    W_ALT,   SP_LCTL, EN_GUI, JA_GUI, SP_CN,   D_ALT,   KC_X,    KC_B,    G_SY,     KC_ENT   \
       ),
 
   /* Qwerty
