@@ -191,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Mute | Vol- | Vol+ | Prev | Play | Next |             |  BS  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  F   |  U   |  Y   |  Q   |             |  P   |  H   |  K   |  R   |      |      |
+   * |      | Tab  |  F   |  W   |  Y   |  Q   |             |  P   |  H   |  K   |  R   |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
    * | Mouse|A/Sft |  O   | E/Sy | I/SL |  V   |             |  J   | N/SR | M/Sy |  S   |T/Sft |CurNum|
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -200,9 +200,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
-      _______, KC_TAB,  KC_F,    KC_U,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    _______,  _______, \
-      KC_SLSH, A_SFT,   KC_O,    E_SY,    I_SL,    KC_V,                    KC_J,    N_SR,    M_SY,    KC_S,    T_SFT,    CURNUM_T, \
-      KC_ESC,  KC_L,    KC_C,    KC_X,    MINS_ALT,SP_LCTL, EN_GUI, JA_GUI, SP_CN,   B_ALT,   KC_Z,    KC_D,    KC_G,     KC_ENT \
+      _______, KC_TAB,  KC_F,    KC_W,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    _______,  _______, \
+      MOUSE_T, A_SFT,   KC_O,    E_SY,    I_SL,    KC_V,                    KC_J,    N_SR,    M_SY,    KC_S,    T_SFT,    CURNUM_T, \
+      KC_ESC,  KC_L,    KC_C,    KC_X,    MINS_ALT,U_LCTL,  EN_GUI, JA_GUI, SP_CN,   B_ALT,   KC_Z,    KC_D,    KC_G,     KC_ENT \
       ),
 
   /* Qwerty:
