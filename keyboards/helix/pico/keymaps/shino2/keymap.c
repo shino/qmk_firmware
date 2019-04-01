@@ -93,27 +93,30 @@ enum custom_keycodes {
 #define L_ALT    LALT_T(KC_L)
 #define W_ALT    LALT_T(KC_W)
 #define MINS_ALT LALT_T(KC_MINS)
+#define MINS_GUI LGUI_T(KC_MINS)
 #define U_GUI    LGUI_T(KC_U)
 #define Y_GUI    LGUI_T(KC_Y)
 #define EN_GUI   LGUI_T(EN)
 #define EN_SFT   LSFT_T(EN)
 #define EN_SY    LT(_SYMBOL, EN)
+#define EN_SL    LT(_SHOTL, EN)
 
-#define N_SR   LT(_SHOTR, KC_N)
-#define T_SY   LT(_SYMBOL, KC_T)
-#define M_SY   LT(_SYMBOL, KC_M)
-#define T_SFT  LSFT_T(KC_T)
-#define JA_GUI LGUI_T(JA)
-#define JA_ALT LALT_T(JA)
-#define JA_SFT LSFT_T(JA)
-#define JA_SY  LT(_SYMBOL, JA)
-#define G_GUI  LGUI_T(KC_G)
-#define G_SY   LT(_SYMBOL, KC_G)
-#define X_CN   LT(_CURNUM, KC_X)
-#define X_SFT  LSFT_T(KC_X)
-#define X_ALT  LALT_T(KC_X)
-#define B_ALT  LALT_T(KC_B)
-#define D_ALT  LALT_T(KC_D)
+#define N_SR     LT(_SHOTR, KC_N)
+#define T_SY     LT(_SYMBOL, KC_T)
+#define M_SY     LT(_SYMBOL, KC_M)
+#define T_SFT    LSFT_T(KC_T)
+#define JA_GUI   LGUI_T(JA)
+#define JA_ALT   LALT_T(JA)
+#define JA_SFT   LSFT_T(JA)
+#define JA_SY    LT(_SYMBOL, JA)
+#define JA_SR    LT(_SHOTR, EN)
+#define G_GUI    LGUI_T(KC_G)
+#define G_SY     LT(_SYMBOL, KC_G)
+#define X_CN     LT(_CURNUM, KC_X)
+#define X_SFT    LSFT_T(KC_X)
+#define X_ALT    LALT_T(KC_X)
+#define B_ALT    LALT_T(KC_B)
+#define D_ALT    LALT_T(KC_D)
 
 // QWERTY : LT mods
 
@@ -170,6 +173,7 @@ enum custom_keycodes {
 #define C_L      LCTL(KC_L)
 #define C_M      LCTL(KC_M)
 #define C_X      LCTL(KC_X)
+#define C_U      LCTL(KC_U)
 #define C_Z      LCTL(KC_Z)
 
 #define C_COMM   LCTL(KC_COMM)
@@ -191,18 +195,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.             ,-----------------------------------------.
    * | Mute | Vol- | Vol+ | Prev | Play | Next |             |  BS  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * |      | Tab  |  F   |  W   |  Y   |  Q   |             |  P   |  H   |  K   |  R   |      |      |
+   * |      | Tab  |  F   |  W   |  Y   |  Q   |             |  P   |  H   |  K  c|  R   |      |      |
    * |------+------+------+------+------+------|             |------+------+------+------+------+------|
-   * | Mouse|A/Sft |  O   | E/Sy | I/SL |  V   |             |  J   | N/SR | M/Sy |  S   |T/Sft |CurNum|
+   * | Mouse|A/Sft |  O   | E/Sy | I/SL |  V   |             |  Z   |N/SR f| M/Sy |  S  s|T/Sft |CurNum|
    * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
-   * | Esc  |  L   |  C   |  X   | -/Alt| U/Ct |EN/Gui|JA/Gui|Spc/CN| B/Alt|  Z   |  D   |  G   | Ent  |
+   * | Esc  |  C   |  L   |  X   |-/Gui | U/Ct |En/SL |Ja/SR |Spc/CN|B/Al o|  J   |  D   |  G   | Ent  |
    * `-------------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
       _______, KC_TAB,  KC_F,    KC_W,    KC_Y,    KC_Q,                    KC_P,    KC_H,    KC_K,    KC_R,    _______,  _______, \
-      MOUSE_T, A_SFT,   KC_O,    E_SY,    I_SL,    KC_V,                    KC_J,    N_SR,    M_SY,    KC_S,    T_SFT,    CURNUM_T, \
-      KC_ESC,  KC_L,    KC_C,    KC_X,    MINS_ALT,U_LCTL,  EN_GUI, JA_GUI, SP_CN,   B_ALT,   KC_Z,    KC_D,    KC_G,     KC_ENT \
+      MOUSE_T, A_SFT,   KC_O,    E_SY,    I_SL,    KC_V,                    KC_Z,    N_SR,    M_SY,    KC_S,    T_SFT,    CURNUM_T, \
+      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_GUI,U_LCTL,  EN_SL,  JA_SR,  SP_CN,   B_ALT,   KC_J,    KC_D,    KC_G,     KC_ENT \
       ),
 
   /* Qwerty:
@@ -272,9 +276,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_SHOTL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, _______, _______, _______, _______, _______,                   _______, C_L,     C_X,     M_RET,   _______, _______, \
-      _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     M_LT,    M_GT,    \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______  \
+      _______, _______, _______, _______, _______, _______,                   _______, C_L,     C_U,     M_RET,   _______, _______, \
+      _______, _______, SH_LEFT, SH_RGHT, XXXXXXX, _______,                   _______, C_Z,     C_C,     M_X,     C_SLSH,  _______, \
+      _______, _______, _______, _______, _______, _______, _______, _______, C_COMM,  C_DOT,   _______, M_LT,    M_GT,    _______  \
       ),
 
   /* Shots Right:      Workspaces                                    macOS, Quicksilver, Slack
