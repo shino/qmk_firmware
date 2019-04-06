@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR=./keyboards/helix/pico/keymaps/shino2/
+TO_CLIPBOARD=pbcopy
 
 SRC=${DIR}/keymap.c
 OUT=${DIR}/ascii.txt
@@ -12,4 +13,4 @@ for layer in Adjust Coffee Symbol Extras Stars EucalynX; do
         sed -e 's/ *\* //'
     echo
 done |
-    tee ${OUT}
+    tee ${OUT} | ${TO_CLIPBOARD}
