@@ -150,6 +150,7 @@ enum custom_keycodes {
 #define G_RBRC   LGUI(KC_RBRC)
 #define C_TAB    LCTL(KC_TAB)
 #define CS_TAB   LCTL(LSFT(KC_TAB))
+#define GS_TAB   LGUI(LSFT(KC_TAB))
 
 // Slack
 #define GUI_K    LGUI(KC_K)             // Jump
@@ -278,7 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      | WH L | WH U | WH D | WH R |      |           |      |      |Gui-- |Gui-+ |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |[back]| MS L | MS U | MS D | MS R |      |           |      |      |CS-Tab|C-Tab | GLPS |[back]|
+   * |[back]| MS L | MS U | MS D | MS R |      |           |      | GLPS |CS-Tab|C-Tab |GS-Tab|[back]|
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
    * |      | Left |  Up  | Down | Rght | BTN1 |     |     | BTN2 |S-Left|S-Rght|Gui-[ |Gui-] |      |
    * `----------------------------------------------------------------------------------------------'
@@ -286,7 +287,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COFFEE] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, _______,                   _______, _______, G_MINS,  G_PLUS,  _______, _______, \
-      COFF_T,  KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,                   _______, _______, CS_TAB,  C_TAB,   GLPS,    COFF_T,  \
+      COFF_T,  KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,                   _______, GLPS,    CS_TAB,  C_TAB,   GS_TAB,  COFF_T,  \
       _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_BTN1, _______, _______, KC_BTN2, SH_LEFT, SH_RGHT, G_LBRC,  G_RBRC,  _______  \
       ),
 
