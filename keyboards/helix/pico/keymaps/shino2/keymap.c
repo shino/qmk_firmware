@@ -114,10 +114,10 @@ enum custom_keycodes {
 // QWERTY : LT mods
 
 #define B_ALT   LALT_T(KC_B)
-#define F_EX   LT(_EXTRA, KC_F)
+#define F_EX    LT(_EXTRA, KC_F)
 #define J_EX    LT(_EXTRA, KC_J)
 #define P_SFT   LSFT_T(KC_P)
-#define V_ALT  LALT_T(KC_V)
+#define V_ALT   LALT_T(KC_V)
 
 // macOS
 #define GUI_ENT  LGUI(KC_ENT)
@@ -150,7 +150,7 @@ enum custom_keycodes {
 #define G_RBRC   LGUI(KC_RBRC)
 #define C_TAB    LCTL(KC_TAB)
 #define CS_TAB   LCTL(LSFT(KC_TAB))
-#define GS_TAB   LGUI(LSFT(KC_TAB))
+#define GS_T     LGUI(LSFT(KC_T))
 
 // Slack
 #define GUI_K    LGUI(KC_K)             // Jump
@@ -176,9 +176,9 @@ enum custom_keycodes {
 #define M_LT     RALT(KC_LT)
 #define M_GT     RALT(KC_GT)
 
-// Toggle layers
+// Coffee
 #define COFF_T   TG(_COFFEE)
-#define STARS_T  TG(_STARS)
+#define COFF     LT(_COFFEE, COFF_T)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -190,14 +190,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |Coffee|A/Sft |  O   |  E   | I/Ex |  V   |           |  Z   |N/Ex f|  M   |  S  s|T/Sft |Coffee|
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Esc  |  C   |  L   |  X   | -/Al | U/Ct |En/Sy|Ja/Gu|Spc/St|B/Al o|  D   |  H   |  G   | Ent  |
+   * | Esc  |  C   |  L   |  X   | -/Al | U/Ct |En/Gu|Ja/Sy|Spc/St|B/Al o|  D   |  H   |  G   | Ent  |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
       _______, KC_TAB,  KC_F,    KC_W,    KC_Y,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    KC_ESC,   _______, \
       COFF_T,  A_SFT,   KC_O,    KC_E,    I_EX,    KC_V,                    KC_Z,    N_EX,    KC_M,    KC_S,    T_SFT,    COFF_T,  \
-      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_ALT,U_LCTL,  EN_SY,  JA_GUI, SP_STAR, B_ALT,   KC_D,    KC_H,    KC_G,     KC_ENT   \
+      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_ALT,U_LCTL,  EN_GUI, JA_SY,  SP_STAR, B_ALT,   KC_D,    KC_H,    KC_G,     KC_ENT   \
       ),
 
   /* Qwerty:
@@ -224,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      |      |  7   |  8   |  9   |  ;   |           |      |  /   |  +   |  *   |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |  0   |  1   |  2   |  3   |  :   |           |      | C-3  |GUI-K |  ,   |  .   |      |
+   * |      |  0   |  1   |  2   |  3   |  :   |           |      | C-3  | C-z  |  ,   |  .   |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
    * |      |  =   |  4   |  5   |  6   |      |     |     | **** |  !   |  ?   |  '   |  "   |      |
    * `-----------------------------------------------------------------------------------------------'
@@ -232,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_STARS] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, KC_7,    KC_8,    KC_9,    KC_SCLN,                   _______, KC_SLSH, KC_PLUS, KC_ASTR, _______, _______, \
-      _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COLN,                   _______, C_3,     GUI_K,   KC_COMM, KC_DOT,  _______, \
+      _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COLN,                   _______, C_3,     C_Z,     KC_COMM, KC_DOT,  _______, \
       _______, KC_EQL,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, KC_EXLM, KC_QUES, KC_QUOT, KC_DQUO, _______  \
       ),
 
@@ -279,16 +279,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      | WH L | WH U | WH D | WH R |      |           |      |      |Gui-- |Gui-+ |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |[back]| MS L | MS U | MS D | MS R |      |           |      | GLPS |CS-Tab|C-Tab |GS-Tab|[back]|
+   * |[back]| MS L | MS U | MS D | MS R |      |           |      | GLPS |CS-Tab|C-Tab | GS-T |[back]|
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      | Left |  Up  | Down | Rght | BTN1 |     |     | BTN2 |S-Left|S-Rght|Gui-[ |Gui-] |      |
+   * |      | Left |  Up  | Down | Rght | BTN1 |BTN2 |     |      |S-Left|S-Rght|Gui-[ |Gui-] |      |
    * `----------------------------------------------------------------------------------------------'
    */
   [_COFFEE] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R, _______,                   _______, _______, G_MINS,  G_PLUS,  _______, _______, \
-      COFF_T,  KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,                   _______, GLPS,    CS_TAB,  C_TAB,   GS_TAB,  COFF_T,  \
-      _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_BTN1, _______, _______, KC_BTN2, SH_LEFT, SH_RGHT, G_LBRC,  G_RBRC,  _______  \
+      COFF_T,  KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R, _______,                   _______, GLPS,    CS_TAB,  C_TAB,   GS_T,    COFF_T,  \
+      _______, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_BTN1, KC_BTN1, _______, _______, SH_LEFT, SH_RGHT, G_LBRC,  G_RBRC,  _______  \
       ),
 
   /* Adjust:
