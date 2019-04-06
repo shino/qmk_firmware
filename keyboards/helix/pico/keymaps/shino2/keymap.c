@@ -77,57 +77,47 @@ enum custom_keycodes {
 
 // EUCALX : LT mods
 
-#define U_LCTL   LCTL_T(KC_U)
-
 #define A_SFT    LSFT_T(KC_A)
 #define A_SY     LT(_SYMBOL, KC_A)
-#define I_SL     LT(_SHOTL,  KC_I)
+#define B_ALT    LALT_T(KC_B)
+
 #define I_SY     LT(_SYMBOL, KC_I)
-#define C_SY     LT(_SYMBOL, KC_C)
-#define E_SY     LT(_SYMBOL, KC_E)
+#define I_EX     LT(_EXTRA,  KC_I)
+#define L_GUI    LGUI_T(KC_L)
+#define L_ALT    LALT_T(KC_L)
+#define M_SY     LT(_SYMBOL, KC_M)
+#define N_EX     LT(_EXTRA, KC_N)
+#define N_SY     LT(_SYMBOL, KC_N)
+
+#define T_SFT    LSFT_T(KC_T)
+#define T_SY     LT(_SYMBOL, KC_T)
+#define U_GUI    LGUI_T(KC_U)
+#define U_LCTL   LCTL_T(KC_U)
+
+#define W_ALT    LALT_T(KC_W)
+#define X_ST     LT(_STARS, KC_X)
+#define X_SFT    LSFT_T(KC_X)
+#define X_ALT    LALT_T(KC_X)
 #define Z_ST     LT(_STARS,  KC_Z)
 #define Z_SFT    LSFT_T(KC_Z)
 #define Z_GUI    LGUI_T(KC_Z)
-#define L_GUI    LGUI_T(KC_L)
-#define L_ALT    LALT_T(KC_L)
-#define W_ALT    LALT_T(KC_W)
+
 #define MINS_ALT LALT_T(KC_MINS)
 #define MINS_GUI LGUI_T(KC_MINS)
-#define U_GUI    LGUI_T(KC_U)
-#define Y_GUI    LGUI_T(KC_Y)
 #define EN_GUI   LGUI_T(EN)
-#define EN_SFT   LSFT_T(EN)
 #define EN_SY    LT(_SYMBOL, EN)
-#define EN_SL    LT(_SHOTL, EN)
-
-#define N_SR     LT(_SHOTR, KC_N)
-#define N_SY     LT(_SYMBOL, KC_N)
-#define T_SY     LT(_SYMBOL, KC_T)
-#define M_SY     LT(_SYMBOL, KC_M)
-#define T_SFT    LSFT_T(KC_T)
 #define JA_GUI   LGUI_T(JA)
 #define JA_ALT   LALT_T(JA)
 #define JA_SFT   LSFT_T(JA)
 #define JA_SY    LT(_SYMBOL, JA)
-#define JA_SR    LT(_SHOTR, JA)
-#define G_GUI    LGUI_T(KC_G)
-#define G_SY     LT(_SYMBOL, KC_G)
-#define X_ST     LT(_STARS, KC_X)
-#define X_SFT    LSFT_T(KC_X)
-#define X_ALT    LALT_T(KC_X)
-#define B_ALT    LALT_T(KC_B)
-#define D_ALT    LALT_T(KC_D)
 
 // QWERTY : LT mods
 
-#define F_SL   LT(_SHOTL, KC_F)
-#define V_GUI  LGUI_T(KC_V)
-
-#define J_SR    LT(_SHOTR, KC_J)
-#define P_SY    LT(_SYMBOL, KC_P)
+#define B_ALT   LALT_T(KC_B)
+#define F_EX   LT(_EXTRA, KC_F)
+#define J_EX    LT(_EXTRA, KC_J)
 #define P_SFT   LSFT_T(KC_P)
-#define B_GUI   LGUI_T(KC_B)
-#define SLSH_ST LT(_STARS, KC_SLSH)
+#define V_ALT  LALT_T(KC_V)
 
 // macOS
 #define GUI_ENT  LGUI(KC_ENT)
@@ -199,57 +189,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |Coffee|A/Sft |  O   |  E   | I/Ex |  V   |           |  Z   |N/Ex f|  M   |  S  s|T/Sft |Coffee|
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Esc  |  C   |  L   |  X   |-/Gui | U/Ct |En/Ex|Ja/Sy|Spc/St|B/Al o|  D   |  H   |  G   | Ent  |
+   * | Esc  |  C   |  L   |  X   | -/Al | U/Ct |En/Sy|Ja/Gu|Spc/St|B/Al o|  D   |  H   |  G   | Ent  |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
       _______, KC_TAB,  KC_F,    KC_W,    KC_Y,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    KC_ESC,   _______, \
-      COFF_T,  A_SFT,   KC_O,    KC_E,    I_SY,    KC_V,                    KC_Z,    N_SY,    KC_M,    KC_S,    T_SFT,    COFF_T,  \
-      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_GUI,U_LCTL,  EN_SL,  JA_SR,  SP_CN,   B_ALT,   KC_D,    KC_H,    KC_G,     KC_ENT   \
+      COFF_T,  A_SFT,   KC_O,    KC_E,    I_EX,    KC_V,                    KC_Z,    N_EX,    KC_M,    KC_S,    T_SFT,    COFF_T,  \
+      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_ALT,U_LCTL,  EN_SY,  JA_GUI, SP_STAR, B_ALT,   KC_D,    KC_H,    KC_G,     KC_ENT   \
       ),
 
   /* Qwerty:
    * ,-----------------------------------------.           ,-----------------------------------------.
    * | Mute | Vol- | Vol+ | Prev | Play | Next |           | Del  | Left | Down |  Up  |Right |Adjust|
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * | Tab  |  Q   |  W   |  E   |  R   |  T   |           |  Y   |  U   |  I   |  O   |Stars |Coffee|
+   * | Tab  |  Q   |  W   |  E   |  R   |  T   |           |  Y   |  U   |  I   |  O   |  -   |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |  /   |A/Sft |  S   |  D   | F/SL |  G   |           |  H   | J/SR |  K   |  L   |P/Sft |  -   |
+   * |Coffee|A/Sft |  S   |  D   | F/Ex |  G   |           |  H   | J/Ex |  K   |  L   |P/Sft |Coffee|
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Esc  | Z/CN |  X   |  C   | V/Gui|Spc/Ct|EN/Sy|JA/Sy|Spc/Al| B/Gui|  N   |  M   | //CN | Ent  |
+   * | Esc  |  Z   |  X   |  C   | V/Al |Spc/Ct|EN/Sy|JA/Gu|Spc/St| B/Al |  N   |  M   |  /   | Ent  |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_QWERTY] = LAYOUT( \
-      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST, \
-      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    STARS_T,  COFF_T, \
-      KC_SLSH, A_SFT,   KC_S,    KC_D,    F_SL,    KC_G,                    KC_H,    J_SR,    KC_K,    KC_L,    P_SFT,    KC_MINS, \
-      KC_ESC,  Z_CN,    KC_X,    KC_C,    V_GUI,   SP_LCTL, EN_SY,  JA_SY,  SP_RALT, B_GUI,   KC_N,    KC_M,    SLSH_CN,  KC_ENT   \
+      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
+      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_MINS,  _______, \
+      COFF_T,  A_SFT,   KC_S,    KC_D,    F_EX,    KC_G,                    KC_H,    J_EX,    KC_K,    KC_L,    P_SFT,    COFF_T,  \
+      KC_ESC,  KC_Z,    KC_X,    KC_C,    V_ALT,   SP_LCTL, EN_SY,  JA_GUI, SP_STAR, B_ALT,   KC_N,    KC_M,    KC_SLSH,  KC_ENT   \
       ),
 
   /* Stars:            Numbers                                            Cursor, Arith. ops
    * ,-----------------------------------------.           ,-----------------------------------------.
    * |      |      |      |      |      |      |           |      |      |      |      |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |      |  7   |  8   |  9   |  ;   |           |  -   |  +   |  ,   |  .   |      |      |
+   * |      |      |  7   |  8   |  9   |  ;   |           |      |  /   |  +   |  *   |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |  0   |  1   |  2   |  3   |  :   |           |  X   | Left | Down |  Up  |Right |[back]|
+   * |      |  0   |  1   |  2   |  3   |  :   |           |      | C-3  |GUI-K |  ,   |  .   |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      |  =   |  4   |  5   |  6   |      |     |     | **** |  (   |  )   |  *   |  /   |      |
+   * |      |  =   |  4   |  5   |  6   |      |     |     | **** |  !   |  ?   |  '   |  "   |      |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_STARS] = LAYOUT( \
-      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,  \
-      _______, _______, KC_7,    KC_8,    KC_9,    KC_SCLN,                   _______, KC_SLSH, KC_PLUS, KC_ASTR, _______, _______,  \
+      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
+      _______, _______, KC_7,    KC_8,    KC_9,    KC_SCLN,                   _______, KC_SLSH, KC_PLUS, KC_ASTR, _______, _______, \
       _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COLN,                   _______, C_3,     GUI_K,   KC_COMM, KC_DOT,  _______, \
-      _______, KC_EQL,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, KC_EXLM, KC_QUES, KC_QUOT, KC_DQUO, _______ \
+      _______, KC_EQL,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, KC_EXLM, KC_QUES, KC_QUOT, KC_DQUO, _______  \
       ),
 
-
-      /* _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,  \ */
-      /* _______, KC_ASTR, KC_7,    KC_8,    KC_9,    KC_SCLN,                   KC_MINS, KC_PLUS, KC_COMM, KC_DOT,  _______, _______,  \ */
-      /* _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_COLN,                   KC_X,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CURNUM_T, \ */
-      /* _______, KC_EQL,  KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_ASTR, KC_SLSH,  _______ \ */
 
   /* Extras:         Workspaces                               macOS, Quicksilver, Browsers, Slack
    * ,-----------------------------------------.           ,-----------------------------------------.
@@ -259,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      |GUI-0 |GUI-1 |GUI-2 |GUI-3 |      |           |      | Left | Down |  Up  |Right |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      |      |GUI-4 |GUI-5 |GUI-6 |      |**** |     |      | C-u  |M-RET | M-<  | M->  |      |
+   * |      |      |GUI-4 |GUI-5 |GUI-6 |      |     |     |      | C-u  |M-RET | M-<  | M->  |      |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_EXTRA] = LAYOUT( \
@@ -269,13 +254,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, GUI_4,   GUI_5  , GUI_6,   _______, _______, _______, _______, C_U,     M_RET,   M_LT,    M_GT,    _______ \
       ),
 
-  /* [_EXTRA] = LAYOUT( \ */
-  /*     _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \ */
-  /*     _______, _______, GUI_7,   GUI_8,   GUI_9,   _______,                   _______, CS_TAB,  C_TAB,   GLPS,    _______, _______, \ */
-  /*     _______, GUI_0,   GUI_1,   GUI_2  , GUI_3,   _______,                   _______, C_3,     GUI_K,   GS_ENT,  _______, _______, \ */
-  /*     _______, _______, GUI_4,   GUI_5  , GUI_6,   _______, _______, _______, _______, _______, G_LBRC,  G_RBRC,  GCS4,    _______ \ */
-  /*     ), */
-
   /* Symbols:
    * ,-----------------------------------------.           ,-----------------------------------------.
    * |      |      |      |      |      |      |           |      |      |      |      |      |      |
@@ -284,14 +262,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      |  "   |  '   |  :   |  =   |  &   |           |  ~   |  (   |  )   |  [   |  ]   |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      |  ?   |  @   |      |  #   |      |     |     |      |  ^   |  `   |  <   |  >   |      |
+   * |      |  ?   |  @   |  ^   |  #   |      |     |     |      |  ^   |  `   |  <   |  >   |      |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_SYMBOL] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
       _______, _______, KC_DLR,  KC_SCLN, KC_EXLM, KC_BSLS,                   KC_PIPE, KC_LCBR, KC_RCBR, KC_PERC, _______, _______, \
       _______, KC_DQUO, KC_QUOT, KC_COLN, KC_EQL,  KC_AMPR,                   KC_GRV,  KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, _______, \
-      _______, KC_QUES, KC_AT,   _______, KC_HASH, _______, _______, _______, _______, KC_CIRC, KC_GRV,  KC_LT,   KC_GT,   _______  \
+      _______, KC_QUES, KC_AT,   KC_CIRC, KC_HASH, _______, _______, _______, _______, KC_CIRC, KC_GRV,  KC_LT,   KC_GT,   _______  \
       ),
 
   /* Coffee:
