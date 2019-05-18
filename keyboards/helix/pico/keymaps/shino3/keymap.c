@@ -81,6 +81,7 @@ enum custom_keycodes {
 #define A_SY     LT(_SYMBOL, KC_A)
 #define B_ALT    LALT_T(KC_B)
 #define E_EX     LT(_EXTRA,  KC_E)
+#define G_ALT    LALT_T(KC_G)
 
 #define I_SFT    LSFT_T(KC_I)
 #define I_SY     LT(_SYMBOL, KC_I)
@@ -91,12 +92,13 @@ enum custom_keycodes {
 #define N_EX     LT(_EXTRA, KC_N)
 #define N_SY     LT(_SYMBOL, KC_N)
 
+#define O_LCTL   LCTL_T(KC_O)
+#define Q_ALT    LALT_T(KC_B)
 #define T_SFT    LSFT_T(KC_T)
 #define T_SY     LT(_SYMBOL, KC_T)
 #define U_GUI    LGUI_T(KC_U)
 #define U_GUI    LGUI_T(KC_U)
 #define U_LCTL   LCTL_T(KC_U)
-#define O_LCTL   LCTL_T(KC_O)
 
 #define W_ALT    LALT_T(KC_W)
 #define X_ST     LT(_STARS, KC_X)
@@ -111,6 +113,7 @@ enum custom_keycodes {
 #define EN_GUI   LGUI_T(EN)
 #define EN_SY    LT(_SYMBOL, EN)
 #define JA_GUI   LGUI_T(JA)
+#define TB_GUI   LGUI_T(KC_TAB)
 #define JA_ALT   LALT_T(JA)
 #define JA_SFT   LSFT_T(JA)
 #define JA_SY    LT(_SYMBOL, JA)
@@ -188,20 +191,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* EucalynX:
    * ,-----------------------------------------.           ,-----------------------------------------.
-   * | Mute | Vol- | Vol+ | Prev | Play | Next |           |  BS  | Left | Down |  Up  |Right |Adjust|
+   * | ---- |Coffee|  Y   |  D   |  W   | Mute |           | Vol+ |  B o |  N  f|  P   | BS   |Adjust|
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |Space | Tab  |  F   |  W   |  Y   |  Q   |           |  P   |  J   |  K  c|  R   | Esc  | GUI  |
+   * | Tab  | Esc  |  I   |  U   |  E   | Play |           | Vol- |  M   |  S  s|  R   |  F   | Ent  |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |Coffee|I/Sft |  A   |  U   | E/Ex |  V   |           |  Z   |N/Ex f|  M   |  S  s|T/Sft |Coffee|
+   * |  Up  |A/Sft |  X   |  C   |  V   | ---- |           | ---- |  H   |  J   |  K c |T/Sft | Ent  |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Esc  |  C   |  L   |  X   | -/Al | O/Ct |En/Gu|Ja/Sy|Spc/St|B/Al o|  D   |  H   |  G   | Ent  |
+   * | Down |  Z   | Left |Right | Q/Al | O/Ct |En/Gu|Tb/Gu|Spc/St| G/Al | Prev | Next |  L   | ---- |
    * `-----------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_BSPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      KC_SPC,  KC_TAB,  KC_F,    KC_W,    KC_Y,    KC_Q,                    KC_P,    KC_J,    KC_K,    KC_R,    KC_ESC,   KC_RGUI, \
-      COFF_T,  I_SFT,   KC_A,    KC_U,    E_EX,    KC_V,                    KC_Z,    N_EX,    KC_M,    KC_S,    T_SFT,    COFF_T,  \
-      KC_ESC,  KC_C,    KC_L,    KC_X,    MINS_ALT,O_LCTL,  EN_GUI, JA_SY,  SP_STAR, B_ALT,   KC_D,    KC_H,    KC_G,     KC_ENT   \
+      _______, COFF_T,  KC_Y,    KC_D,    KC_W,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
+      KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_Y,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
+      KC_UP,   A_SFT,   KC_X,    KC_C,    KC_V,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    COFF_T,  \
+      KC_DOWN, KC_Z,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, G_ALT,   KC_MPRV, KC_MNXT, KC_L,     _______  \
       ),
 
   /* Qwerty:
