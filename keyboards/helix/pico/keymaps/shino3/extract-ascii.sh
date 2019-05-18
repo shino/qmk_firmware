@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=./keyboards/helix/pico/keymaps/shino2/
+DIR=./keyboards/helix/pico/keymaps/shino3/
 TO_CLIPBOARD=pbcopy
 
 SRC=${DIR}/keymap.c
