@@ -93,7 +93,7 @@ enum custom_keycodes {
 #define N_SY     LT(_SYMBOL, KC_N)
 
 #define O_LCTL   LCTL_T(KC_O)
-#define Q_ALT    LALT_T(KC_B)
+#define Q_ALT    LALT_T(KC_Q)
 #define T_SFT    LSFT_T(KC_T)
 #define T_SY     LT(_SYMBOL, KC_T)
 #define U_GUI    LGUI_T(KC_U)
@@ -117,6 +117,9 @@ enum custom_keycodes {
 #define JA_ALT   LALT_T(JA)
 #define JA_SFT   LSFT_T(JA)
 #define JA_SY    LT(_SYMBOL, JA)
+
+#define ZERO_SFT LSFT_T(KC_0)
+#define DOT_SFT  LSFT_T(KC_DOT)
 
 // QWERTY : LT mods
 
@@ -202,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_EUCALX] = LAYOUT( \
       _______, COFF_T,  KC_Y,    KC_D,    KC_W,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
-      KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_Y,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
+      KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
       KC_UP,   A_SFT,   KC_X,    KC_C,    KC_V,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    COFF_T,  \
       KC_DOWN, KC_Z,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, G_ALT,   KC_MPRV, KC_MNXT, KC_L,     _______  \
       ),
@@ -239,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_STARS] = LAYOUT( \
       _______, _______, KC_4,    KC_5,    KC_6,    _______,                   _______, GLPS,    KC_SLSH, KC_QUOT, _______, _______, \
       _______, KC_BSLS, KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, KC_EQL,  KC_COMM, KC_GRV,  _______, \
-      _______, KC_0,    KC_7,    KC_8,    KC_9,    _______,                   _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_DOT,  _______, \
+      _______, ZERO_SFT,KC_7,    KC_8,    KC_9,    _______,                   _______, KC_LPRN, KC_RPRN, KC_LBRC, DOT_SFT, _______, \
       _______, KC_SCLN, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, _______  \
       ),
 
