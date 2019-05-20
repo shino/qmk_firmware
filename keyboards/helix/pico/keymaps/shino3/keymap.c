@@ -204,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------------------'
    */
   [_EUCALX] = LAYOUT( \
-      _______, COFF_T,  KC_Y,    KC_D,    KC_W,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
+      _______, COFF_T,  KC_W,    KC_D,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
       KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
       KC_UP,   A_SFT,   KC_X,    KC_C,    KC_V,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    COFF_T,  \
       KC_DOWN, KC_Z,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, G_ALT,   KC_MPRV, KC_MNXT, KC_L,     _______  \
