@@ -25,7 +25,7 @@ extern uint8_t is_master;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 enum layer_number {
-    _EUCALX = 0,
+    _FINCOL = 0,
     _QWERTY,
     _STARS,
     _EXTRA,
@@ -35,7 +35,7 @@ enum layer_number {
 };
 
 enum custom_keycodes {
-  EUCALX = SAFE_RANGE,
+  FINCOL = SAFE_RANGE,
   QWERTY,
   STARS,
   EXTRA,
@@ -75,7 +75,7 @@ enum custom_keycodes {
 #define EN       KC_LANG2    // IME: En
 #define JA       KC_LANG1    // IME: Ja
 
-// EUCALX : LT mods
+// FOURCOL : LT mods
 
 #define A_SFT    LSFT_T(KC_A)
 #define A_SY     LT(_SYMBOL, KC_A)
@@ -192,7 +192,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* EucalynX:
+  /* FinCol:
    * ,-----------------------------------------.           ,-----------------------------------------.
    * | ---- |Coffee|  W   |  D   |  Y   | Mute |           | Vol+ |  B o |  N  f|  P   | BS   |Adjust|
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | Down |  Z   | Left |Right | Q/Al | O/Ct |En/Gu|Tb/Gu|Spc/St| G/Al | Prev | Next |  L   | ---- |
    * `-----------------------------------------------------------------------------------------------'
    */
-  [_EUCALX] = LAYOUT( \
+  [_FINCOL] = LAYOUT( \
       _______, COFF_T,  KC_W,    KC_D,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
       KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
       KC_UP,   A_SFT,   KC_X,    KC_C,    KC_V,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    COFF_T,  \
@@ -305,7 +305,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.           ,-----------------------------------------.
    * |      | Reset|      |      |      |      |           |      |      |      |      |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |           | Win  |Qwerty|      |EucalX|      |      |
+   * |      |Aud on|Audoff|MU TOG|MU MOD| Mac  |           | Win  |Qwerty|      |FinCol|      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |      |CK TOG|CK RST| CK UP|CK DWN|      |           |      |      |RGB ON| HUE+ | SAT+ | VAL+ |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
@@ -314,7 +314,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_ADJUST] =  LAYOUT( \
       _______, RESET,   _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  _______, EUCALX,  _______, _______, \
+      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  _______, FINCOL,   _______, _______, \
       _______, CK_TOGG, CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD  \
       )
@@ -324,7 +324,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef AUDIO_ENABLE
 
 float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
-float tone_eucalx[][2]     = SONG(DVORAK_SOUND);
+float tone_fincol[][2]     = SONG(DVORAK_SOUND);
 float tone_plover[][2]     = SONG(PLOVER_SOUND);
 float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
 float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
@@ -362,12 +362,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case EUCALX:
+    case FINCOL:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_eucalx);
+          PLAY_SONG(tone_fincol);
         #endif
-        persistent_default_layer_set(1UL<<_EUCALX);
+        persistent_default_layer_set(1UL<<_FINCOL);
       }
       return false;
       break;
