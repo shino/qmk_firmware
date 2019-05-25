@@ -203,6 +203,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | Down |  Z   | Left |Right | Q/Al | O/Ct |En/Gu|Tb/Gu|Spc/St| G/Al | Prev | Next |  L   | ---- |
    * `-----------------------------------------------------------------------------------------------'
    */
+
+  /* FinCol: mind model
+   *        ,--------------------.                            ,--------------------.
+   *        |  W   |  D   |  Y   |                            |  B o |  N  f|  P   |
+   * ,------+------+------+------|                            |------+------+------+------.
+   * | Esc  |  I   |  U   |  E   |                            |  M   |  S  s|  R   |  F   |
+   * |------+------+------+------|                            |------+------+------+------|
+   * |A/Sft |  X   |  C   |  V   |                            |  H   |  J   |  K c |T/Sft |
+   * |------+--------------------'                            `------+-------------+------|
+   * |  Z   |                                                                      |  L   |
+   * `------'             +------+------------.  ,------------+------+             `------'
+   *                      | Q/Al | O/Ct |En/Gu|  |Tb/Gu|Spc/St| G/Al |
+   *                      `-------------------'  `-------------------'
+   *
+   */
   [_FINCOL] = LAYOUT( \
       _______, COFF_T,  KC_W,    KC_D,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
       KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
@@ -228,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,  KC_Z,    KC_X,    KC_C,    V_ALT,   SP_LCTL, EN_SY,  JA_GUI, SP_STAR, B_ALT,   KC_N,    KC_M,    KC_SLSH,  KC_ENT   \
       ),
 
-  /* Stars:            Numbers                                          Arith Ops, Parens  
+  /* Stars:            Numbers                                          Arith Ops, Parens
    * ,-----------------------------------------.           ,-----------------------------------------.
    * |      |      |  4 $ |  5 % |  6 ^ |      |           |      | GLPS |  / ? |  ' " |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
