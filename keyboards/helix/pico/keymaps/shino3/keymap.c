@@ -27,9 +27,8 @@ extern uint8_t is_master;
 enum layer_number {
     _FINCOL = 0,
     _QWERTY,
-    _STARS,
-    _EXTRA,
     _SYMBOL,
+    _EXTRA,
     _COFFEE,
     _ADJUST
 };
@@ -37,9 +36,8 @@ enum layer_number {
 enum custom_keycodes {
   FINCOL = SAFE_RANGE,
   QWERTY,
-  STARS,
-  EXTRA,
   SYMBOL,
+  EXTRA,
   COFFEE,
   ADJUST,
   BACKLIT,
@@ -65,7 +63,7 @@ enum custom_keycodes {
 
 // Spaces
 #define SP_LCTL LCTL_T(KC_SPC)
-#define SP_STAR LT(_STARS, KC_SPC)
+#define SP_STAR LT(_SYMBOL, KC_SPC)
 #define SP_RCTL RCTL_T(KC_SPC)
 #define SP_RALT RALT_T(KC_SPC)
 
@@ -78,48 +76,43 @@ enum custom_keycodes {
 // FOURCOL : LT mods
 
 #define A_SFT    LSFT_T(KC_A)
-#define A_SY     LT(_SYMBOL, KC_A)
 #define B_ALT    LALT_T(KC_B)
 #define E_EX     LT(_EXTRA,  KC_E)
 #define G_ALT    LALT_T(KC_G)
 
 #define I_SFT    LSFT_T(KC_I)
-#define I_SY     LT(_SYMBOL, KC_I)
 #define I_EX     LT(_EXTRA,  KC_I)
 #define L_GUI    LGUI_T(KC_L)
 #define L_ALT    LALT_T(KC_L)
-#define M_SY     LT(_SYMBOL, KC_M)
 #define N_EX     LT(_EXTRA, KC_N)
-#define N_SY     LT(_SYMBOL, KC_N)
 
 #define O_LCTL   LCTL_T(KC_O)
 #define Q_ALT    LALT_T(KC_Q)
 #define T_SFT    LSFT_T(KC_T)
-#define T_SY     LT(_SYMBOL, KC_T)
 #define U_GUI    LGUI_T(KC_U)
 #define U_GUI    LGUI_T(KC_U)
 #define U_LCTL   LCTL_T(KC_U)
 
 #define W_ALT    LALT_T(KC_W)
-#define X_ST     LT(_STARS, KC_X)
+#define X_ST     LT(_SYMBOL, KC_X)
 #define X_SFT    LSFT_T(KC_X)
 #define X_ALT    LALT_T(KC_X)
-#define Z_ST     LT(_STARS,  KC_Z)
+#define Z_ST     LT(_SYMBOL,  KC_Z)
 #define Z_SFT    LSFT_T(KC_Z)
 #define Z_GUI    LGUI_T(KC_Z)
 
 #define MINS_ALT LALT_T(KC_MINS)
 #define MINS_GUI LGUI_T(KC_MINS)
 #define EN_GUI   LGUI_T(EN)
-#define EN_SY    LT(_SYMBOL, EN)
 #define JA_GUI   LGUI_T(JA)
 #define TB_GUI   LGUI_T(KC_TAB)
 #define JA_ALT   LALT_T(JA)
 #define JA_SFT   LSFT_T(JA)
-#define JA_SY    LT(_SYMBOL, JA)
 
 #define ZERO_SFT LSFT_T(KC_0)
 #define DOT_SFT  LSFT_T(KC_DOT)
+
+#define ESC_ALT  LALT_T(KC_ESC)
 
 // QWERTY : LT mods
 
@@ -194,35 +187,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* FinCol:
    * ,-----------------------------------------.           ,-----------------------------------------.
-   * | ---- |Coffee|  W   |  D   |  Y   | Mute |           | Vol+ |  B o |  N  f|  P   | BS   |Adjust|
+   * | ---- |Coffee|  C   |  Z   |  Y   | Mute |           | Vol+ |  B o |  N  f|  P   | BS   |Adjust|
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * | Tab  | Esc  |  I   |  U   |  E   | Play |           | Vol- |  M   |  S  s|  R   |  F   | Ent  |
+   * | Tab  |  W   |  I   |  U   |  E   | Play |           | Vol- |  M   |  S  s|  R   |  F   | Ent  |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |  Up  |A/Sft |  X   |  C   |  V   | ---- |           | ---- |  H   |  J   |  K c |T/Sft | Ent  |
+   * |  Up  |A/Sft |  X   |  V   |  D   | ---- |           | ---- |  H   |  J   |  K c |T/Sft | Ent  |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Down |  Z   | Left |Right | Q/Al | O/Ct |En/Gu|Tb/Gu|Spc/St| G/Al | Prev | Next |  L   | ---- |
+   * | Down |  G   | Left |Right |Ja/Al | O/Ct |En/Gu|Tb/Gu|Spc/St|Esc/Al| Prev | Next |  L   | ---- |
    * `-----------------------------------------------------------------------------------------------'
    */
 
-  /* FinCol: mind model
+  /* My Mind Model
    *        ,--------------------.                            ,--------------------.
-   *        |  W   |  D   |  Y   |                            |  B o |  N  f|  P   |
+   *        |  C   |  Z   |  Y   |                            |  B o |  N  f|  P   |
    * ,------+------+------+------|                            |------+------+------+------.
-   * | Esc  |  I   |  U   |  E   |                            |  M   |  S  s|  R   |  F   |
+   * |  W   |  I   |  U   |  E   |                            |  M   |  S  s|  R   |  F   |
    * |------+------+------+------|                            |------+------+------+------|
-   * |A/Sft |  X   |  C   |  V   |                            |  H   |  J   |  K c |T/Sft |
+   * |  A   |  X   |  V   |  D   |                            |  H   |  J   |  K c |T/Sft |
    * |------+--------------------'                            `------+-------------+------|
-   * |  Z   |                                                                      |  L   |
+   * |  G   |                                                                      |  L   |
    * `------'             +------+------------.  ,------------+------+             `------'
-   *                      | Q/Al | O/Ct |En/Gu|  |Tb/Gu|Spc/St| G/Al |
+   *                      |  Q   |   O  | En  |  | Tb  | Spc  | Esc  |
    *                      `-------------------'  `-------------------'
    *
    */
   [_FINCOL] = LAYOUT( \
-      _______, COFF_T,  KC_W,    KC_D,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
-      KC_TAB,  KC_ESC,  KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_RGUI, \
-      KC_UP,   A_SFT,   KC_X,    KC_C,    KC_V,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    COFF_T,  \
-      KC_DOWN, KC_Z,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, G_ALT,   KC_MPRV, KC_MNXT, KC_L,     _______  \
+      _______, COFF_T,  KC_C,    KC_Z,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
+      KC_TAB,  KC_W,    KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_ENT,  \
+      KC_UP,   A_SFT,   KC_X,    KC_V,    KC_D,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    KC_ENT,  \
+      KC_DOWN, KC_G,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, ESC_ALT, KC_MPRV, KC_MNXT, KC_L,     _______ \
       ),
 
   /* Qwerty:
@@ -240,24 +233,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_MINS,  _______, \
       COFF_T,  A_SFT,   KC_S,    KC_D,    F_EX,    KC_G,                    KC_H,    J_EX,    KC_K,    KC_L,    P_SFT,    COFF_T,  \
-      KC_ESC,  KC_Z,    KC_X,    KC_C,    V_ALT,   SP_LCTL, EN_SY,  JA_GUI, SP_STAR, B_ALT,   KC_N,    KC_M,    KC_SLSH,  KC_ENT   \
+      KC_ESC,  KC_Z,    KC_X,    KC_C,    V_ALT,   SP_LCTL, EN_GUI, JA_GUI, SP_STAR, B_ALT,   KC_N,    KC_M,    KC_SLSH,  KC_ENT   \
       ),
 
-  /* Stars:            Numbers                                          Arith Ops, Parens
+  /* Symbol:            Numbers                                          Arith Ops, Parens
    * ,-----------------------------------------.           ,-----------------------------------------.
-   * |      |      |  4 $ |  5 % |  6 ^ |      |           |      | GLPS |  / ? |  ' " |      |      |
+   * |      |      |  4 $ |  5 % |  6 ^ |      |           |      |  = + |  / ? |  (   |      |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |  \ | |  1 ! |  2 @ |  3 # |      |           |      |  - _ |  = + |  , < |  ` ~ |      |
+   * |      |  \ | |  1 ! |  2 @ |  3 # |      |           |      |  - _ | C-3  |  , < |  )   |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |  0   |  7 & |  8 * |  9   |      |           |      |  (   |  )   |  [ { |  . > |      |
+   * |      |  0   |  7 & |  8 * |  9   |      |           |      |  ' " | ` ~  |  [ { |  . > |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
    * |      |  ; : |      |      |      |      |     |     | **** |      |      |      |  ] } |      |
    * `-----------------------------------------------------------------------------------------------'
    */
-  [_STARS] = LAYOUT( \
-      _______, _______, KC_4,    KC_5,    KC_6,    _______,                   _______, GLPS,    KC_SLSH, KC_QUOT, _______, _______, \
-      _______, KC_BSLS, KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, KC_EQL,  KC_COMM, KC_GRV,  _______, \
-      _______, ZERO_SFT,KC_7,    KC_8,    KC_9,    _______,                   _______, KC_LPRN, KC_RPRN, KC_LBRC, DOT_SFT, _______, \
+  [_SYMBOL] = LAYOUT( \
+      _______, _______, KC_4,    KC_5,    KC_6,    _______,                   _______, KC_EQL,  KC_SLSH, KC_LPRN, _______, _______, \
+      _______, KC_BSLS, KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, C_3,     KC_COMM, KC_RPRN, _______, \
+      _______, ZERO_SFT,KC_7,    KC_8,    KC_9,    _______,                   _______, KC_QUOT, KC_GRV,  KC_LBRC, DOT_SFT, _______, \
       _______, KC_SCLN, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, _______  \
       ),
 
@@ -278,24 +271,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, GUI_4,   GUI_5,   GUI_6,   _______,                   _______, C_SLSH,  C_COMM,  C_DOT,   _______, _______, \
       _______, GUI_0,   GUI_1,   GUI_2  , GUI_3,   _______,                   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, \
       _______, _______, GUI_7,   GUI_8  , GUI_9,   _______, _______, _______, _______, C_U,     M_RET,   M_LT,    M_GT,    _______ \
-      ),
-
-  /* Symbols:
-   * ,-----------------------------------------.           ,-----------------------------------------.
-   * |      |      |      |      |      |      |           |      |      |      |      |      |      |
-   * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |      |  $   |  %   |  \   |      |           |      |  {   |  }   |  `   |      |      |
-   * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |  #   |  @   |  ;   |  :   |      |           |      |  (   |  )   |  [   |  ]   |      |
-   * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      |  &   |  ^   |  ~   |      |      |     |     |      |      |  |   |  <   |  >   |      |
-   * `-----------------------------------------------------------------------------------------------'
-   */
-  [_SYMBOL] = LAYOUT( \
-      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, _______, KC_DLR,  KC_PERC, KC_BSLS, _______,                   _______, KC_LCBR, KC_RCBR, KC_GRV,  _______, _______, \
-      _______, KC_HASH, KC_AT,   KC_SCLN, KC_COLN, KC_AMPR,                   _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, _______, \
-      _______, KC_AMPR, KC_CIRC, KC_TILD, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_LT,   KC_GT,   _______  \
       ),
 
   /* Coffee:
@@ -383,52 +358,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_SONG(tone_fincol);
         #endif
         persistent_default_layer_set(1UL<<_FINCOL);
-      }
-      return false;
-      break;
-    case SYMBOL:
-      if (record->event.pressed) {
-          //not sure how to have keyboard check mode and set it to a variable, so my work around
-          //uses another variable that would be set to true after the first time a reactive key is pressed.
-        if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
-        } else {
-          TOG_STATUS = !TOG_STATUS;
-          #ifdef RGBLIGHT_ENABLE
-            //rgblight_mode(RGBLIGHT_MODE_SNAKE + 1);
-          #endif
-        }
-        layer_on(_SYMBOL);
-        update_tri_layer_RGB(_SYMBOL, _STARS, _ADJUST);
-      } else {
-        #ifdef RGBLIGHT_ENABLE
-          //rgblight_mode(RGB_current_mode);   // revert RGB to initial mode prior to RGB mode change
-        #endif
-        TOG_STATUS = false;
-        layer_off(_SYMBOL);
-        update_tri_layer_RGB(_SYMBOL, _STARS, _ADJUST);
-      }
-      return false;
-      break;
-    case STARS:
-      if (record->event.pressed) {
-        //not sure how to have keyboard check mode and set it to a variable, so my work around
-        //uses another variable that would be set to true after the first time a reactive key is pressed.
-        if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
-        } else {
-          TOG_STATUS = !TOG_STATUS;
-          #ifdef RGBLIGHT_ENABLE
-            //rgblight_mode(RGBLIGHT_MODE_SNAKE);
-          #endif
-        }
-        layer_on(_STARS);
-        update_tri_layer_RGB(_SYMBOL, _STARS, _ADJUST);
-      } else {
-        #ifdef RGBLIGHT_ENABLE
-          //rgblight_mode(RGB_current_mode);  // revert RGB to initial mode prior to RGB mode change
-        #endif
-        layer_off(_STARS);
-        TOG_STATUS = false;
-        update_tri_layer_RGB(_SYMBOL, _STARS, _ADJUST);
       }
       return false;
       break;
@@ -605,10 +534,9 @@ void matrix_update(struct CharacterMatrix *dest,
 
 //assign the right code to your layers for OLED display
 #define L_BASE 0
-#define L_SYMBOL (1<<_SYMBOL)
-#define L_STARS  (1<<_STARS)
+#define L_SYMBOL  (1<<_SYMBOL)
 #define L_ADJUST (1<<_ADJUST)
-#define L_ADJUST_TRI (L_ADJUST|L_STARS|L_SYMBOL)
+#define L_ADJUST_TRI (L_ADJUST|L_SYMBOL)
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -644,9 +572,6 @@ void render_status(struct CharacterMatrix *matrix) {
     switch (layer_state) {
         case L_BASE:
            matrix_write_P(matrix, PSTR("Default"));
-           break;
-        case L_STARS:
-           matrix_write_P(matrix, PSTR("Stars"));
            break;
         case L_SYMBOL:
            matrix_write_P(matrix, PSTR("Symbol"));
