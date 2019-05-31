@@ -215,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, COFF_T,  KC_C,    KC_Z,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
       KC_TAB,  KC_W,    KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_ENT,  \
       KC_UP,   A_SFT,   KC_X,    KC_V,    KC_D,    _______,                 KC_Z,    KC_H,    KC_J,    KC_K,    T_SFT,    KC_ENT,  \
-      KC_DOWN, KC_G,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, TB_GUI, SP_STAR, ESC_ALT, KC_MPRV, KC_MNXT, KC_L,     _______ \
+      KC_DOWN, KC_G,    KC_LEFT, KC_RGHT, JA_ALT,  O_LCTL,  EN_GUI, TB_GUI, SP_STAR, ESC_ALT, KC_MPRV, KC_MNXT, KC_L,     _______ \
       ),
 
   /* Qwerty:
