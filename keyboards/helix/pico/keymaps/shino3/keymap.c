@@ -190,11 +190,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------------.           ,-----------------------------------------.
    * | ---- | Tab  |  C   |  Z   |  Y   | Mute |           | Vol+ |  B o |  N  f|  P   | BS   |Adjust|
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |Coffee|  W   |  I   |  U   |  E   | Play |           | Vol- |  M   |  S  s|  R   |  F   | Ent  |
+   * |Coffee|  D   |  I   |  U   |  E   | Play |           | Vol- |  M   |  S  s|  R   |  F   | Ent  |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |  Up  |A/Sft |  X   |  V   |  G   | ---- |           | ---- |  H   |  J   |  K c |T/Sft | Ent  |
+   * |  Up  |A/Sft |  W   |  V   |  G   | ---- |           | ---- |  H   |  J   |  K c |T/Sft | Ent  |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * | Down |  D   | Left |Right | Q/Al | O/Ct |En/Gu|Ja/Al|Spc/St|Esc/Gu| Prev | Next |  L   | ---- |
+   * | Down |  X   | Left |Right | Q/Al | O/Ct |En/Gu|Ja/Al|Spc/St|Esc/Gu| Prev | Next |  L   | ---- |
    * `-----------------------------------------------------------------------------------------------'
    */
 
@@ -214,8 +214,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_FINCOL] = LAYOUT( \
       _______, KC_TAB,  KC_C,    KC_Z,    KC_Y,    KC_MUTE,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
-      COFF_T,  KC_W,    KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_ENT,g      KC_UP,   A_SFT,   KC_X,    KC_V,    KC_G,    O_LCTL,                  SP_STAR, KC_H,    KC_J,    KC_K,    T_SFT,    KC_ENT, \
-      KC_DOWN, KC_D,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, JA_ALT, SP_STAR, ESC_GUI, KC_MPRV, KC_MNXT, KC_L,     _______ \
+      COFF_T,  KC_D,    KC_I,    KC_U,    KC_E,    KC_MPLY,                 KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_ENT, \
+      KC_UP,   A_SFT,   KC_W,    KC_V,    KC_G,    O_LCTL,                  SP_STAR, KC_H,    KC_J,    KC_K,    T_SFT,    KC_ENT, \
+      KC_DOWN, KC_X,    KC_LEFT, KC_RGHT, Q_ALT,   O_LCTL,  EN_GUI, JA_ALT, SP_STAR, ESC_GUI, KC_MPRV, KC_MNXT, KC_L,     _______ \
       ),
 
   /* Qwerty:
@@ -279,9 +280,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
    * |[back]|      |      |      |      |      |           |      | MS L | MS D | MS U | WH R |      |
    * |------+------+------+------+------+------|           |------+------+------+------+------+------|
-   * |      |      |      |      |      |      |           |      | Left | Down |  Up  |Right |      |
+   * |      |      |      |      |      |      |           |      | Left | Down |  Up  | MS R |      |
    * |------+------+------+------+------+------+-----------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      |     |     | BTN1 | BTN2 |      |      |      |      |
+   * |      |      |      |      |      |      |     |     | BTN1 | BTN2 |      |      |Right |      |
    * `----------------------------------------------------------------------------------------------'
    */
   [_COFFEE] = LAYOUT( \
