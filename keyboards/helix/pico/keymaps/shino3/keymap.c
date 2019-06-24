@@ -108,6 +108,7 @@ enum custom_keycodes {
 #define EN_GUI   LGUI_T(EN)
 #define JA_GUI   LGUI_T(JA)
 #define TB_GUI   LGUI_T(KC_TAB)
+#define TB_ALT   LALT_T(KC_TAB)
 #define JA_ALT   LALT_T(JA)
 #define JA_GUI   LGUI_T(JA)
 #define JA_SFT   LSFT_T(JA)
@@ -117,7 +118,7 @@ enum custom_keycodes {
 
 #define ESC_ALT  LALT_T(KC_ESC)
 #define ESC_GUI  LGUI_T(KC_ESC)
-#define ESC_COF  LT(KC_ESC, _COFFEE)
+#define ESC_COF  LT(_COFFEE, KC_ESC)
 
 // QWERTY : LT mods
 
@@ -202,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |  X   |  Z   |  W   |  C   |                            |  H   |  J   |  K   |  L   |
    * `---------------------------'                            `------+--------------------'
    *                      +-------------------.  ,-------------------+
-   *                      |  Q   |  O   | En  |  |  Ja | Spc  | Esc  |
+   *                      |  Q   |  O   |En/Ja|  | Tab | Spc  | Esc  |
    *                      `-------------------'  `-------------------'
    */
   /* FinCol:
@@ -220,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_UP,   KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_MPLY,                 KC_VOLU, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST, \
       KC_DOWN, KC_V,    KC_I,    KC_U,    KC_E,    SP_COF,                  KC_VOLD, KC_M,    KC_S,    KC_R,    KC_F,     KC_ENT, \
       COFF_T,  A_SFT,   KC_Z,    KC_W,    KC_C,    O_LCTL,                  SP_STAR, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T, \
-      KC_SPC,  KC_X,    KC_LEFT, KC_RGHT, Q_COF,   O_LCTL,  EN_GUI, JA_ALT, SP_STAR, ESC_COF, KC_MPRV, KC_MNXT, KC_L,     KC_ENT  \
+      KC_SPC,  KC_X,    KC_LEFT, KC_RGHT, Q_COF,   O_LCTL,  EN_GUI, TB_ALT, SP_STAR, ESC_COF, KC_MPRV, KC_MNXT, KC_L,     KC_ENT \
       ),
 
   /* Qwerty:
