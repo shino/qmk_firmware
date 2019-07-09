@@ -25,12 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Slow key tapper
 #undef TAPPING_TERM
-#define TAPPING_TERM 200
+#define TAPPING_TERM 500
 
 // Use key repeat for keys with long tap
 #undef TAPPING_FORCE_HOLD
 
 // https://docs.qmk.fm/#/feature_advanced_keycodes?id=permissive-hold
+// #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 
 // mouse key settings
