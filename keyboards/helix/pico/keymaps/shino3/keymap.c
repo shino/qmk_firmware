@@ -205,18 +205,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------.           ,-----------------------------------.
    * | Vo+ | Tab |  G  |  D  |  Y  | ↑  |           |  ,  |  B o|  N f|  P  | BS  | Adj |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Vo- |  V  |  I  |  U  |  E  | ↓  |           |  .  |  M  |  S s|  R  |  F  |     |
+   * | Vo- |  V  |  I  |  U  |  E  | ↓  |           |  .  |  M  |  S s|  R  |  F  | Ply |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Ex |A /SF|  Z  |  W  |  C  | --- |           | --- |  H  |  J  |  K c|T/SF | +SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * | Sp  |  X  | Ply | Nxt |Q /EX|O /CT|En/GU|Tb/AL|Sp/SY|Es/EX|  ← | →  |  L  | Ent |
+   * | Sp  |  X  | Prv | Nxt |Q /EX|O /CT|En/GU|Tb/AL|Sp/SY|Es/EX|  ← | →  |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_UP,                   KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  ADJUST,  \
       KC_VOLD, KC_V,    KC_I,    KC_U,    KC_E,    KC_DOWN,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_MPLY, \
       EX_T,    A_SFT,   KC_Z,    KC_W,    KC_C,    O_LCTL,                  SP_STAR, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T,  \
-      KC_SPC,  KC_X,    KC_MPLY, KC_MNXT, Q_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, ESC_EX,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      KC_SPC,  KC_X,    KC_MPRV, KC_MNXT, Q_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, ESC_EX,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Qwerty:
@@ -264,14 +264,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | ~EX |     |     |CS-Tb|C-Tb |     |           |     | ←  | ↓  | ↑  | ⇨  |     |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     |     |     | Prv |     |     |     |B2/AL| B1  |     |     |     | →  |     |
+   * |     |     |     |     |     |     |     |B2/AL| B1  |     |     |     | →  |     |
    * `-----------------------------------------------------------------------------------'
    */
   [_EXTRA] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, KC_WH_L, KC_WH_D, KC_WH_U, _______, _______, \
       _______, _______, GLPS,    G_PLUS,  G_MINS,  _______,                   _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_WH_R, _______, \
       EX_T,    _______, _______, CS_TAB,  C_TAB,   _______,                   _______, KC_LEFT, KC_DOWN, KC_UP,   KC_MS_R, _______, \
-      _______, _______, KC_MPRV, _______, _______, _______, _______, B2_ALT,  KC_BTN1, _______, _______, _______, KC_RGHT, _______  \
+      _______, _______, _______, _______, _______, _______, _______, B2_ALT,  KC_BTN1, _______, _______, _______, KC_RGHT, _______  \
       ),
 
   /* Adjust:
