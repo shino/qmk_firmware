@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Slow key tapper
 #undef TAPPING_TERM
-#define TAPPING_TERM 500
+#define TAPPING_TERM 200
 
 // Use key repeat for keys with long tap
 #undef TAPPING_FORCE_HOLD
