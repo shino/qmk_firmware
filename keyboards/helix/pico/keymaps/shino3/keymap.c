@@ -92,6 +92,7 @@ enum custom_keycodes {
 #define U_GUI    LGUI_T(KC_U)
 #define U_LCTL   LCTL_T(KC_U)
 
+#define V_EX     LT(_EXTRA, KC_V)
 #define W_ALT    LALT_T(KC_W)
 #define X_ST     LT(_SYMBOL, KC_X)
 #define X_SFT    LSFT_T(KC_X)
@@ -146,8 +147,9 @@ enum custom_keycodes {
 #define SH_LEFT  LSFT(KC_LEFT)
 #define SH_RGHT  LSFT(KC_RGHT)
 
-// Quicksilver
+// Launcher
 #define C_3      LCTL(KC_3)
+#define GUI_3    LGUI(KC_3)
 #define C_RBRC   LCTL(KC_RBRC)
 
 // Browsers
@@ -192,32 +194,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Mind Model: 3 x 4 + 3 per hand
    * ,-----------------------.                          ,-----------------------.
-   * |  V q|  G  |  D  |  Y  |                          |  B  |  N  |  P  |  F  |
+   * | Esc |  G  |  D  |  Y  |                          |  B  |  N  |  P  |  F  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
    * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  R  |  T  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
    * |  X  |  Z  |  W  |  C  |                          |  H  |  J  |  K  |  L  |
    * `-----------------------'                          `-----+-----------------'
    *                   +-----------------.  ,-----------------+
-   *                   | Esc |  O  | En  |  | Ja  | Spc | Tab |
+   *                   |  Q  |  O  | En  |  | Ja  | Spc |  V  |
    *                   `-----------------'  `-----------------'
    */
   /* FinCol:
    * ,-----------------------------------.           ,-----------------------------------.
-   * | Vo+ | Tab |  G  |  D  |  Y  | ↑  |           |  ,  |  B o|  N f|  P  | BS  |  ,  |
+   * | Vo+ | Tab |  G  |  D  |  Y  | up  |           |  ,  |  B  |  N  |  P  | BS  | up  |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Vo- |  V  |  I  |  U  |  E  | ↓  |           |  .  |  M  |  S s|  R  |  F  |  .  |
+   * | Vo- | Esc |  I  |  U  |  E  |down |           |  .  |  M  |  S  |  R  |  F  |down |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | +Ex |A /SF|  Z  |  W  |  C  |-Adj-|           |-Ply-|  H  |  J  |  K c|T/SF | +SY |
+   * | +Ex |A/SF |  Z  |  W  |  C  |-Adj-|           |-Ply-|  H  |  J  |  K  |T/SF | +SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * | Sp  |  X  | Prv | Nxt |Es/EX|O /CT|En/GU|Ja/AL|Sp/SY|Tb/EX|  ← | →  |  L  | Ent |
+   * |caps |  X  | Prv | Nxt |Q/EX |O/CT |En/GU|Ja/AL|Sp/SY|V/EX |left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
-      KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_UP,                   KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_COMM, \
-      KC_VOLD, KC_V,    KC_I,    KC_U,    KC_E,    KC_DOWN,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOT,  \
+      KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_UP,                   KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
+      KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_DOWN,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOWN, \
       EX_T,    A_SFT,   KC_Z,    KC_W,    KC_C,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T,  \
-      KC_SPC,  KC_X,    KC_MPRV, KC_MNXT, ESC_EX,  O_LCTL,  EN_GUI, JA_ALT, SP_STAR, TAB_EX,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      KC_CAPS, KC_X,    KC_MPRV, KC_MNXT, Q_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, V_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Qwerty:
@@ -242,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------.           ,-----------------------------------.
    * |     |     | 4 $ | 5 % | 6 ^ |     |           |     | = + | / ? | ' " |     |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |  Q  | 1 ! | 2 @ | 3 # |     |           |     | - _ | C-3 | , < | \ | |     |
+   * |     |     | 1 ! | 2 @ | 3 # |     |           |     | - _ |Gui-3| , < | \ | |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * |     | 0 ) | 7 & | 8 * | 9 ( |     |           |     | ; : | ` ~ | [ { | . > | ~SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
@@ -251,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_SYMBOL] = LAYOUT( \
       _______, _______, KC_4,    KC_5,    KC_6,    _______,                   _______, KC_EQL,  KC_SLSH, KC_QUOT, _______, _______, \
-      _______, KC_Q,    KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, C_3,     KC_COMM, KC_BSLS, _______, \
+      _______, KC_Q,    KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, GUI_3,   KC_COMM, KC_BSLS, _______, \
       _______, ZERO_SFT,KC_7,    KC_8,    KC_9,    _______,                   _______, KC_SCLN, KC_GRV,  KC_LBRC, DOT_SFT, SYMB_T,  \
       _______, KC_SCLN, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, _______  \
       ),
