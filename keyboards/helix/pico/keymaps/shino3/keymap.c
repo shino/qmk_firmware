@@ -208,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------.           ,-----------------------------------.
    * | Vo+ | Tab |  G  |  D  |  Y  | up  |           |  ,  |  B  |  N  |  P  | BS  | up  |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Vo- | Esc |  I  |  U  |  E  |down |           |  .  |  M  |  S  |  R  |  F  |down |
+   * | Vo- | Esc |  I  |  U  |  E  |caps |           |  .  |  M  |  S  |  R  |  F  |down |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Ex |A/SF |  Z  |  W  |  C  |-Adj-|           |-Ply-|  H  |  J  |  K  |T/SF | +SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
@@ -217,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_UP,                   KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
-      KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_DOWN,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOWN, \
+      KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOWN, \
       EX_T,    A_SFT,   KC_Z,    KC_W,    KC_C,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T,  \
       KC_CAPS, KC_X,    KC_MPRV, KC_MNXT, Q_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, V_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
