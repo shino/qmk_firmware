@@ -1,7 +1,11 @@
 #!/bin/bash
 
+set -e
+# set -x
+
 DIR=./keyboards/helix/pico/keymaps/shino3/
-TO_CLIPBOARD=pbcopy
+# TO_CLIPBOARD=pbcopy
+TO_CLIPBOARD="xsel -b"
 
 SRC=${DIR}/keymap.c
 OUT=${DIR}/ascii.txt
