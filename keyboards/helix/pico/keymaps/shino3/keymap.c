@@ -39,18 +39,11 @@ enum custom_keycodes {
   EXTRA,
   ADJUST,
   BACKLIT,
-  EISU,
-  KANA,
   RGBRST,
   // C-x -> C-s
   CXCS,
   // Gui-L -> % -> Spc
-  GLPS,
-  // MOUSE diagonal move
-  MS_UR,
-  MS_UL,
-  MS_DR,
-  MS_DL
+  GLPS
 };
 
 
@@ -371,30 +364,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       #endif
       return false;
       break;
-    case EISU:
-      if (record->event.pressed) {
-        if(keymap_config.swap_lalt_lgui==false){
-          register_code(KC_LANG2);
-        }else{
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LANG2);
-      }
-      return false;
-      break;
-    case KANA:
-      if (record->event.pressed) {
-        if(keymap_config.swap_lalt_lgui==false){
-          register_code(KC_LANG1);
-        }else{
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LANG1);
-      }
-      return false;
-      break;
     case RGBRST:
       #ifdef RGBLIGHT_ENABLE
         if (record->event.pressed) {
@@ -406,7 +375,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case GLPS:
       if (record->event.pressed) {
-        // Change to EISUU mode first
+        // Change to EN mode first
         tap_code(KC_LANG2);
         // GUI-L
         register_code(KC_LGUI);
@@ -417,50 +386,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_5);
         unregister_code(KC_LSFT);
         tap_code(KC_SPC);
-      }
-      return false;
-      break;
-    case MS_UR:
-      if (record->event.pressed) {
-        register_code(KC_MS_R);
-        register_code(KC_MS_U);
-      }
-      if (!record->event.pressed) {
-        unregister_code(KC_MS_U);
-        unregister_code(KC_MS_R);
-      }
-      return false;
-      break;
-    case MS_UL:
-      if (record->event.pressed) {
-        register_code(KC_MS_L);
-        register_code(KC_MS_U);
-      }
-      if (!record->event.pressed) {
-        register_code(KC_MS_U);
-        unregister_code(KC_MS_L);
-      }
-      return false;
-      break;
-    case MS_DR:
-      if (record->event.pressed) {
-        register_code(KC_MS_R);
-        register_code(KC_MS_D);
-      }
-      if (!record->event.pressed) {
-        unregister_code(KC_MS_D);
-        unregister_code(KC_MS_R);
-      }
-      return false;
-      break;
-    case MS_DL:
-      if (record->event.pressed) {
-        register_code(KC_MS_L);
-        register_code(KC_MS_D);
-      }
-      if (!record->event.pressed) {
-        unregister_code(KC_MS_D);
-        unregister_code(KC_MS_L);
       }
       return false;
       break;
