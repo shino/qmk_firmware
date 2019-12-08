@@ -98,6 +98,7 @@ enum custom_keycodes {
 #define X_ST     LT(_SYMBOL, KC_X)
 #define X_SFT    LSFT_T(KC_X)
 #define X_ALT    LALT_T(KC_X)
+#define Z_EX     LT(_EXTRA, KC_Z)
 #define Z_ST     LT(_SYMBOL,  KC_Z)
 #define Z_SFT    LSFT_T(KC_Z)
 #define Z_GUI    LGUI_T(KC_Z)
@@ -114,11 +115,13 @@ enum custom_keycodes {
 
 #define ZERO_SFT LSFT_T(KC_0)
 #define DOT_SFT  LSFT_T(KC_DOT)
+#define SLSH_SFT LSFT_T(KC_SLSH)
 
 #define ESC_ALT  LALT_T(KC_ESC)
 #define ESC_GUI  LGUI_T(KC_ESC)
 #define ESC_EX   LT(_EXTRA, KC_ESC)
 #define TAB_EX   LT(_EXTRA, KC_TAB)
+#define F12_CTL  LCTL_T(KC_F12)
 
 // QWERTY : LT mods
 
@@ -173,6 +176,7 @@ enum custom_keycodes {
 #define C_M      LCTL(KC_M)
 #define C_X      LCTL(KC_X)
 #define C_U      LCTL(KC_U)
+#define C_V      LCTL(KC_V)
 #define C_Z      LCTL(KC_Z)
 
 #define C_COMM   LCTL(KC_COMM)
@@ -199,10 +203,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
    * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  R  |  T  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
-   * |  V  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
+   * |  Q  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
    * `-----------------------'                          `-----+-----------------'
    *                   +-----------------.  ,-----------------+
-   *                   |  Q  |  O  | En  |  | Ja  | Spc |  C  |
+   *                   |  V  |  O  | En  |  | Ja  | Spc |  C  |
    *                   `-----------------'  `-----------------'
    */
   /* FinCol:
@@ -213,14 +217,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Ex |A/SF |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |T/SF | +SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |caps |  V  | Prv | Nxt |Q/EX |O/CT |En/GU|Ja/AL|Sp/SY|C/EX |left |rght |  L  | Ent |
+   * |caps |  Q  | Prv | Nxt |V/EX |O/CT |En/GU|Ja/AL|Sp/SY|C/EX |left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
       KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOWN, \
       EX_T,    A_SFT,   KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T,  \
-      KC_CAPS, KC_V,    KC_MPRV, KC_MNXT, Q_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      KC_CAPS, KC_Q,    KC_MPRV, KC_MNXT, V_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Qwerty:
@@ -243,20 +247,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Symbol:        Numbers                                   Arith Ops, Parens
    * ,-----------------------------------.           ,-----------------------------------.
-   * |     |     | 4 $ | 5 % | 6 ^ |     |           |     | = + | / ? | ' " |     |     |
+   * |     |     | 4 $ | 5 % | 6 ^ |     |           |     | = + | [ { | ] } |     |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |     | 1 ! | 2 @ | 3 # |     |           |     | - _ |Gui-3| , < | \ | |     |
+   * |     |     | 1 ! | 2 @ | 3 # |     |           |     | - _ | , < | . > |     |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     | 0 ) | 7 & | 8 * | 9 ( |     |           |     | [ { | ] } | ; : | . > | ~SY |
+   * |     | 0 ) | 7 & | 8 * | 9 ( |     |           |     | ' " | ` ~ | ; : | / ? | ~SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     |caps |     |     |     |     |     |     | *** |     |     |     | ` ~ |     |
+   * |     |caps |     |     | C-v |F12/C|     |     | *** |     |     |     | \ | |     |
    * `-----------------------------------------------------------------------------------'
    */
   [_SYMBOL] = LAYOUT( \
-      _______, _______,  KC_4,    KC_5,    KC_6,    _______,                   _______, KC_EQL,  KC_SLSH, KC_QUOT, _______, _______, \
-      _______, _______,  KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, GUI_3,   KC_COMM, KC_BSLS, _______, \
-      _______, ZERO_SFT, KC_7,    KC_8,    KC_9,    _______,                   _______, KC_LBRC, KC_RBRC, KC_SCLN, DOT_SFT, SYMB_T,  \
-      _______, KC_CAPS,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_GRV,  _______  \
+      _______, _______,  KC_4,    KC_5,    KC_6,    _______,                   _______, KC_EQL,  KC_LBRC, KC_RBRC, _______,  _______, \
+      _______, _______,  KC_1,    KC_2,    KC_3,    _______,                   _______, KC_MINS, KC_COMM, KC_DOT,  _______,  _______, \
+      _______, ZERO_SFT, KC_7,    KC_8,    KC_9,    _______,                   _______, KC_QUOT, KC_GRV,  KC_SCLN, SLSH_SFT, SYMB_T,  \
+      _______, KC_CAPS,  _______, _______, C_V,     F12_CTL, _______, _______, _______, _______, _______, _______, KC_BSLS,  _______ \
       ),
 
 
