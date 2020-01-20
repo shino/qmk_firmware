@@ -81,6 +81,7 @@ enum custom_keycodes {
 #define O_LCTL   LCTL_T(KC_O)
 #define Q_ALT    LALT_T(KC_Q)
 #define Q_EX     LT(_EXTRA, KC_Q)
+#define R_SFT    LSFT_T(KC_R)
 #define T_SFT    LSFT_T(KC_T)
 #define U_GUI    LGUI_T(KC_U)
 #define U_GUI    LGUI_T(KC_U)
@@ -194,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------.                          ,-----------------------.
    * | Esc |  G  |  D  |  Y  |                          |  B  |  N  |  P  |  F  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
-   * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  R  |  T  |
+   * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  T  |  R  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
    * |  Q  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
    * `-----------------------'                          `-----+-----------------'
@@ -206,17 +207,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,-----------------------------------.           ,-----------------------------------.
    * | Vo+ | Tab |  G  |  D  |  Y  | Sp  |           |  ,  |  B  |  N  |  P  | BS  | up  |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Vo- | Esc |  I  |  U  |  E  |caps |           |  .  |  M  |  S  |  R  |  F  |down |
+   * | Vo- | Esc |  I  |  U  |  E  |caps |           |  .  |  M  |  S  |  T  |  F  |down |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | +Ex |A/SF |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |T/SF | +SY |
+   * | +Ex |A/SF |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |R/SF | +SY |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
    * |caps |  Q  | Prv | Nxt |V/EX |O/CT |En/GU|Ja/AL|Sp/SY|C/EX |left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
-      KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_R,    KC_F,     KC_DOWN, \
-      EX_T,    A_SFT,   KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    T_SFT,    SYMB_T,  \
+      KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
+      EX_T,    A_SFT,   KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    R_SFT,    SYMB_T,  \
       KC_CAPS, KC_Q,    KC_MPRV, KC_MNXT, V_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
