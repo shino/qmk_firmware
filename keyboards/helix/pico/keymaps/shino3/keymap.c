@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Mind Model: 3 x 4 + 3 per hand
    * ,-----------------------.                          ,-----------------------.
-   * | Esc |  G  |  D  |  Y  |                          |  B  |  N  |  P  |  F  |
+   * | Esc |  D  |  G  |  Y  |                          |  B  |  N  |  P  |  F  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
    * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  T  |  R  |
    * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
@@ -205,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   /* FinCol:
    * ,-----------------------------------.           ,-----------------------------------.
-   * | Vo+ | Tab |  G  |  D  |  Y  | Sp  |           |  ,  |  B  |  N  |  P  | BS  | up  |
+   * | Vo+ | Tab |  D  |  G  |  Y  | Sp  |           |  ,  |  B  |  N  |  P  | BS  | up  |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | Vo- | Esc |  I  |  U  |  E  |caps |           |  .  |  M  |  S  |  T  |  F  |down |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
@@ -215,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
-      KC_VOLU, KC_TAB,  KC_G,    KC_D,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
+      KC_VOLU, KC_TAB,  KC_D,    KC_G,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
       KC_VOLD, KC_ESC,  KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
       EX_T,    A_SFT,   KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    R_SFT,    SYMB_T,  \
       KC_CAPS, KC_Q,    KC_MPRV, KC_MNXT, V_EX,    O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
