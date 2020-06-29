@@ -26,7 +26,6 @@ extern uint8_t is_master;
 // entirely and just use numbers.
 enum layer_number {
     _FINCOL = 0,
-    _QWERTY,
     _SYMBOL,
     _EXTRA,
     _ADJUST
@@ -34,7 +33,6 @@ enum layer_number {
 
 enum custom_keycodes {
   FINCOL = SAFE_RANGE,
-  QWERTY,
   SYMBOL,
   EXTRA,
   ADJUST,
@@ -120,12 +118,6 @@ enum custom_keycodes {
 #define F12_EX   LT(_EXTRA, KC_F12)
 #define K0_GUI   LGUI_T(KC_0)
 #define K9_CTL   LCTL_T(KC_9)
-
-// QWERTY : LT mods
-
-#define B_ALT    LALT_T(KC_B)
-#define P_SFT    LSFT_T(KC_P)
-#define V_ALT    LALT_T(KC_V)
 
 // macOS
 #define GUI_ENT  LGUI(KC_ENT)
@@ -225,24 +217,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_CAPS, KC_V,    KC_MPRV, KC_MNXT, F12_SFT, O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
-  /* Qwerty:
-   * ,-----------------------------------.           ,-----------------------------------.
-   * | Mute| Vol-| Vol+| Prev| Play| Next|           | Del | Left| Down|  Up |Right| Adj |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Tab |  Q  |  W  |  E  |  R  |  T  |           |  Y  |  U  |  I  |  O  |  -  |     |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |[Ex] |A/Sft|  S  |  D  | F/Ex|  G  |           |  H  | J/Ex|  K  |  L  |P/Sft|[EX] |
-   * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * | Esc |  Z  |  X  |  C  | V/Al|Sp/Ct|EN/Sy|JA/Gu|Sp/St| B/Al|  N  |  M  |  /  | Ent |
-   * `-----------------------------------------------------------------------------------'
-   */
-  [_QWERTY] = LAYOUT( \
-      KC_MUTE, KC_VOLD, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,                 KC_DEL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  ADJUST,  \
-      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,    KC_MINS,  _______, \
-      EX_T,    A_SFT,   KC_S,    KC_D,    F_EX,    KC_G,                    KC_H,    J_EX,    KC_K,    KC_L,    P_SFT,    EX_T,    \
-      KC_ESC,  KC_Z,    KC_X,    KC_C,    V_ALT,   SP_LCTL, EN_GUI, JA_GUI, SP_STAR, B_ALT,   KC_N,    KC_M,    KC_SLSH,  KC_ENT   \
-      ),
-
   /* Symbol:        Numbers                                   Arith Ops, Parens
    * ,-----------------------------------.           ,-----------------------------------.
    * |     |     | 7 & | 8 * | 9 ( |     |           |     | = + | [ { | ] } |     |     |
@@ -251,14 +225,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | ~SY | 0 ) | 1 ! | 2 @ | 3 # |     |           |     | / ? | ` ~ | ' " | / ? |     |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     | 0 ) |     |     | SFT |O/CT |0)/GU|     | *** |     |     |     | \ | |     |
+   * |     |  O  |     |     | SFT |O/CT |0)/GU|     | *** |     |     |     | \ | |     |
    * `-----------------------------------------------------------------------------------'
    */
   [_SYMBOL] = LAYOUT( \
       _______, _______,  KC_7,    KC_8,    KC_9,    _______,                   _______, KC_EQL,  KC_LBRC, KC_RBRC, _______,  _______, \
       _______, _______,  KC_4,    KC_5,    KC_6,    _______,                   _______, KC_MINS, KC_COMM, KC_DOT,  KC_SCLN,  _______, \
       SYMB_T,  KC_0,     KC_1,    KC_2,    KC_3,    _______,                   _______, KC_SLSH, KC_GRV, KC_QUOT , KC_SLSH,  _______,  \
-      _______, KC_0,     _______, _______, KC_LSFT, _______, K0_GUI,  _______, _______, _______, _______, _______, KC_BSLS,  _______ \
+    _______, LSFT(KC_O), _______, _______, KC_LSFT, _______, K0_GUI,  _______, _______, _______, _______, _______, KC_BSLS,  _______ \
       ),
 
   /* Extra:          Misc.                                            Move
@@ -267,23 +241,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * |     |     |GU-L%|GU-+ |GU-- |     |           |     | ⇦  | ⇩  | ⇧  | ⇉  |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |     |     |CS-Tb|C-Tb |     |           |     | B1  | ↓  | ↑  | ⇨  | ~EX |
+   * |     |     |     |CS-Tb|C-Tb |     |           |     | ←  | B1  | B2  | ⇨  | ~EX |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     |     |     |     |     |     |     |B2/AL| B1  |     |     |     | B2  |     |
+   * |     |     |     |     |     |     |     |B2/AL| B1  |     |     |     | →  |     |
    * `-----------------------------------------------------------------------------------'
    */
   [_EXTRA] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, KC_WH_L, KC_WH_D, KC_WH_U, _______, _______, \
       _______, _______, GLPS,    G_PLUS,  G_MINS,  _______,                   _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_WH_R, _______, \
-      _______, _______, _______, CS_TAB,  C_TAB,   _______,                   _______, KC_BTN1, KC_DOWN, KC_UP,   KC_MS_R, EX_T,    \
-      _______, _______, _______, _______, _______, _______, _______, B2_ALT,  KC_BTN1, _______, _______, _______, KC_BTN2, _______  \
+      _______, _______, _______, CS_TAB,  C_TAB,   _______,                   _______, KC_LEFT, KC_BTN1, KC_BTN2, KC_MS_R, EX_T,    \
+      _______, _______, _______, _______, _______, _______, _______, B2_ALT,  KC_BTN1, _______, _______, _______, KC_RGHT, _______  \
       ),
 
   /* Adjust:
    * ,-----------------------------------.           ,-----------------------------------.
    * |     |Reset|     |     |     |     |           |     |     |     |     |     |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |Audon|Audof|MUTOG|MUMOD| Mac |           | Win |Qwert|     | F/C |     |     |
+   * |     |Audon|Audof|MUTOG|MUMOD| Mac |           | Win |     |     | F/C |     |     |
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * |     |CKTOG|CKRST|CK UP|CKDWN|     |           |     |     |RGBON|HUE+ |SAT+ |VAL+ |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
@@ -292,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_ADJUST] =  LAYOUT( \
       _______, RESET,   _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, QWERTY,  _______, FINCOL,   _______, _______, \
+      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, _______, _______, FINCOL,   _______, _______, \
       _______, CK_TOGG, CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD  \
       )
@@ -301,7 +275,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef AUDIO_ENABLE
 
-float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
 float tone_fincol[][2]     = SONG(DVORAK_SOUND);
 float tone_plover[][2]     = SONG(PLOVER_SOUND);
 float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
