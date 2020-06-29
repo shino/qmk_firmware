@@ -70,6 +70,7 @@ enum custom_keycodes {
 #define A_SFT    LSFT_T(KC_A)
 #define B_ALT    LALT_T(KC_B)
 #define C_EX     LT(_EXTRA, KC_C)
+#define C_SFT    LSFT_T(KC_C)
 #define F_EX     LT(_EXTRA, KC_F)
 #define G_ALT    LALT_T(KC_G)
 
@@ -204,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |  V  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
    * `-----------------------'                          `-----+-----------------'
    *                   +-----------------.  ,-----------------+
-   *                   | F12 |  O  | En  |  | Ja  | Spc |  C  |
+   *                   | En  |  O  | F12 |  |  C  | Spc | Ja  |
    *                   `-----------------'  `-----------------'
    */
   /* FinCol:
@@ -215,14 +216,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Sy |  A  |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |  R  | +Ex |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |caps |  Q  | Prv | Nxt |12/Sh|O/CT |En/GU|Ja/AL|Sp/SY|C/EX |left |rght |  L  | Ent |
+   * |caps |  Q  | Prv | Nxt |En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_D,    KC_G,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
       KC_VOLD, KC_Q,    KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
       SYMB_T,  KC_A,    KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    KC_R,    EX_T,    \
-      KC_CAPS, KC_V,    KC_MPRV, KC_MNXT, F12_SFT, O_LCTL,  EN_GUI, JA_ALT, SP_STAR, C_EX,    KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      KC_CAPS, KC_V,    KC_MPRV, KC_MNXT, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Qwerty:
@@ -251,14 +252,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | ~SY | 0 ) | 1 ! | 2 @ | 3 # |     |           |     | / ? | ` ~ | ' " | / ? |     |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     | 0 ) |     |     | SFT |O/CT |0)/GU|     | *** |     |     |     | \ | |     |
+   * |     | 0 ) |     |     |     |     |     |     | *** |     |     |     | \ | |     |
    * `-----------------------------------------------------------------------------------'
    */
   [_SYMBOL] = LAYOUT( \
-      _______, _______,  KC_7,    KC_8,    KC_9,    _______,                   _______, KC_EQL,  KC_LBRC, KC_RBRC, _______,  _______, \
-      _______, _______,  KC_4,    KC_5,    KC_6,    _______,                   _______, KC_MINS, KC_COMM, KC_DOT,  KC_SCLN,  _______, \
-      SYMB_T,  KC_0,     KC_1,    KC_2,    KC_3,    _______,                   _______, KC_SLSH, KC_GRV, KC_QUOT , KC_SLSH,  _______,  \
-      _______, KC_0,     _______, _______, KC_LSFT, _______, K0_GUI,  _______, _______, _______, _______, _______, KC_BSLS,  _______ \
+      _______, _______, KC_7,    KC_8,    KC_9,    _______,                    _______, KC_EQL,  KC_LBRC, KC_RBRC, _______,  _______, \
+      _______, _______, KC_4,    KC_5,    KC_6,    _______,                    _______, KC_MINS, KC_COMM, KC_DOT,  KC_SCLN,  _______, \
+      SYMB_T,  KC_0,    KC_1,    KC_2,    KC_3,    _______,                    _______, KC_SLSH, KC_GRV,  KC_QUOT, KC_SLSH,  _______,  \
+      _______, KC_0,    _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, KC_BSLS,  _______ \
       ),
 
   /* Extra:          Misc.                                            Move
