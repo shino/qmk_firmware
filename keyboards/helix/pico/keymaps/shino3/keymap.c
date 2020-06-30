@@ -119,6 +119,7 @@ enum custom_keycodes {
 #define F12_EX   LT(_EXTRA, KC_F12)
 #define K0_GUI   LGUI_T(KC_0)
 #define K9_CTL   LCTL_T(KC_9)
+#define MNXT_EX   LT(_EXTRA, KC_MNXT)
 
 // macOS
 #define GUI_ENT  LGUI(KC_ENT)
@@ -197,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |  V  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
    * `-----------------------'                          `-----+-----------------'
    *                   +-----------------.  ,-----------------+
-   *                   | En  |  O  | F12 |  |  C  | Spc | Ja  |
+   *                   | En  |  O  | LA  |  |  C  | SP  | Ja  |
    *                   `-----------------'  `-----------------'
    */
   /* FinCol:
@@ -208,14 +209,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Sy |  A  |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |  R  | +Ex |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |caps |  Q  | Prv | Ex  |En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
+   * |caps |  Q  | Prv |NX/Ex|En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_D,    KC_G,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
       KC_VOLD, KC_Q,    KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
-      SYMB_T,  KC_A,    KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    KC_R,    EX_T,    \
-      KC_CAPS, KC_V,    KC_MPRV, KC_MNXT, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      SYMB_T,  KC_A,    KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    KC_R,     EX_T,    \
+      KC_CAPS, KC_V,    KC_MPRV, MNXT_EX, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Symbol:        Numbers                                   Arith Ops, Parens
