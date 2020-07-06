@@ -10,49 +10,59 @@
 
 extern uint8_t is_master;
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
+enum my_layer_number {
+    _FINCOL = 0,
+    _SYMBOL,
+    _EXTRA,
+};
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
-  RAISE
+  FINCOL = SAFE_RANGE,
+  SYMBOL,
+  EXTRA
 };
 
-enum macro_keycodes {
-  KC_SAMPLEMACRO,
-};
 
-#define KC_ KC_TRNS
-#define KC_RST RESET
-#define KC_L_SPC LT(_LOWER, KC_SPC) // lower
-#define KC_R_ENT LT(_RAISE, KC_ENT) // raise
-#define KC_G_JA LGUI_T(KC_LANG1) // cmd or win
-#define KC_G_EN LGUI_T(KC_LANG2) // cmd or win
-#define KC_C_BS LCTL_T(KC_BSPC) // ctrl
-#define KC_A_DEL ALT_T(KC_DEL) // alt
+// Spaces
+#define SPsy LT(_SYMBOL, KC_SPC)
+
+// En/Ja
+#define EN     KC_LANG2    // IME: En
+#define JA     KC_LANG1    // IME: Ja
+
+#define LA     KC_F12      // Launcher
+
+// left thumbs
+#define ENex   LT(_EXTRA, EN)
+#define ENgu   LGUI_T(EN)
+#define O_ct   LCTL_T(KC_O)
+#define LAsf   LSFT_T(KC_F12)
+
+// right thumbs
+#define C_sf   LSFT_T(KC_C)
+#define SPsy   LT(_SYMBOL, KC_SPC)
+#define JAal   LALT_T(JA)
+#define JAex   LT(_EXTRA, JA)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT( \
-  //,--------+--------+---------+--------+---------+--------.   ,--------+---------+--------+---------+--------+--------.
-     KC_ESC , KC_Q   , KC_W    , KC_E   , KC_R    , KC_T   ,     KC_Y   , KC_U    , KC_I   , KC_O    , KC_P   , KC_MINS,
-  //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
-     KC_TAB , KC_A   , KC_S    , KC_D   , KC_F    , KC_G   ,     KC_H   , KC_J    , KC_K   , KC_L    , KC_SCLN, KC_QUOT,
-  //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
-     KC_LSFT, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , KC_M    , KC_COMM, KC_DOT  , KC_SLSH, KC_RSFT,
-  //`--------+--------+---------+--------+---------+--------/   \--------+---------+--------+---------+--------+--------'
-                       KC_A_DEL, KC_G_EN, KC_L_SPC, KC_C_BS,     KC_C_BS, KC_R_ENT, KC_G_JA, KC_A_DEL
-  //                 `----------+--------+---------+--------'   `--------+---------+--------+---------'
+  [_FINCOL] = LAYOUT_kc( \
+  //,-----+----+-----+-----+-----+-----.   ,-----+-----+-----+-----+-----+-----.
+     ESC  , Q  , W   , E   , R   , T   ,     Y   , U   , I   , O   , P   , MINS,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+     TAB  , A  , S   , D   , F   , G   ,     H   , J   , K   , L   , SCLN, QUOT,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+     LSFT , Z  , X   , C   , V   , B   ,     N   , M   , COMM, DOT , SLSH, RSFT,
+  //`-----+----+-----+-----+-----+-----/   \-----+-----+-----+-----+-----+-----'
+                ENex ,ENgu ,O_ct ,LAsf ,    C_sf ,SPsy ,JAal , JAex
+  //           `-----+-----+-----+-----'   `-----+-----+-----+-----'
   ),
 
   //   \ ^ ! & |  @ = + * % -
   // ( # $ " ' ~  ← ↓ ↑ → ` )
   //         { [  ] }
 
-  [_RAISE] = LAYOUT( \
+  [_SYMBOL] = LAYOUT( \
   //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
      _______, KC_BSLS, KC_CIRC, KC_EXLM, KC_AMPR, KC_PIPE,     KC_AT  , KC_EQL , KC_PLUS, KC_ASTR, KC_PERC, KC_MINS,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -64,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                  `--------+--------+--------+--------'   `--------+--------+--------+--------'
   ),
 
-  [_LOWER] = LAYOUT( \
+  [_EXTRA] = LAYOUT( \
   //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
      KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,     _______, KC_EQL , KC_PLUS, KC_ASTR, KC_PERC, KC_MINS,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -141,25 +151,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
-    case QWERTY:
+    case FINCOL:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_QWERTY);
+        set_single_persistent_default_layer(_FINCOL);
       }
       return false;
       break;
-    case LOWER:
+    case SYMBOL:
       if (record->event.pressed) {
-        layer_on(_LOWER);
+        layer_on(_SYMBOL);
       } else {
-        layer_off(_LOWER);
+        layer_off(_SYMBOL);
       }
       return false;
       break;
-    case RAISE:
+    case EXTRA:
       if (record->event.pressed) {
-        layer_on(_RAISE);
+        layer_on(_EXTRA);
       } else {
-        layer_off(_RAISE);
+        layer_off(_EXTRA);
       }
       return false;
       break;
