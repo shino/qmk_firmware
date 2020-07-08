@@ -13,78 +13,84 @@ extern uint8_t is_master;
 enum my_layer_number {
     _FINCOL = 0,
     _SYMBOL,
+    _SYMB_S,
     _EXTRA,
 };
 
 enum custom_keycodes {
   FINCOL = SAFE_RANGE,
   SYMBOL,
+  SYMB_S,
   EXTRA
 };
 
+
+// common
+#define KC_  KC_TRNS
 
 // Spaces
 #define SPsy LT(_SYMBOL, KC_SPC)
 
 // En/Ja
-#define EN     KC_LANG2    // IME: En
-#define JA     KC_LANG1    // IME: Ja
+#define KC_EN   KC_LANG2    // IME: En
+#define KC_JA   KC_LANG1    // IME: Ja
 
-#define LA     KC_F12      // Launcher
+#define KC_LA   KC_F12      // Launcher
 
-// left thumbs
-#define ENex   LT(_EXTRA, EN)
-#define ENgu   LGUI_T(EN)
-#define O_ct   LCTL_T(KC_O)
-#define LAsf   LSFT_T(KC_F12)
+// Left thumbs
+#define KC_ENex LT(_EXTRA, KC_EN)
+#define KC_ENgu LGUI_T(KC_EN)
+#define KC_O_ct LCTL_T(KC_O)
+#define KC_LAsf LSFT_T(KC_F12)
 
-// right thumbs
-#define C_sf   LSFT_T(KC_C)
-#define SPsy   LT(_SYMBOL, KC_SPC)
-#define JAal   LALT_T(JA)
-#define JAex   LT(_EXTRA, JA)
+// Right thumbs
+#define KC_C_sf LSFT_T(KC_C)
+#define KC_SPsy LT(_SYMBOL, KC_SPC)
+#define KC_JAal LALT_T(KC_JA)
+#define KC_JAex LT(_EXTRA, KC_JA)
+
+// Toggle layers
+#define KC__ex   TG(_EXTRA)
+#define KC__sy   TG(_SYMBOL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FINCOL] = LAYOUT_kc( \
   //,-----+----+-----+-----+-----+-----.   ,-----+-----+-----+-----+-----+-----.
-     ESC  , Q  , W   , E   , R   , T   ,     Y   , U   , I   , O   , P   , MINS,
+     VOLU , Q  , D   , G   , Y   ,MPLY ,     UP  , B   , N   , P   , F   ,RGHT ,
   //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
-     TAB  , A  , S   , D   , F   , G   ,     H   , J   , K   , L   , SCLN, QUOT,
+      _sy , A  , I   , U   , E   ,MPRV ,         , M   , S   , T   , F   , _ex ,
   //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
-     LSFT , Z  , X   , C   , V   , B   ,     N   , M   , COMM, DOT , SLSH, RSFT,
+     VOLD , V  , Z   , W   , X   ,MNXT ,    DOWN , H   , J   , K   , L   ,LEFT ,
   //`-----+----+-----+-----+-----+-----/   \-----+-----+-----+-----+-----+-----'
                 ENex ,ENgu ,O_ct ,LAsf ,    C_sf ,SPsy ,JAal , JAex
   //           `-----+-----+-----+-----'   `-----+-----+-----+-----'
   ),
 
-  //   \ ^ ! & |  @ = + * % -
-  // ( # $ " ' ~  ← ↓ ↑ → ` )
-  //         { [  ] }
-
-  [_SYMBOL] = LAYOUT( \
-  //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-     _______, KC_BSLS, KC_CIRC, KC_EXLM, KC_AMPR, KC_PIPE,     KC_AT  , KC_EQL , KC_PLUS, KC_ASTR, KC_PERC, KC_MINS,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-     KC_LPRN, KC_HASH, KC_DLR , KC_DQT , KC_QUOT, KC_TILD,     KC_LEFT, KC_DOWN,  KC_UP , KC_RGHT, KC_GRV , KC_RPRN,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-     _______, _______, _______, _______, KC_LCBR, KC_LBRC,     KC_RBRC, KC_RCBR, _______, _______, _______, _______,
-  //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                       _______, _______, _______, _______,     _______, _______, _______, RESET
-  //                  `--------+--------+--------+--------'   `--------+--------+--------+--------'
+  [_SYMBOL] = LAYOUT_kc( \
+  //,-----+----+-----+-----+-----+-----.   ,-----+-----+-----+-----+-----+-----.
+          ,BSLS, 7   , 8   , 9   ,     ,         ,SCLN ,LBRC ,RBRC ,QUOT ,     ,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+      _sy , 0  , 4   , 5   , 6   ,     ,         ,MINS ,COMM , DOT ,SLSH ,     ,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+          ,GRV , 1   , 2   , 3   ,     ,         , EQL ,LPRN ,LPRN , ENT ,     ,
+  //`-----+----+-----+-----+-----+-----/   \-----+-----+-----+-----+-----+-----'
+                     ,     ,     ,     ,         ,     ,     ,
+  //           `-----+-----+-----+-----'   `-----+-----+-----+-----'
   ),
 
-  [_EXTRA] = LAYOUT( \
-  //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-     KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,     _______, KC_EQL , KC_PLUS, KC_ASTR, KC_PERC, KC_MINS,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-     _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-     KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,     _______, _______, KC_COMM, KC_DOT , KC_SLSH, _______,
-  //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                       RESET  , _______, _______, _______,     _______, _______, _______, _______
-  //                  `--------+--------+--------+--------'   `--------+--------+--------+--------'
+  [_EXTRA] = LAYOUT_kc( \
+  //,-----+----+-----+-----+-----+-----.   ,-----+-----+-----+-----+-----+-----.
+          ,    ,     ,     ,     ,     ,     ESC ,WH_L ,WH_D ,WH_U ,WH_R ,     ,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+          ,    ,     ,     ,     ,     ,    BTN1 ,MS_L ,MS_D ,MS_U ,MS_R ,     ,
+  //|-----+----+-----+-----+-----+-----|   |-----+-----+-----+-----+-----+-----|
+          ,    ,     ,     ,     ,     ,    BTN2 ,LEFT ,DOWN , UP  ,RGHT ,     ,
+  //`-----+----+-----+-----+-----+-----/   \-----+-----+-----+-----+-----+-----'
+                     ,     ,     ,     ,         ,BTN1 ,BTN2 ,
+  //           `-----+-----+-----+-----'   `-----+-----+-----+-----'
   ),
+
 };
 
 void matrix_init_user(void) {
