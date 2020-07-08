@@ -42,6 +42,7 @@ enum custom_keycodes {
 
 // Right thumbs
 #define KC_C_sf LSFT_T(KC_C)
+#define KC_C_ss LT(_SYMB_S, KC_C)
 #define KC_SPsy LT(_SYMBOL, KC_SPC)
 #define KC_JAal LALT_T(KC_JA)
 #define KC_JAex LT(_EXTRA, KC_JA)
@@ -49,6 +50,7 @@ enum custom_keycodes {
 // Toggle layers
 #define KC__ex   TG(_EXTRA)
 #define KC__sy   TG(_SYMBOL)
+#define KC__ss   TG(_SYMB_S)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -71,6 +73,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _sy  ,  0   ,  4   ,  5   ,  6   ,      ,          , MINS , COMM , DOT , SLSH ,      ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
            , GRV  ,  1   ,  2   ,  3   ,      ,          , EQL  , LPRN , LPRN , ENT  ,      ,
+  //`------+------+------+------+------+------'   `------+------+------+------+------+------'
+                         ,      ,      ,      ,          ,      ,      ,
+  //              `------+------+------+------'   `------+------+------+------'
+  ),
+
+  [_SYMBOL] = LAYOUT_kc( \
+  //,------+------+------+------+------+------.   ,------+------+------+------+------+------.
+           , PIPE , AMPR , ASTR , LPRN ,      ,          , COLN , LCBR , RCBR , DQUO ,      ,
+  //|------+------+------+------+------+------|   |------+------+------+------+------+------|
+      _ss  , RPRN , DLR  , PERC , CIRC ,      ,          , UNDS ,  LT  ,  GT  , QUES ,      ,
+  //|------+------+------+------+------+------|   |------+------+------+------+------+------|
+           , GRV  , EXLM ,  AT  , HASH ,      ,          , PLUS ,      ,      ,      ,      ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
                          ,      ,      ,      ,          ,      ,      ,
   //              `------+------+------+------'   `------+------+------+------'
