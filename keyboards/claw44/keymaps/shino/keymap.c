@@ -13,14 +13,14 @@ extern uint8_t is_master;
 enum my_layer_number {
     _FINCOL = 0,
     _SYMBOL,
-    _SYMB_S,
+    _S_SYMB,
     _EXTRA,
 };
 
 enum custom_keycodes {
   FINCOL = SAFE_RANGE,
   SYMBOL,
-  SYMB_S,
+  S_SYMB,
   EXTRA
 };
 
@@ -38,11 +38,12 @@ enum custom_keycodes {
 #define KC_ENex LT(_EXTRA, KC_EN)
 #define KC_ENgu LGUI_T(KC_EN)
 #define KC_O_ct LCTL_T(KC_O)
+#define KC_O_sc MT(MOD_LCTL | MOD_LSFT, KC_O)
 #define KC_LAsf LSFT_T(KC_F12)
 
 // Right thumbs
 #define KC_C_sf LSFT_T(KC_C)
-#define KC_C_ss LT(_SYMB_S, KC_C)
+#define KC_C_ss LT(_S_SYMB, KC_C)
 #define KC_SPsy LT(_SYMBOL, KC_SPC)
 #define KC_JAal LALT_T(KC_JA)
 #define KC_JAex LT(_EXTRA, KC_JA)
@@ -50,7 +51,7 @@ enum custom_keycodes {
 // Toggle layers
 #define KC__ex   TG(_EXTRA)
 #define KC__sy   TG(_SYMBOL)
-#define KC__ss   TG(_SYMB_S)
+#define KC__ss   TG(_S_SYMB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       VOLD ,  V   ,  Z   ,  W   ,  X   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                    ENgu , O_ct , LAsf , ENex ,     JAex , C_ss , SPsy , JAal
+                    O_sc , LAsf , O_ct , ENgu ,     JAal , SPsy , C_sf , C_ss
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
-  [_SYMB_S] = LAYOUT_kc( \
+  [_S_SYMB] = LAYOUT_kc( \
   //,------+------+------+------+------+------.   ,------+------+------+------+------+------.
            , PIPE , AMPR , ASTR , LPRN ,      ,          , COLN , LCBR , RCBR , DQUO ,      ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
