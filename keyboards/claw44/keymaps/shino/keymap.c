@@ -48,6 +48,10 @@ enum custom_keycodes {
 #define KC_JAal LALT_T(KC_JA)
 #define KC_JAex LT(_EXTRA, KC_JA)
 
+// others
+#define KC_sENT LSFT(KC_ENT)
+
+
 // Toggle layers
 #define KC__ex   TG(_EXTRA)
 #define KC__sy   TG(_SYMBOL)
@@ -85,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       _ss  , RPRN , DLR  , PERC , CIRC ,      ,          , UNDS ,  LT  ,  GT  , QUES ,      ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
-           , GRV  , EXLM ,  AT  , HASH ,      ,          , PLUS ,      ,      ,      ,      ,
+           , GRV  , EXLM ,  AT  , HASH ,      ,          , PLUS , LPRN , RPRN , sENT ,      ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
                          ,      ,      ,      ,          ,      ,      ,
   //              `------+------+------+------'   `------+------+------+------'
