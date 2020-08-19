@@ -41,6 +41,7 @@ enum custom_keycodes {
 #define KC_LAsf LSFT_T(KC_LA)
 #define KC_LAgu LGUI_T(KC_LA)
 #define KC_LAal LALT_T(KC_LA)
+#define KC_LAct LCTL_T(KC_LA)
 #define KC_O_ct LCTL_T(KC_O)
 #define KC_O_sc MT(MOD_LCTL | MOD_LSFT, KC_O)
 #define KC_ENex LT(_EXTRA, KC_EN)
@@ -89,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
            , DQUO ,  1   ,  2   ,  3   ,      ,          , EQL  , SCLN , COLN , QUOT ,      ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                         ,      ,      ,      ,          ,      ,      ,
+                         ,      , LAct ,      ,          ,      ,      ,
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
