@@ -68,6 +68,9 @@ enum custom_keycodes {
 #define KC__sy   TG(_SYMBOL)
 #define KC__ss   TG(_S_SYMB)
 
+// misc
+#define KC_RSET RESET
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FINCOL] = LAYOUT_kc( \
@@ -96,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_S_SYMB] = LAYOUT_kc( \
   //,------+------+------+------+------+------.   ,------+------+------+------+------+------.
-           , PIPE , AMPR , ASTR , RPRN ,      ,          ,      , LCBR , RCBR ,      ,      ,
+           , PIPE , AMPR , ASTR , RPRN ,      ,          ,      , LCBR , RCBR ,      , RSET ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       _ss  , LPRN , DLR  , PERC , CIRC ,      ,          , UNDS ,  LT  ,  GT  , QUES ,      ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
