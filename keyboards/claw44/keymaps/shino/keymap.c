@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       VOLD ,  V   ,  Z   ,  W   ,  X   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                    ENsf , LAal , O_ct , ENsf ,     JAsf , SPsy , C_ss , JAsf
+                    ESsf , LAal , O_ct , ENsf ,     JAsf , SPsy , C_ss , BSsf
   //              `------+------+------+------'   `------+------+------+------'
   ),
 

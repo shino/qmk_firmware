@@ -209,14 +209,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
    * | +Sy |  A  |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |  R  | +Ex |
    * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |caps |  V  | Prv |NX/Ex|En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
+   * | F2  |  V  | Prv |NX/Ex|En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
    * `-----------------------------------------------------------------------------------'
    */
   [_FINCOL] = LAYOUT( \
       KC_VOLU, KC_TAB,  KC_D,    KC_G,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
       KC_VOLD, KC_Q,    KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
       SYMB_T,  KC_A,    KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    KC_R,     EX_T,    \
-      KC_CAPS, KC_V,    KC_MPRV, MNXT_EX, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
+      KC_F2, KC_V,    KC_MPRV, MNXT_EX, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
       ),
 
   /* Symbol:        Numbers                                   Arith Ops, Parens
