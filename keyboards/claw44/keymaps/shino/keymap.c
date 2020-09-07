@@ -32,7 +32,7 @@ enum custom_keycodes {
 #define KC_EN   KC_LANG2    // IME: En
 #define KC_JA   KC_LANG1    // IME: Ja
 
-#define KC_LA   KC_F12      // Launcher
+#define KC_LA   KC_F2      // Launcher
 
 // Left thumbs
 #define KC_ESsf LSFT_T(KC_ESC)
@@ -58,6 +58,10 @@ enum custom_keycodes {
 #define KC_BSsf LSFT_T(KC_BSPC)
 #define KC_BSgu LGUI_T(KC_BSPC)
 
+// with shift
+#define KC_A_sf LSFT_T(KC_A)
+#define KC_R_sf LSFT_T(KC_R)
+
 // Others
 #define KC_sENT LSFT(KC_ENT)
 #define KC_sf_l LSFT(KC_LEFT)
@@ -77,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,------+------+------+------+------+------.   ,------+------+------+------+------+------.
       VOLU ,  Q   ,  D   ,  G   ,  Y   , MPLY ,      UP  ,  B   ,  N   ,  P   ,  F   , RGHT ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
-      _sy  ,  A   ,  I   ,  U   ,  E   , CAPS ,     _ex  ,  M   ,  S   ,  T   ,  R   , ENT  ,
+      _sy  , A_sf ,  I   ,  U   ,  E   , CAPS ,     _ex  ,  M   ,  S   ,  T   , R_sf , ENT  ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       VOLD ,  V   ,  Z   ,  W   ,  X   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
