@@ -55,6 +55,7 @@ enum custom_keycodes {
 #define KC_SPsy LT(_SYMBOL, KC_SPC)
 #define KC_C_sf LSFT_T(KC_C)
 #define KC_C_ss LT(_S_SYMB, KC_C)
+#define KC_Z_ss LT(_S_SYMB, KC_Z)
 #define KC_BSsf LSFT_T(KC_BSPC)
 #define KC_BSgu LGUI_T(KC_BSPC)
 
@@ -83,9 +84,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       _sy  , A_sf ,  I   ,  U   ,  E   , CAPS ,     _ex  ,  M   ,  S   ,  T   , R_sf , ENT  ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
-      VOLD ,  Z   ,  V   ,  W   ,  X   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
+      VOLD ,  V   ,  C   ,  W   ,  X   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                    ESsf , LAal , O_ct , ENsf ,     JAsf , SPsy , C_ss , BSsf
+                    ESsf , LAal , O_ct , ENsf ,     JAsf , SPsy , Z_ss , BSsf
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
