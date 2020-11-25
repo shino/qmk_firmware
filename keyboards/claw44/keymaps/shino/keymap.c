@@ -28,50 +28,33 @@ enum custom_keycodes {
 // common
 #define KC_     KC_TRNS
 
-// En/Ja
-#define KC_EN   KC_LANG2    // IME: En
-#define KC_JA   KC_LANG1    // IME: Ja
+// IME
+#define KC_EN   KC_LANG2        // En
+#define KC_JA   KC_LANG1        // Ja
+#define KC_sf_l LSFT(KC_LEFT)   // Shorten
+#define KC_sf_r LSFT(KC_RGHT)   // Widen
 
-#define KC_LA   KC_F2      // Launcher
+// Launcher
+#define KC_LA   KC_F2
 
 // Left thumbs
-#define KC_ESsf LSFT_T(KC_ESC)
-#define KC_ESsc MT(MOD_LCTL | MOD_LSFT, KC_ESC)
-#define KC_ENsf LSFT_T(KC_EN)
-#define KC_LAsf LSFT_T(KC_LA)
 #define KC_LAgu LGUI_T(KC_LA)
 #define KC_LAal LALT_T(KC_LA)
-#define KC_LAct LCTL_T(KC_LA)
 #define KC_O_ct LCTL_T(KC_O)
-#define KC_O_sc MT(MOD_LCTL | MOD_LSFT, KC_O)
-#define KC_ENex LT(_EXTRA, KC_EN)
-#define KC_ENsc LT(_S_SYMB, KC_EN)
-#define KC_ENgu LGUI_T(KC_EN)
 
 // Right thumbs
-#define KC_JAal LALT_T(KC_JA)
-#define KC_JAex LT(_EXTRA, KC_JA)
-#define KC_JAsf LSFT_T(KC_JA)
 #define KC_SPsy LT(_SYMBOL, KC_SPC)
-#define KC_C_sf LSFT_T(KC_C)
-#define KC_C_ss LT(_S_SYMB, KC_C)
 #define KC_Z_ss LT(_S_SYMB, KC_Z)
-#define KC_BSsf LSFT_T(KC_BSPC)
-#define KC_BSgu LGUI_T(KC_BSPC)
 
 // with shift
 #define KC_A_sf LSFT_T(KC_A)
 #define KC_R_sf LSFT_T(KC_R)
 
-// Others
-#define KC_sENT LSFT(KC_ENT)
-#define KC_sf_l LSFT(KC_LEFT)
-#define KC_sf_r LSFT(KC_RGHT)
-
 // Toggle layers
 #define KC__ex   TG(_EXTRA)
 #define KC__sy   TG(_SYMBOL)
 #define KC__ss   TG(_S_SYMB)
+
 
 // misc
 #define KC_RSET RESET
@@ -80,13 +63,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FINCOL] = LAYOUT_kc( \
   //,------+------+------+------+------+------.   ,------+------+------+------+------+------.
-      _sy  ,  Q   ,  D   ,  G   ,  C   , MPLY ,          ,  B   ,  N   ,  P   ,  F   , ENT  ,
+      _sy  ,  Q   ,  D   ,  G   ,  C   , MPLY ,      UP,    B   ,  N   ,  P   ,  F   , ENT  ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
-      VOLU , A_sf ,  I   ,  U   ,  E   , _ex  ,      UP  ,  M   ,  S   ,  T   , R_sf , RGHT ,
+      VOLU , A_sf ,  I   ,  U   ,  E   , _ex  ,      ENT ,  M   ,  S   ,  T   , R_sf , RGHT ,
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
       VOLD ,  V   ,  X   ,  W   ,  Y   , MNXT ,     DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                    ESsf , LAal , O_ct , ENsf ,     JAsf , SPsy , Z_ss , BSsf
+                    ESC  , LAal , O_ct ,  EN  ,      JA  , SPsy , Z_ss , BSPC
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
@@ -98,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|   |------+------+------+------+------+------|
            , TILD ,  1   ,  2   ,  3   ,      ,          , EQL  , SCLN , COLN , CAPS ,      ,
   //`------+------+------+------+------+------'   `------+------+------+------+------+------'
-                         ,      , LAct ,      ,          ,      ,      ,
+                         ,      ,      ,      ,          ,      ,      ,
   //              `------+------+------+------'   `------+------+------+------'
   ),
 
