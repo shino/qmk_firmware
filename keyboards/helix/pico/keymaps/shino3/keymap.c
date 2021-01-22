@@ -27,21 +27,15 @@ extern uint8_t is_master;
 enum layer_number {
     _FINCOL = 0,
     _SYMBOL,
-    _EXTRA,
-    _ADJUST
+    _S_SYMB,
+    _EXTRA
 };
 
 enum custom_keycodes {
   FINCOL = SAFE_RANGE,
   SYMBOL,
-  EXTRA,
-  ADJUST,
-  BACKLIT,
-  RGBRST,
-  // C-x -> C-s
-  CXCS,
-  // Gui-L -> % -> Spc
-  GLPS
+  S_SYMB,
+  EXTRA
 };
 
 
@@ -187,37 +181,51 @@ enum custom_keycodes {
 // Symbol
 #define SYMB_T   TG(_SYMBOL)
 
+// -- New ones below
+
+// common
+#define KC_     KC_TRNS
+
+// IME
+#define KC_EN   KC_LANG2        // En
+#define KC_JA   KC_LANG1        // Ja
+#define KC_sf_l LSFT(KC_LEFT)   // Shorten
+#define KC_sf_r LSFT(KC_RGHT)   // Widen
+
+// Launcher
+#define KC_LA   KC_F2
+
+// Left thumbs
+#define KC_LAgu LGUI_T(KC_LA)
+#define KC_LAal LALT_T(KC_LA)
+#define KC_O_ct LCTL_T(KC_O)
+
+// Right thumbs
+#define KC_SPsy LT(_SYMBOL, KC_SPC)
+#define KC_Z_ss LT(_S_SYMB, KC_Z)
+
+// with shift
+#define KC_A_sf LSFT_T(KC_A)
+#define KC_R_sf LSFT_T(KC_R)
+
+// Toggle layers
+#define KC__ex   TG(_EXTRA)
+#define KC__sy   TG(_SYMBOL)
+#define KC__ss   TG(_S_SYMB)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* Mind Model: 3 x 4 + 3 per hand
-   * ,-----------------------.                          ,-----------------------.
-   * |  Q  |  D  |  G  |  Y  |                          |  B  |  N  |  P  |  F  |
-   * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
-   * |  A  |  I  |  U  |  E  |                          |  M  |  S  |  T  |  R  |
-   * |-----+-----+-----+-----|                          |-----+-----+-----+-----|
-   * |  V  |  Z  |  W  |  X  |                          |  H  |  J  |  K  |  L  |
-   * `-----------------------'                          `-----+-----------------'
-   *                   +-----------------.  ,-----------------+
-   *                   | En  |  O  | LA  |  |  C  | SP  | Ja  |
-   *                   `-----------------'  `-----------------'
-   */
-  /* FinCol:
-   * ,-----------------------------------.           ,-----------------------------------.
-   * | Vo+ | Tab |  D  |  G  |  Y  | Sp  |           |  ,  |  B  |  N  |  P  | BS  | up  |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | Vo- |  Q  |  I  |  U  |  E  |caps |           |  .  |  M  |  S  |  T  |  F  |down |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * | +Sy |  A  |  Z  |  W  |  X  |-Adj-|           |-Ply-|  H  |  J  |  K  |  R  | +Ex |
-   * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * | F2  |  V  | Prv |NX/Ex|En/GU|O/CT |12/Sh|C/EX |Sp/SY|Ja/AL|left |rght |  L  | Ent |
-   * `-----------------------------------------------------------------------------------'
-   */
-  [_FINCOL] = LAYOUT( \
-      KC_VOLU, KC_TAB,  KC_D,    KC_G,    KC_Y,    KC_SPC,                  KC_COMM, KC_B,    KC_N,    KC_P,    KC_BSPC,  KC_UP,   \
-      KC_VOLD, KC_Q,    KC_I,    KC_U,    KC_E,    KC_CAPS,                 KC_DOT,  KC_M,    KC_S,    KC_T,    KC_F,     KC_DOWN, \
-      SYMB_T,  KC_A,    KC_Z,    KC_W,    KC_X,    ADJUST,                  KC_MPLY, KC_H,    KC_J,    KC_K,    KC_R,     EX_T,    \
-      KC_F2, KC_V,    KC_MPRV, MNXT_EX, EN_GUI,  O_LCTL, F12_SFT, C_SFT,  SP_STAR, JA_ALT,  KC_LEFT, KC_RGHT, KC_L,     KC_ENT   \
-      ),
+  [_FINCOL] = LAYOUT_kc( \
+  //,------+------+------+------+------+------.               ,------+------+------+------+------+------.
+      VOLU ,  Q   ,  D   ,  G   ,  C   , MPLY ,                  UP,    B   ,  N   ,  P   ,  F   , _sy  ,
+  //|------+------+------+------+------+------|               |------+------+------+------+------+------|
+      VOLD , A_sf ,  I   ,  U   ,  E   , _ex  ,                  ENT ,  M   ,  S   ,  T   , R_sf , RGHT ,
+  //|------+------+------+------+------+------|               |------+------+------+------+------+------|
+      WBAK ,  V   ,  X   ,  W   ,  Y   , MNXT ,                 DOWN ,  H   ,  J   ,  K   ,  L   , LEFT ,
+  //|------+------+------+------+------+------+------' `------+------+------+------+------+------+------'
+           ,      , ESC  , LAal , O_ct ,  EN  ,      ,    JA  , SPsy , Z_ss , BSPC ,      ,      ,
+  //`------+------+------+------+------+------+------' `------+------+------+------+------+------+------'
+  ),
 
   /* Symbol:        Numbers                                   Arith Ops, Parens
    * ,-----------------------------------.           ,-----------------------------------.
@@ -250,27 +258,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_EXTRA] = LAYOUT( \
       _______, _______, _______, _______, _______, _______,                   _______, KC_WH_L, KC_WH_D, KC_WH_U, _______, _______, \
-      _______, _______, GLPS,    G_PLUS,  G_MINS,  _______,                   _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_WH_R, _______, \
+      _______, _______, _______, G_PLUS,  G_MINS,  _______,                   _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_WH_R, _______, \
       _______, _______, _______, CS_TAB,  C_TAB,   _______,                   _______, KC_BTN1, KC_DOWN, KC_UP,   KC_MS_R, EX_T,    \
       _______, _______, _______, _______, _______, _______, _______, KC_BTN2, KC_BTN1, _______, _______, _______, KC_BTN2, _______  \
-      ),
-
-  /* Adjust:
-   * ,-----------------------------------.           ,-----------------------------------.
-   * |     |Reset|     |     |     |     |           |     |     |     |     |     |     |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |Audon|Audof|MUTOG|MUMOD| Mac |           | Win |     |     | F/C |     |     |
-   * |-----+-----+-----+-----+-----+-----|           |-----+-----+-----+-----+-----+-----|
-   * |     |CKTOG|CKRST|CK UP|CKDWN|     |           |     |     |RGBON|HUE+ |SAT+ |VAL+ |
-   * |-----+-----+-----+-----+-----+-----+-----------+-----+-----+-----+-----+-----+-----|
-   * |     |     |     |     |     |     |     |     |     |     |MODE |HUE- |SAT- |VAL- |
-   * `-----------------------------------------------------------------------------------'
-   */
-  [_ADJUST] =  LAYOUT( \
-      _______, RESET,   _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______, \
-      _______, AU_ON,   AU_OFF,  MU_TOG,  MU_MOD,  AG_NORM,                   AG_SWAP, _______,  _______, FINCOL,   _______, _______, \
-      _______, CK_TOGG, CK_RST,  CK_UP,   CK_DOWN, _______,                   _______, _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, \
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD  \
       )
 };
 
@@ -292,7 +282,6 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-// Setting ADJUST layer RGB back to default
 void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
   if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
     #ifdef RGBLIGHT_ENABLE
@@ -315,14 +304,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case ADJUST:
-        if (record->event.pressed) {
-          layer_on(_ADJUST);
-        } else {
-          layer_off(_ADJUST);
-        }
-        return false;
-        break;
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
     case RGB_MOD:
       #ifdef RGBLIGHT_ENABLE
@@ -332,31 +313,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           RGB_current_mode = rgblight_config.mode;
         }
       #endif
-      return false;
-      break;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      break;
-    case GLPS:
-      if (record->event.pressed) {
-        // Change to EN mode first
-        tap_code(KC_LANG2);
-        // GUI-L
-        register_code(KC_LGUI);
-        tap_code(KC_L);
-        unregister_code(KC_LGUI);
-        // % and SPACE
-        register_code(KC_LSFT);
-        tap_code(KC_5);
-        unregister_code(KC_LSFT);
-        tap_code(KC_SPC);
-      }
       return false;
       break;
   }
@@ -421,8 +377,6 @@ void matrix_update(struct CharacterMatrix *dest,
 //assign the right code to your layers for OLED display
 #define L_BASE 0
 #define L_SYMBOL  (1<<_SYMBOL)
-#define L_ADJUST (1<<_ADJUST)
-#define L_ADJUST_TRI (L_ADJUST|L_SYMBOL)
 
 static void render_logo(struct CharacterMatrix *matrix) {
 
@@ -461,10 +415,6 @@ void render_status(struct CharacterMatrix *matrix) {
            break;
         case L_SYMBOL:
            matrix_write_P(matrix, PSTR("Symbol"));
-           break;
-        case L_ADJUST:
-        case L_ADJUST_TRI:
-           matrix_write_P(matrix, PSTR("Adjust"));
            break;
         default:
            matrix_write(matrix, buf);

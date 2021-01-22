@@ -5,9 +5,9 @@
 #   See TOP/keyboards/helix/rules.mk for a list of options that can be set.
 #   See TOP/docs/config_options.md for more information.
 #
-EXTRAKEY_ENABLE = yes       # Audio control and System control(+450)
+EXTRAKEY_ENABLE = yes      # Audio control and System control(+450)
 AUDIO_ENABLE = no          # Audio output on port B5
-LINK_TIME_OPTIMIZATION_ENABLE = no  # if firmware size over limit, try this option
+LTOPTIMIZATION_ENABLE = no # if firmware size over limit, try this option
 
 MOUSEKEY_ENABLE = yes       # Mouse keys(+4700)
 
