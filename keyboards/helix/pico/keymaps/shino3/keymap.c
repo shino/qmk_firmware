@@ -4,9 +4,6 @@
 #include "lufa.h"
 #include "split_util.h"
 #endif
-#ifdef AUDIO_ENABLE
-  #include "audio.h"
-#endif
 #ifdef SSD1306OLED
   #include "ssd1306.h"
 #endif
@@ -20,10 +17,6 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
 enum layer_number {
     _FINCOL = 0,
     _SYMBOL,
@@ -38,150 +31,6 @@ enum custom_keycodes {
   EXTRA
 };
 
-
-// Fillers to make layering more clear
-#define _______ KC_TRNS
-#define XXXXXXX KC_NO
-
-
-// Spaces
-#define SP_LCTL LCTL_T(KC_SPC)
-#define SP_STAR LT(_SYMBOL, KC_SPC)
-#define SP_RCTL RCTL_T(KC_SPC)
-#define SP_RALT RALT_T(KC_SPC)
-#define SP_EX   LT(_EXTRA, KC_SPC)
-
-// En/Ja
-/* #define EN       LCTL(LSFT(KC_SCLN))    // IME: En */
-/* #define JA       LCTL(LSFT(KC_J))       // IME: Ja */
-#define EN       KC_LANG2    // IME: En
-#define JA       KC_LANG1    // IME: Ja
-
-// FOURCOL : LT mods
-
-#define A_SFT    LSFT_T(KC_A)
-#define B_ALT    LALT_T(KC_B)
-#define C_EX     LT(_EXTRA, KC_C)
-#define C_SFT    LSFT_T(KC_C)
-#define F_EX     LT(_EXTRA, KC_F)
-#define G_ALT    LALT_T(KC_G)
-
-#define I_SFT    LSFT_T(KC_I)
-#define J_EX     LT(_EXTRA, KC_J)
-#define L_GUI    LGUI_T(KC_L)
-#define L_ALT    LALT_T(KC_L)
-
-#define O_LCTL   LCTL_T(KC_O)
-#define Q_ALT    LALT_T(KC_Q)
-#define Q_EX     LT(_EXTRA, KC_Q)
-#define R_SFT    LSFT_T(KC_R)
-#define T_SFT    LSFT_T(KC_T)
-#define U_GUI    LGUI_T(KC_U)
-#define U_GUI    LGUI_T(KC_U)
-#define U_LCTL   LCTL_T(KC_U)
-
-#define V_EX     LT(_EXTRA, KC_V)
-#define W_ALT    LALT_T(KC_W)
-#define X_ST     LT(_SYMBOL, KC_X)
-#define X_SFT    LSFT_T(KC_X)
-#define X_ALT    LALT_T(KC_X)
-#define Z_EX     LT(_EXTRA, KC_Z)
-#define Z_ST     LT(_SYMBOL,  KC_Z)
-#define Z_SFT    LSFT_T(KC_Z)
-#define Z_GUI    LGUI_T(KC_Z)
-
-#define MINS_ALT LALT_T(KC_MINS)
-#define MINS_GUI LGUI_T(KC_MINS)
-#define EN_GUI   LGUI_T(EN)
-#define JA_GUI   LGUI_T(JA)
-#define TB_GUI   LGUI_T(KC_TAB)
-#define TB_ALT   LALT_T(KC_TAB)
-#define JA_ALT   LALT_T(JA)
-#define JA_GUI   LGUI_T(JA)
-#define JA_SFT   LSFT_T(JA)
-
-#define ZERO_SFT LSFT_T(KC_0)
-#define DOT_SFT  LSFT_T(KC_DOT)
-#define SLSH_SFT LSFT_T(KC_SLSH)
-
-#define ESC_ALT  LALT_T(KC_ESC)
-#define ESC_GUI  LGUI_T(KC_ESC)
-#define ESC_EX   LT(_EXTRA, KC_ESC)
-#define TAB_EX   LT(_EXTRA, KC_TAB)
-#define F12_CTL  LCTL_T(KC_F12)
-#define F12_SFT  LSFT_T(KC_F12)
-#define F12_EX   LT(_EXTRA, KC_F12)
-#define K0_GUI   LGUI_T(KC_0)
-#define K9_CTL   LCTL_T(KC_9)
-#define MNXT_EX   LT(_EXTRA, KC_MNXT)
-
-// macOS
-#define GUI_ENT  LGUI(KC_ENT)
-#define G_MINS   LGUI(KC_MINS)
-#define G_PLUS   LGUI(KC_PLUS)
-#define GCS4     LGUI(LCTL(LSFT(KC_4))) // Screen capture
-
-// Workspaces
-#define GUI_0    LGUI(KC_0)
-#define GUI_1    LGUI(KC_1)
-#define GUI_2    LGUI(KC_2)
-#define GUI_3    LGUI(KC_3)
-#define GUI_4    LGUI(KC_4)
-#define GUI_5    LGUI(KC_5)
-#define GUI_6    LGUI(KC_6)
-#define GUI_7    LGUI(KC_7)
-#define GUI_8    LGUI(KC_8)
-#define GUI_9    LGUI(KC_9)
-
-// IME
-#define SH_LEFT  LSFT(KC_LEFT)
-#define SH_RGHT  LSFT(KC_RGHT)
-
-// Launcher
-#define C_3      LCTL(KC_3)
-#define GUI_3    LGUI(KC_3)
-#define C_RBRC   LCTL(KC_RBRC)
-
-// Browsers
-#define G_LBRC   LGUI(KC_LBRC)
-#define G_RBRC   LGUI(KC_RBRC)
-#define C_TAB    LCTL(KC_TAB)
-#define CS_TAB   LCTL(LSFT(KC_TAB))
-#define GS_T     LGUI(LSFT(KC_T))
-
-// Slack
-#define GUI_K    LGUI(KC_K)             // Jump
-#define GS_ENT   LGUI(LSFT(KC_ENT))     // Create snippet
-
-// Emacs
-#define C_SPC    LCTL(KC_SPC)
-#define C_C      LCTL(KC_C)
-#define C_G      LCTL(KC_G)
-#define C_H      LCTL(KC_H)
-#define C_L      LCTL(KC_L)
-#define C_M      LCTL(KC_M)
-#define C_X      LCTL(KC_X)
-#define C_U      LCTL(KC_U)
-#define C_V      LCTL(KC_V)
-#define C_Z      LCTL(KC_Z)
-
-#define C_COMM   LCTL(KC_COMM)
-#define C_DOT    LCTL(KC_DOT)
-#define C_SLSH   LCTL(KC_SLSH)
-#define C_SCLN   LCTL(KC_SCLN)
-#define M_X      RALT(KC_X)
-#define M_RET    RALT(KC_ENT)
-#define M_LT     RALT(KC_LT)
-#define M_GT     RALT(KC_GT)
-
-// Extra
-#define EX_T     TG(_EXTRA)
-#define B2_ALT   RALT(KC_BTN2)
-
-// Symbol
-#define SYMB_T   TG(_SYMBOL)
-
-// -- New ones below
 
 // common
 #define KC_     KC_TRNS
@@ -269,16 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-#ifdef AUDIO_ENABLE
-
-float tone_fincol[][2]     = SONG(DVORAK_SOUND);
-float tone_plover[][2]     = SONG(PLOVER_SOUND);
-float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
-#endif
-
 // define variables for reactive RGB
-bool TOG_STATUS = false;
 int RGB_current_mode;
 
 void persistent_default_layer_set(uint16_t default_layer) {
@@ -301,9 +141,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case FINCOL:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_fincol);
-        #endif
         persistent_default_layer_set(1UL<<_FINCOL);
       }
       return false;
@@ -324,9 +161,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void matrix_init_user(void) {
-    #ifdef AUDIO_ENABLE
-        startup_user();
-    #endif
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
     #endif
@@ -335,32 +169,6 @@ void matrix_init_user(void) {
         iota_gfx_init(!has_usb());   // turns on the display
     #endif
 }
-
-
-#ifdef AUDIO_ENABLE
-
-void startup_user()
-{
-    _delay_ms(50); // gets rid of tick
-}
-
-void shutdown_user()
-{
-    _delay_ms(150);
-    stop_all_notes();
-}
-
-void music_on_user(void)
-{
-    music_scale_user();
-}
-
-void music_scale_user(void)
-{
-    PLAY_SONG(music_scale);
-}
-
-#endif
 
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
