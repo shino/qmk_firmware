@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "keymap.h"
 
 enum layer_number {
   _QWERTY = 0,
@@ -27,7 +28,7 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT_split_3x6_4(
+  [_QWERTY] = LAYOUT_kc(
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
 //+--------+--------+--------+--------+--------+--------+                 +--------+--------+--------+--------+--------+--------+
