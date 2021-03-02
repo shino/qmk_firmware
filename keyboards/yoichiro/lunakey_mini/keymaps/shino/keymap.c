@@ -113,3 +113,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //              `------+------+------+------'   `------+------+------+------'
   ),
 };
+
+
+const rgblight_segment_t PROGMEM my_fincol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, 0,0,0}
+);
+const rgblight_segment_t PROGMEM my_sy_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_PURPLE}
+);
+const rgblight_segment_t PROGMEM my_ex_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_RED}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_fincol_layer,
+    my_sy_layer,
+    my_ex_layer
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = my_rgb_layers;
+}
+
+/* bool led_update_user(led_t led_state) { */
+/*     rgblight_set_layer_state(0, led_state.caps_lock); */
+/*     return true; */
+/* } */
+
+/* layer_state_t default_layer_state_set_user(layer_state_t state) { */
+/*     rgblight_set_layer_state(1, layer_state_cmp(state, _SYMBOL)); */
+/*     return state; */
+/* } */
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _FINCOL));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _SYMBOL));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _EXTRA));
+    return state;
+}
