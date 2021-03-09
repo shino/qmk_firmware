@@ -118,25 +118,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-
-/* #ifdef RGBLIGHT_ENABLE */
-/* const rgblight_segment_t PROGMEM my_fincol_layer[] = RGBLIGHT_LAYER_SEGMENTS( */
-/*     {0, 12, 0,0,0} */
-/* ); */
-/* const rgblight_segment_t PROGMEM my_sy_layer[] = RGBLIGHT_LAYER_SEGMENTS( */
-/*     {0, 12, HSV_PURPLE} */
-/* ); */
-/* const rgblight_segment_t PROGMEM my_ex_layer[] = RGBLIGHT_LAYER_SEGMENTS( */
-/*     {0, 12, HSV_RED} */
-/* ); */
-
-/* const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST( */
-/*     my_fincol_layer, */
-/*     my_sy_layer, */
-/*     my_ex_layer */
-/* ); */
-/* #endif */
-
 void keyboard_post_init_user(void) {
 #ifdef RGBLIGHT_ENABLE
   rgblight_sethsv_noeeprom(0, 0, 0);
