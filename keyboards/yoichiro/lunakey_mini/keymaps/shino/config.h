@@ -15,8 +15,8 @@
 
 #define TAPPING_TERM 200
 
-// Long tap but input normal key
-#define RETRO_TAPPING
+// Long tap but input normal key  if defined
+/* #define RETRO_TAPPING */
 
 // Use key repeat for keys with long tap
 #undef TAPPING_FORCE_HOLD
